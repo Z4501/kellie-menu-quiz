@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Carrabba’s Menu Quiz (Kellie)</title>
+  <style>
+    :root { --bg:#0b0f0d; --card:#111814; --text:#e8f1ea; --muted:#9fb1a6; --accent:#3ddc97; --bad:#ff5a5f; --good:#3ddc97; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--text); }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 16px; }
+    .top { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    .brand { font-weight: 800; letter-spacing:.3px; }
+    .pill { padding:6px 10px; border:1px solid #243328; border-radius: 999px; color: var(--muted); font-size: 12px; }
+    .card { background:var(--card); border:1px solid #1f2a23; border-radius:16px; padding:16px; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+    .grid { display:grid; grid-template-columns: 1fr; gap:12px; }
+    @media (min-width: 860px){ .grid { grid-template-columns: 1.1fr .9fr; } }
+    h1 { margin: 10px 0 2px; font-size: 20px; }
+    .muted { color: var(--muted); font-size: 13px; line-height: 1.35; }
+    .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    button { background:#16231b; color:var(--text); border:1px solid #284231; padding:10px 12px; border-radius:12px; font-weight:650; cursor:pointer; }
+    button:hover { border-color: #3a6448; }
+    button.primary { background: #123a2a; border-color: #2b8b61; }
+    button.primary:hover { border-color:#46d39a; }
+    button.danger { background: #3a1416; border-color:#7f2a2e; }
+    .opt { display:block; width:100%; text-align:left; padding:12px; margin:10px 0; border-radius:14px; border:1px solid #2a3a30; background:#0f1512; }
+    .opt.correct { border-color: rgba(61,220,151,.7); box-shadow: 0 0 0 2px rgba(61,220,151,.18) inset; }
+    .opt.wrong { border-color: rgba(255,90,95,.7); box-shadow: 0 0 0 2px rgba(255,90,95,.18) inset; }
+    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0f1512; border:1px solid #243328; padding:2px 6px; border-radius:8px; }
+    .hr { height:1px; background:#1f2a23; margin:14px 0; }
+    .small { font-size:12px; color: var(--muted); }
+    textarea { width:100%; min-height:140px; border-radius:14px; border:1px solid #243328; background:#0f1512; color:var(--text); padding:12px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
+    .badge { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid #243328; border-radius: 999px; font-size:12px; color:var(--muted); }
+    .dot { width:8px; height:8px; border-radius:50%; background: var(--accent); display:inline-block; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand">Carrabba’s Menu Quiz <span class="pill">mobile • randomized • graded</span></div>
+    <div class="row">
+      <span class="badge"><span class="dot"></span><span id="dataStatus">Loading menu data…</span></span>
+      <span class="pill">Q: <span id="qCount">20</span></span>
+      <span class="pill">Seen: <span id="seenCount">0</span></span>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:12px;">
+    <div class="card">
+      <h1 id="screenTitle">Ready</h1>
+      <div class="muted" id="screenHint">
+        Tap <span class="kbd">Start</span>. 20 questions. No pity points. Minimal mercy.
+      </div>
+      <div class="hr"></div>
+
+      <div id="quizArea" style="display:none;">
+        <div class="muted" style="margin-bottom:8px;">
+          <span class="pill">Question <span id="qIndex">1</span>/<span id="qTotal">20</span></span>
+          <span class="pill">Score <span id="scoreNow">0</span></span>
+        </div>
+        <div class="card" style="padding:14px; border-radius:14px; background:#0f1512;">
+          <div style="font-weight:800; font-size:16px;" id="questionText"></div>
+          <div class="small" id="questionMeta" style="margin-top:6px;"></div>
+        </div>
+
+        <div id="options"></div>
+
+        <div class="row" style="justify-content:space-between;">
+          <button id="skipBtn">Skip</button>
+          <button class="primary" id="nextBtn" disabled>Next</button>
+        </div>
+      </div>
+
+      <div id="homeArea">
+        <div class="row">
+          <button class="primary" id="startBtn">Start 20-Question Quiz</button>
+          <button id="practiceBtn">Practice Mode (10)</button>
+          <button class="danger" id="resetBtn">Reset History</button>
+        </div>
+        <div class="hr"></div>
+        <div class="muted">
+          <b>How it works:</b><br/>
+          • Pulls exact items from <span class="kbd">menu.json</span> if present.<br/>
+          • If not, uses the embedded data block below (you can paste your extracted menu in later).<br/>
+          • Avoids repeating questions until it runs out, using phone storage (localStorage).
+        </div>
+      </div>
+
+      <div id="resultsArea" style="display:none;">
+        <h1>Results</h1>
+        <div class="muted" id="resultsText"></div>
+        <div class="hr"></div>
+        <div id="review"></div>
+        <div class="hr"></div>
+        <div class="row">
+          <button id="againBtn" class="primary">Run Again</button>
+          <button id="backBtn">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h1>Menu Data</h1>
+      <div class="muted">
+        Put a <span class="kbd">menu.json</span> next to this file and it will auto-load it.<br/>
+        If you don’t have it yet, ignore this for now — but this is where the “strictly match the photos” part lives.
+      </div>
+      <div class="hr"></div>
+
+      <div class="muted"><b>Required JSON shape:</b></div>
+      <textarea readonly>[
+  {
+    "section": "APPETIZERS",
+    "items": [
+      {
+        "name": "CALAMARI",
+        "description": "Hand-breaded to order and served with our marinara and Ricardo sauces",
+        "price": 15.99,
+        "calories": 1160
+      }
+    ]
+  }
+]</textarea>
+
+      <div class="hr"></div>
+      <div class="muted"><b>Embedded fallback data (edit later):</b></div>
+      <textarea id="embedEditor"></textarea>
+      <div class="row" style="margin-top:10px;">
+        <button id="loadEmbeddedBtn">Load Embedded Into App</button>
+        <button id="exportEmbeddedBtn">Export Embedded to menu.json</button>
+      </div>
+      <div class="small" style="margin-top:10px;">
+        TARS note: you can paste your extracted items here even before we finish a full OCR-perfect JSON.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/**
+ * ====== MENU DATA ======
+ * Prefer: ./menu.json
+ * Fallback: MENU_EMBEDDED below (editable in UI)
+ */
+const MENU_EMBEDDED = [
+  // Paste your real extracted sections/items here.
+  // This is only a placeholder so the app runs.
+];
+
+/**
+ * ====== QUIZ ENGINE ======
+ * Question types:
+ *  - price: Which price matches item?
+ *  - section: Which section is this item in?
+ *  - description: Which description matches item?
+ *  - itemFromDesc: Which item matches description?
+ */
+
+const LS_SEEN_KEY = "kellie_menuquiz_seen_v1";
+
+const state = {
+  menu: [],
+  flatItems: [],
+  seen: new Set(),
+  quiz: [],
+  answers: [],
+  idx: 0,
+  score: 0,
+  current: null,
+  locked: false,
+  total: 20
+};
+
+function money(n){
+  // keep exact display like menu (2 decimals)
+  return "$" + Number(n).toFixed(2);
+}
+
+function normalizeText(s){
+  return (s || "").toString().replace(/\s+/g," ").trim();
+}
+
+function buildFlat(menu){
+  const flat = [];
+  for (const sec of menu){
+    const section = sec.section;
+    for (const it of (sec.items||[])){
+      flat.push({
+        section,
+        name: normalizeText(it.name),
+        description: normalizeText(it.description),
+        price: (it.price ?? null),
+        calories: (it.calories ?? null),
+        notes: normalizeText(it.notes || ""),
+        flags: (it.flags || {}) // ex: {GF:true,V:true}
+      });
+    }
+  }
+  return flat.filter(x => x.name);
+}
+
+function loadSeen(){
+  try{
+    const raw = localStorage.getItem(LS_SEEN_KEY);
+    if (!raw) return new Set();
+    const arr = JSON.parse(raw);
+    return new Set(Array.isArray(arr) ? arr : []);
+  }catch(e){ return new Set(); }
+}
+
+function saveSeen(){
+  localStorage.setItem(LS_SEEN_KEY, JSON.stringify(Array.from(state.seen)));
+  document.getElementById("seenCount").textContent = state.seen.size.toString();
+}
+
+function shuffle(a){
+  for (let i=a.length-1; i>0; i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function pickN(pool, n){
+  const copy = pool.slice();
+  shuffle(copy);
+  return copy.slice(0,n);
+}
+
+function uniqueKey(q){
+  // stable-ish key to avoid repeating the same question
+  return `${q.type}::${q.item?.name || ""}::${q.prompt || ""}`;
+}
+
+function genQuestion(){
+  const items = state.flatItems;
+  if (items.length < 6) return null;
+
+  const types = ["price","section","description","itemFromDesc"];
+  const type = types[Math.floor(Math.random()*types.length)];
+
+  const item = items[Math.floor(Math.random()*items.length)];
+
+  // helper pools
+  const otherItems = items.filter(x => x.name !== item.name);
+  const sectionNames = Array.from(new Set(state.menu.map(s => s.section)));
+
+  if (type === "price"){
+    if (item.price == null) return null;
+    const correct = money(item.price);
+    const distract = otherItems.filter(x => x.price != null).map(x => money(x.price));
+    const opts = new Set([correct]);
+    while (opts.size < 4 && distract.length){
+      opts.add(distract[Math.floor(Math.random()*distract.length)]);
+    }
+    if (opts.size < 4){
+      // fabricate nearby prices if menu is sparse
+      while (opts.size < 4){
+        const v = (Number(item.price) + (Math.random()<0.5?-1:1) * (Math.floor(Math.random()*7)+1)).toFixed(2);
+        opts.add("$"+v);
+      }
+    }
+    const options = shuffle(Array.from(opts));
+    return {
+      type,
+      item,
+      prompt: `What is the price of "${item.name}"?`,
+      meta: item.section,
+      options,
+      correct
+    };
+  }
+
+  if (type === "section"){
+    const correct = item.section;
+    const opts = new Set([correct]);
+    while (opts.size < 4 && sectionNames.length){
+      opts.add(sectionNames[Math.floor(Math.random()*sectionNames.length)]);
+    }
+    const options = shuffle(Array.from(opts));
+    return {
+      type,
+      item,
+      prompt: `Which section is "${item.name}" in?`,
+      meta: (item.price!=null?money(item.price):""),
+      options,
+      correct
+    };
+  }
+
+  if (type === "description"){
+    if (!item.description) return null;
+    const correct = item.description;
+    const distract = otherItems.filter(x => x.description).map(x => x.description);
+    const opts = new Set([correct]);
+    while (opts.size < 4 && distract.length){
+      opts.add(distract[Math.floor(Math.random()*distract.length)]);
+    }
+    const options = shuffle(Array.from(opts));
+    return {
+      type,
+      item,
+      prompt: `Which description matches "${item.name}"?`,
+      meta: item.section,
+      options,
+      correct
+    };
+  }
+
+  if (type === "itemFromDesc"){
+    if (!item.description) return null;
+    const correct = item.name;
+    const distract = otherItems.map(x => x.name);
+    const opts = new Set([correct]);
+    while (opts.size < 4 && distract.length){
+      opts.add(distract[Math.floor(Math.random()*distract.length)]);
+    }
+    const options = shuffle(Array.from(opts));
+    return {
+      type,
+      item,
+      prompt: `Which item matches this description?`,
+      meta: item.section,
+      stem: item.description,
+      options,
+      correct
+    };
+  }
+
+  return null;
+}
+
+function buildQuiz(total){
+  const quiz = [];
+  const maxAttempts = total * 30;
+  let attempts = 0;
+
+  while (quiz.length < total && attempts < maxAttempts){
+    attempts++;
+    const q = genQuestion();
+    if (!q) continue;
+    const key = uniqueKey(q);
+    if (state.seen.has(key)) continue;
+    // also avoid duplicates inside same run
+    if (quiz.some(x => uniqueKey(x) === key)) continue;
+    q._key = key;
+    quiz.push(q);
+  }
+  return quiz;
+}
+
+function setStatus(ok, msg){
+  document.getElementById("dataStatus").textContent = msg;
+  document.querySelector(".dot").style.background = ok ? "var(--accent)" : "var(--bad)";
+}
+
+async function loadMenuData(){
+  // Try menu.json first
+  try{
+    const res = await fetch("./menu.json", { cache: "no-store" });
+    if (res.ok){
+      const menu = await res.json();
+      return { menu, source:"menu.json" };
+    }
+  }catch(e){ /* ignore */ }
+
+  // Fallback to embedded
+  return { menu: MENU_EMBEDDED, source:"embedded" };
+}
+
+function showHome(){
+  state.idx = 0; state.score = 0; state.quiz = []; state.answers = [];
+  document.getElementById("homeArea").style.display = "";
+  document.getElementById("quizArea").style.display = "none";
+  document.getElementById("resultsArea").style.display = "none";
+  document.getElementById("screenTitle").textContent = "Ready";
+  document.getElementById("screenHint").textContent = "Tap Start. 20 questions. No pity points. Minimal mercy.";
+}
+
+function showQuiz(){
+  document.getElementById("homeArea").style.display = "none";
+  document.getElementById("resultsArea").style.display = "none";
+  document.getElementById("quizArea").style.display = "";
+}
+
+function renderQuestion(){
+  state.locked = false;
+  document.getElementById("nextBtn").disabled = true;
+
+  const q = state.quiz[state.idx];
+  state.current = q;
+
+  document.getElementById("qIndex").textContent = (state.idx+1).toString();
+  document.getElementById("qTotal").textContent = state.total.toString();
+  document.getElementById("scoreNow").textContent = state.score.toString();
+
+  const qText = document.getElementById("questionText");
+  const qMeta = document.getElementById("questionMeta");
+  const optionsDiv = document.getElementById("options");
+
+  qText.textContent = q.prompt;
+  qMeta.textContent = q.meta ? `Hint: ${q.meta}` : "";
+
+  optionsDiv.innerHTML = "";
+  if (q.stem){
+    const stem = document.createElement("div");
+    stem.className = "card";
+    stem.style.cssText = "padding:12px;border-radius:14px;background:#0b0f0d;border:1px solid #1f2a23;margin-top:10px;";
+    stem.innerHTML = `<div class="muted"><b>Description:</b></div><div style="margin-top:6px;">${escapeHtml(q.stem)}</div>`;
+    optionsDiv.appendChild(stem);
+  }
+
+  for (const opt of q.options){
+    const btn = document.createElement("button");
+    btn.className = "opt";
+    btn.textContent = opt;
+    btn.onclick = () => choose(opt, btn);
+    optionsDiv.appendChild(btn);
+  }
+}
+
+function escapeHtml(s){
+  return (s||"").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+}
+
+function choose(value, btn){
+  if (state.locked) return;
+  state.locked = true;
+
+  const q = state.current;
+  const correct = q.correct;
+
+  const opts = Array.from(document.querySelectorAll("#options .opt"));
+  for (const b of opts){
+    if (b.textContent === correct) b.classList.add("correct");
+  }
+  if (value !== correct){
+    btn.classList.add("wrong");
+  }
+
+  const isCorrect = (value === correct);
+  if (isCorrect) state.score++;
+
+  state.answers.push({
+    q,
+    picked: value,
+    correct,
+    ok: isCorrect
+  });
+
+  // mark as seen so we don't repeat endlessly across runs
+  state.seen.add(q._key);
+  saveSeen();
+
+  document.getElementById("nextBtn").disabled = false;
+}
+
+function skip(){
+  if (state.locked) return;
+  state.answers.push({
+    q: state.current,
+    picked: "(skipped)",
+    correct: state.current.correct,
+    ok: false
+  });
+  state.seen.add(state.current._key);
+  saveSeen();
+  next();
+}
+
+function next(){
+  if (state.idx >= state.total-1){
+    showResults();
+    return;
+  }
+  state.idx++;
+  renderQuestion();
+}
+
+function showResults(){
+  document.getElementById("quizArea").style.display = "none";
+  document.getElementById("resultsArea").style.display = "";
+
+  const total = state.total;
+  const score = state.score;
+  const pct = Math.round((score/total)*100);
+
+  document.getElementById("resultsText").innerHTML =
+    `Score: <b>${score}/${total}</b> (${pct}%).<br/>` +
+    (pct >= 90 ? "Excellent. You may now intimidate the POS system."
+      : pct >= 75 ? "Solid. Keep grinding."
+      : pct >= 60 ? "Close. Run it again."
+      : "We are not done here.");
+
+  const review = document.getElementById("review");
+  review.innerHTML = "";
+
+  state.answers.forEach((a, i) => {
+    const div = document.createElement("div");
+    div.className = "card";
+    div.style.cssText = "margin:10px 0; padding:12px; border-radius:14px; background:#0f1512;";
+    div.innerHTML = `
+      <div class="small">${i+1}. ${escapeHtml(a.q.prompt)}</div>
+      ${a.q.stem ? `<div class="small" style="margin-top:6px;"><b>Desc:</b> ${escapeHtml(a.q.stem)}</div>` : ""}
+      <div style="margin-top:6px;">
+        Picked: <b style="color:${a.ok?'var(--good)':'var(--bad)'}">${escapeHtml(a.picked)}</b><br/>
+        Correct: <b>${escapeHtml(a.correct)}</b>
+      </div>
+    `;
+    review.appendChild(div);
+  });
+}
+
+function startQuiz(total){
+  state.total = total;
+  document.getElementById("qCount").textContent = total.toString();
+
+  const quiz = buildQuiz(total);
+  if (quiz.length < total){
+    alert("Not enough menu data to build a full quiz yet. Add more items to menu.json or embedded data.");
+    return;
+  }
+
+  state.quiz = quiz;
+  state.answers = [];
+  state.idx = 0;
+  state.score = 0;
+
+  showQuiz();
+  renderQuestion();
+}
+
+function resetHistory(){
+  if (!confirm("Reset seen-question history on this device?")) return;
+  localStorage.removeItem(LS_SEEN_KEY);
+  state.seen = new Set();
+  saveSeen();
+  alert("History reset.");
+}
+
+function setEmbeddedEditor(){
+  const ta = document.getElementById("embedEditor");
+  ta.value = JSON.stringify(MENU_EMBEDDED, null, 2);
+}
+
+function loadEmbeddedFromEditor(){
+  try{
+    const raw = document.getElementById("embedEditor").value;
+    const menu = JSON.parse(raw);
+    applyMenu(menu, "embedded-editor");
+  }catch(e){
+    alert("Embedded JSON is not valid. Fix it and try again.");
+  }
+}
+
+function exportEmbeddedToFile(){
+  try{
+    const raw = document.getElementById("embedEditor").value;
+    JSON.parse(raw); // validate
+    const blob = new Blob([raw], {type:"application/json"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "menu.json";
+    a.click();
+  }catch(e){
+    alert("Embedded JSON is not valid. Fix it first.");
+  }
+}
+
+function applyMenu(menu, source){
+  state.menu = Array.isArray(menu) ? menu : [];
+  state.flatItems = buildFlat(state.menu);
+
+  const ok = state.flatItems.length >= 6;
+  setStatus(ok, ok
+    ? `Loaded ${state.flatItems.length} items (${source})`
+    : `Loaded ${state.flatItems.length} items (${source}) — need more data`
+  );
+
+  // update UI counts
+  state.seen = loadSeen();
+  document.getElementById("seenCount").textContent = state.seen.size.toString();
+}
+
+(async function init(){
+  // wire buttons
+  document.getElementById("startBtn").onclick = () => startQuiz(20);
+  document.getElementById("practiceBtn").onclick = () => startQuiz(10);
+  document.getElementById("resetBtn").onclick = resetHistory;
+  document.getElementById("nextBtn").onclick = next;
+  document.getElementById("skipBtn").onclick = skip;
+  document.getElementById("againBtn").onclick = () => startQuiz(state.total);
+  document.getElementById("backBtn").onclick = showHome;
+
+  document.getElementById("loadEmbeddedBtn").onclick = loadEmbeddedFromEditor;
+  document.getElementById("exportEmbeddedBtn").onclick = exportEmbeddedToFile;
+
+  // set editor content
+  setEmbeddedEditor();
+
+  // load menu data
+  const { menu, source } = await loadMenuData();
+  applyMenu(menu, source);
+
+  showHome();
+})();
+</script>
+</body>
+</html>
