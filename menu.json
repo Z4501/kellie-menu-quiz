@@ -54,7 +54,7 @@
     "items": [
       {
         "name": "Spicy Sicilian Butter",
-        "description": "A spicy butter topping."
+        "description": "Spicy butter topping."
       },
       {
         "name": "Marsala Sauce",
@@ -87,7 +87,28 @@
       },
       {
         "name": "Tuscan-Grilled Pork Chop",
-        "description": "Tuscan-grilled pork chop (one or two chops)."
+        "description": "Tuscan-grilled pork chop (one chop or two chops)."
+      }
+    ]
+  },
+  {
+    "section": "BEERS",
+    "items": [
+      {
+        "name": "Bud Light",
+        "description": "Domestic bottled beer."
+      },
+      {
+        "name": "Blue Moon",
+        "description": "Craft bottled beer."
+      },
+      {
+        "name": "Peroni",
+        "description": "Imported bottled beer."
+      },
+      {
+        "name": "Samuel Adams",
+        "description": "Craft bottled beer."
       }
     ]
   },
@@ -100,7 +121,7 @@
       },
       {
         "name": "Flavored Iced Tea of the Day",
-        "description": "Gold Peak iced tea flavored with one of our favorites (ask server for today’s options)."
+        "description": "Gold Peak iced tea flavored with one of our favorites (ask your server about today’s options)."
       },
       {
         "name": "Soft Drinks",
@@ -142,6 +163,223 @@
       {
         "name": "Cannoli Cake for Two",
         "description": "Vanilla cake with layers of cannoli filling, topped with a mini cannoli, pistachios and chocolate sauce, with a chocolate chip crust."
+      }
+    ]
+  },
+
+  {
+    "section": "WINE - WINES WE LOVE",
+    "items": [
+      {
+        "name": "Caymus Cabernet Sauvignon (Napa Valley)",
+        "description": "Easy drinking and pairs well with a variety of flavors."
+      },
+      {
+        "name": "Il Borro 'Pian Di Nova' Super Tuscan (Tuscany)",
+        "description": "Hand-selected varietal from Tuscany to pair your dinner with an Italian wine."
+      },
+      {
+        "name": "Quilt 'Threadcount' Sauvignon Blanc (California)",
+        "description": "Discover something new."
+      }
+    ]
+  },
+  {
+    "section": "WINE - SPARKLING",
+    "items": [
+      {
+        "name": "Riondo Prosecco (Italy)",
+        "description": "Bubbly sparkling wine."
+      },
+      {
+        "name": "LaMarca Prosecco Rosé (Italy)",
+        "description": "Sparkling rosé."
+      },
+      {
+        "name": "Veuve Clicquot Yellow Label Brut (France)",
+        "description": "Champagne brut."
+      }
+    ]
+  },
+  {
+    "section": "WINE - WHITES & PINKS",
+    "items": [
+      {
+        "name": "Seven Daughters Moscato (Italy)",
+        "description": "White wine / Moscato."
+      },
+      {
+        "name": "Copper Ridge White Zinfandel (California)",
+        "description": "White Zinfandel."
+      },
+      {
+        "name": "Chateau Ste Michelle Riesling (Washington)",
+        "description": "Riesling."
+      },
+      {
+        "name": "Fleurs de Prairie Rosé (France)",
+        "description": "Rosé."
+      },
+      {
+        "name": "Ecco Domani Pinot Grigio (Italy)",
+        "description": "Pinot Grigio."
+      },
+      {
+        "name": "Chloe Pinot Grigio (Italy)",
+        "description": "Pinot Grigio."
+      },
+      {
+        "name": "Bonizio Bianco by Cecchi (Tuscany)",
+        "description": "White blend."
+      },
+      {
+        "name": "Santa Margherita Pinot Grigio (Italy)",
+        "description": "Pinot Grigio."
+      },
+      {
+        "name": "Imagery Sauvignon Blanc (Sonoma)",
+        "description": "Sauvignon Blanc."
+      },
+      {
+        "name": "Quilt 'Threadcount' Sauvignon Blanc (California)",
+        "description": "Sauvignon Blanc."
+      },
+      {
+        "name": "Kim Crawford Sauvignon Blanc (New Zealand)",
+        "description": "Sauvignon Blanc."
+      }
+    ]
+  },
+  {
+    "section": "WINE - CHARDONNAYS",
+    "items": [
+      {
+        "name": "Antinori 'Tormaresca' (Italy)",
+        "description": "Chardonnay."
+      },
+      {
+        "name": "William Hill (California)",
+        "description": "Chardonnay."
+      },
+      {
+        "name": "Kendall-Jackson (California)",
+        "description": "Chardonnay."
+      },
+      {
+        "name": "Rombauer (California)",
+        "description": "Chardonnay."
+      }
+    ]
+  },
+  {
+    "section": "WINE - PINOT NOIRS",
+    "items": [
+      {
+        "name": "Mark West (Sonoma)",
+        "description": "Pinot Noir."
+      },
+      {
+        "name": "Meiomi (California)",
+        "description": "Pinot Noir."
+      },
+      {
+        "name": "Belle Glos Balade (California)",
+        "description": "Pinot Noir."
+      },
+      {
+        "name": "Duckhorn 'Goldeneye' (California)",
+        "description": "Pinot Noir."
+      }
+    ]
+  },
+  {
+    "section": "WINE - RICH & VELVETY REDS",
+    "items": [
+      {
+        "name": "Bogle Merlot (California)",
+        "description": "Merlot."
+      },
+      {
+        "name": "Conundrum Red Blend (California)",
+        "description": "Red blend."
+      },
+      {
+        "name": "Apothic Red Blend (California)",
+        "description": "Red blend."
+      },
+      {
+        "name": "DAOU 'Pessimist' Red Blend (California)",
+        "description": "Red blend."
+      },
+      {
+        "name": "Orin Swift 'Abstract' (California)",
+        "description": "Red blend."
+      },
+      {
+        "name": "The Prisoner (California)",
+        "description": "Red blend."
+      },
+      {
+        "name": "Duckhorn 'Decoy' Merlot (Sonoma)",
+        "description": "Merlot."
+      }
+    ]
+  },
+  {
+    "section": "WINE - ITALIAN REDS",
+    "items": [
+      {
+        "name": "Allegrini Valpolicella (Verona)",
+        "description": "Italian red."
+      },
+      {
+        "name": "Ruffino Chianti DOCG (Tuscany)",
+        "description": "Chianti."
+      },
+      {
+        "name": "Bonizio Rosso by Cecchi (Italy)",
+        "description": "Red blend."
+      },
+      {
+        "name": "Cecchi Chianti Classico (Tuscany)",
+        "description": "Chianti Classico."
+      },
+      {
+        "name": "Il Borro 'Pian di Nova' Super Tuscan (Tuscany)",
+        "description": "Super Tuscan."
+      }
+    ]
+  },
+  {
+    "section": "WINE - CABERNET SAUVIGNONS",
+    "items": [
+      {
+        "name": "Beringer Founders' Estate (California)",
+        "description": "Cabernet Sauvignon."
+      },
+      {
+        "name": "Josh Cellars (California)",
+        "description": "Cabernet Sauvignon."
+      },
+      {
+        "name": "Coppola Diamond (California)",
+        "description": "Cabernet Sauvignon."
+      },
+      {
+        "name": "J. Lohr 'Seven Oaks' (Paso Robles)",
+        "description": "Cabernet Sauvignon."
+      },
+      {
+        "name": "Stag's Leap Artemis (Napa Valley)",
+        "description": "Cabernet Sauvignon."
+      },
+      {
+        "name": "DAOU (Paso Robles)",
+        "description": "Cabernet Sauvignon."
+      },
+      {
+        "name": "Caymus Cabernet Sauvignon (Napa Valley, 1 Liter)",
+        "description": "Cabernet Sauvignon."
       }
     ]
   }
