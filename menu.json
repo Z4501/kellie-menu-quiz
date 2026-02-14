@@ -1,18 +1,146 @@
 [
   {
+    "section": "APPETIZERS",
+    "items": [
+      {
+        "name": "Calamari",
+        "description": "Hand-breaded to order and served with our marinara and Ricardo sauces."
+      },
+      {
+        "name": "Tuscan Breadstick Tower",
+        "description": "A towering stack of focaccia bread brushed in garlic butter and our signature herb mix, served with marinara sauce for dipping."
+      },
+      {
+        "name": "Four-Cheese & Sausage Stuffed Mushrooms",
+        "description": "Stuffed with sausage, spinach, ricotta, parmesan, romano, mozzarella cheese and Italian breadcrumbs, served over our tomato cream sauce."
+      },
+      {
+        "name": "Meatballs & Ricotta",
+        "description": "Two meatballs simmered in our pomodoro sauce with ricotta, parmesan and romano cheese."
+      },
+      {
+        "name": "Mozzarella Marinara",
+        "description": "Hand-cut and breaded, served with our marinara sauce."
+      },
+      {
+        "name": "Zucchini Fritte",
+        "description": "Hand-breaded, lightly fried and served with roasted garlic aioli."
+      },
+      {
+        "name": "Shrimp Scampi",
+        "description": "Garlic, white wine and our lemon butter sauce served with toasted garlic and herb bread."
+      },
+      {
+        "name": "Jumbo Lump Crab Cakes",
+        "description": "Two jumbo lump crab cakes seared, baked and served with roasted red pepper sauce."
+      },
+      {
+        "name": "Classics Combination",
+        "description": "Calamari, Mozzarella Marinara and Bruschette Caprese, served with marinara sauce."
+      },
+      {
+        "name": "Tomato Caprese with Fresh Burrata",
+        "description": "Creamy burrata mozzarella, tomatoes, fresh basil, red onions, balsamic glaze and extra-virgin olive oil."
+      }
+    ]
+  },
+  {
+    "section": "SALADS",
+    "items": [
+      {
+        "name": "Johnny Rocco Salad",
+        "description": "Wood-grilled chicken, prosciutto, fontina, tomatoes, hard-boiled egg and green onions over mixed greens with our herb vinaigrette."
+      },
+      {
+        "name": "Caesar Salad",
+        "description": "Wood-grilled chicken or shrimp served over romaine, croutons, parmesan and romano cheese with Caesar dressing."
+      },
+      {
+        "name": "Italian Salad",
+        "description": "Wood-grilled chicken or shrimp served over romaine, garden vegetables, kalamata olives and Italian vinaigrette."
+      },
+      {
+        "name": "Signature Salads",
+        "description": "House Creamy Parmesan, Italian, or Caesar."
+      }
+    ]
+  },
+  {
+    "section": "SOUPS",
+    "items": [
+      {
+        "name": "Mama Mandola’s Sicilian Chicken Soup",
+        "description": "Our traditional chicken soup."
+      },
+      {
+        "name": "Soup of the Day",
+        "description": "Ask your server for today’s made-from-scratch selection."
+      }
+    ]
+  },
+  {
+    "section": "PASTA",
+    "items": [
+      {
+        "name": "Fettuccine Weesie",
+        "description": "Fettuccine Alfredo with sautéed shrimp and mushrooms in our spicy lemon butter sauce."
+      },
+      {
+        "name": "Lobster Ravioli",
+        "description": "Ravioli stuffed with lobster and romano in our white wine cream sauce, topped with diced tomatoes."
+      },
+      {
+        "name": "Lasagne",
+        "description": "Pasta layered with meat sauce, ricotta, mozzarella and romano cheese, baked in marinara."
+      },
+      {
+        "name": "Linguine Positano",
+        "description": "Crushed tomatoes, garlic, olive oil and basil tossed with linguine."
+      },
+      {
+        "name": "Spaghetti",
+        "description": "Spaghetti with pomodoro sauce."
+      },
+      {
+        "name": "Fettuccine Alfredo",
+        "description": "Classic parmesan cream sauce."
+      },
+      {
+        "name": "Filet & Shrimp Pasta Toscana",
+        "description": "Fettuccine with spinach and mushrooms tossed in a roasted garlic cream sauce, topped with wood-grilled shrimp and wood-grilled filet."
+      },
+      {
+        "name": "Rigatoni Martino",
+        "description": "Sautéed mushrooms, sun-dried tomatoes, parmesan and romano tossed with rigatoni in our tomato cream sauce, topped with scallions and ricotta salata."
+      },
+      {
+        "name": "Fettuccine Carrabba",
+        "description": "Fettuccine Alfredo with wood-grilled chicken, sautéed mushrooms and peas."
+      },
+      {
+        "name": "Mezzaluna",
+        "description": "Half-moon ravioli with chicken, ricotta, parmesan, romano cheese and spinach in our tomato cream sauce."
+      },
+      {
+        "name": "Shrimp & Scallop Linguine Alla Vodka",
+        "description": "Sautéed shrimp and scallops tossed with linguine pasta in our tomato vodka sauce."
+      }
+    ]
+  },
+  {
     "section": "TRIOS",
     "items": [
       {
         "name": "Chicken Trio",
-        "description": "Chicken Bryan, Pollo Rosa Maria & Chicken Marsala, served with your choice of a side."
+        "description": "Chicken Bryan, Pollo Rosa Maria and Chicken Marsala, served with your choice of a side."
       },
       {
         "name": "The Johnny Trio",
-        "description": "Tuscan-grilled sirloin Marsala, Chicken Bryan & Mezzaluna."
+        "description": "Tuscan-grilled sirloin Marsala, Chicken Bryan and Mezzaluna."
       },
       {
         "name": "Carrabba’s Italian Classics Trio",
-        "description": "Chicken Parmesan, Lasagne & Fettuccine Alfredo."
+        "description": "Chicken Parmesan, Lasagne and Fettuccine Alfredo."
       }
     ]
   },
@@ -25,7 +153,7 @@
       },
       {
         "name": "Chicken Piccata",
-        "description": "Thin, tender cutlets of chicken lightly dusted with flour, sautéed and topped with lemon butter sauce, parsley and capers."
+        "description": "Thin, tender cutlets lightly dusted with flour, sautéed and topped with lemon butter sauce, parsley and capers."
       },
       {
         "name": "Tuscan-Grilled Chicken",
@@ -37,11 +165,11 @@
       },
       {
         "name": "Pollo Rosa Maria",
-        "description": "Wood-grilled chicken stuffed with fontina cheese and prosciutto, topped with mushrooms and our basil lemon butter sauce."
+        "description": "Wood-grilled chicken stuffed with fontina cheese and prosciutto, topped with mushrooms and basil lemon butter sauce."
       },
       {
         "name": "Chicken Bryan",
-        "description": "Wood-grilled and topped with goat cheese, sun-dried tomatoes, basil and our lemon butter sauce."
+        "description": "Wood-grilled and topped with goat cheese, sun-dried tomatoes, basil and lemon butter sauce."
       },
       {
         "name": "Eggplant Parmesan",
@@ -54,7 +182,7 @@
     "items": [
       {
         "name": "Spicy Sicilian Butter",
-        "description": "Spicy butter topping."
+        "description": "A spicy butter topping."
       },
       {
         "name": "Marsala Sauce",
@@ -87,7 +215,70 @@
       },
       {
         "name": "Tuscan-Grilled Pork Chop",
-        "description": "Tuscan-grilled pork chop (one chop or two chops)."
+        "description": "Tuscan-grilled pork chop (one or two chops)."
+      }
+    ]
+  },
+  {
+    "section": "SEAFOOD",
+    "items": [
+      {
+        "name": "Spiedino di Mare",
+        "description": "Shrimp, sea scallops or a combination coated with Italian breadcrumbs, wood-grilled and topped with our lemon butter sauce."
+      },
+      {
+        "name": "Pistachio Crusted Trout",
+        "description": "Wood-grilled trout coated with Italian breadcrumbs and pistachios, topped with lemon butter sauce, diced tomatoes and basil."
+      },
+      {
+        "name": "Simply Grilled Trout",
+        "description": "Wood-grilled trout seasoned with Mr. C’s Grill Baste, olive oil and herbs."
+      },
+      {
+        "name": "Salmon Capperi",
+        "description": "Wood-grilled salmon topped with roasted grape tomatoes, fresh basil, capers and lemon butter sauce."
+      },
+      {
+        "name": "Simply Grilled Salmon",
+        "description": "Wood-grilled salmon seasoned with Mr. C’s Grill Baste, olive oil and herbs."
+      }
+    ]
+  },
+  {
+    "section": "SIDES",
+    "items": [
+      {
+        "name": "Sautéed Broccoli",
+        "description": "Side."
+      },
+      {
+        "name": "Garlic Mashed Potatoes",
+        "description": "Side."
+      },
+      {
+        "name": "Penne Pomodoro",
+        "description": "Side."
+      }
+    ]
+  },
+  {
+    "section": "PREMIUM SIDES",
+    "items": [
+      {
+        "name": "Rosemary Parmesan Fries",
+        "description": "Premium side."
+      },
+      {
+        "name": "Sautéed Spinach",
+        "description": "Premium side."
+      },
+      {
+        "name": "Grilled Asparagus",
+        "description": "Premium side."
+      },
+      {
+        "name": "Fettuccine Alfredo",
+        "description": "Premium side."
       }
     ]
   },
@@ -96,19 +287,19 @@
     "items": [
       {
         "name": "Bud Light",
-        "description": "Domestic bottled beer."
+        "description": "Beer."
       },
       {
         "name": "Blue Moon",
-        "description": "Craft bottled beer."
+        "description": "Beer."
       },
       {
         "name": "Peroni",
-        "description": "Imported bottled beer."
+        "description": "Beer."
       },
       {
         "name": "Samuel Adams",
-        "description": "Craft bottled beer."
+        "description": "Beer."
       }
     ]
   },
@@ -121,7 +312,7 @@
       },
       {
         "name": "Flavored Iced Tea of the Day",
-        "description": "Gold Peak iced tea flavored with one of our favorites (ask your server about today’s options)."
+        "description": "Gold Peak iced tea flavored with one of our favorites (ask server for today’s options)."
       },
       {
         "name": "Soft Drinks",
@@ -166,162 +357,149 @@
       }
     ]
   },
-
   {
     "section": "WINE - WINES WE LOVE",
     "items": [
       {
-        "name": "Caymus Cabernet Sauvignon (Napa Valley)",
-        "description": "Easy drinking and pairs well with a variety of flavors."
+        "name": "Caymus Cabernet Sauvignon",
+        "description": "Cabernet Sauvignon — Napa Valley (1 Liter)."
       },
       {
-        "name": "Il Borro 'Pian Di Nova' Super Tuscan (Tuscany)",
-        "description": "Hand-selected varietal from Tuscany to pair your dinner with an Italian wine."
+        "name": "Il Borro “Pian Di Nova” Super Tuscan",
+        "description": "Super Tuscan red blend — Tuscany."
       },
       {
-        "name": "Quilt 'Threadcount' Sauvignon Blanc (California)",
-        "description": "Discover something new."
+        "name": "Quilt “Threadcount” Sauvignon Blanc",
+        "description": "Sauvignon Blanc — California."
       }
     ]
   },
   {
-    "section": "WINE - SPARKLING",
+    "section": "WINE - BUBBLY",
     "items": [
       {
-        "name": "Riondo Prosecco (Italy)",
-        "description": "Bubbly sparkling wine."
+        "name": "Riondo Prosecco",
+        "description": "Prosecco — Italy."
       },
       {
-        "name": "LaMarca Prosecco Rosé (Italy)",
-        "description": "Sparkling rosé."
+        "name": "La Marca Prosecco Rosé",
+        "description": "Prosecco Rosé — Italy."
       },
       {
-        "name": "Veuve Clicquot Yellow Label Brut (France)",
-        "description": "Champagne brut."
+        "name": "Veuve Clicquot Yellow Label Brut",
+        "description": "Champagne Brut — France."
       }
     ]
   },
   {
-    "section": "WINE - WHITES & PINKS",
+    "section": "WINE - CRISP & ZESTY",
     "items": [
       {
-        "name": "Seven Daughters Moscato (Italy)",
-        "description": "White wine / Moscato."
+        "name": "Seven Daughters Moscato",
+        "description": "Moscato — Italy."
       },
       {
-        "name": "Copper Ridge White Zinfandel (California)",
-        "description": "White Zinfandel."
+        "name": "Copper Ridge White Zinfandel",
+        "description": "White Zinfandel — California."
       },
       {
-        "name": "Chateau Ste Michelle Riesling (Washington)",
-        "description": "Riesling."
+        "name": "Chateau Ste. Michelle Riesling",
+        "description": "Riesling — Washington."
       },
       {
-        "name": "Fleurs de Prairie Rosé (France)",
-        "description": "Rosé."
+        "name": "Fleurs de Prairie Rosé",
+        "description": "Rosé — France."
       },
       {
-        "name": "Ecco Domani Pinot Grigio (Italy)",
-        "description": "Pinot Grigio."
+        "name": "Ecco Domani Pinot Grigio",
+        "description": "Pinot Grigio — Italy."
       },
       {
-        "name": "Chloe Pinot Grigio (Italy)",
-        "description": "Pinot Grigio."
+        "name": "Bonizio Bianco by Cecchi",
+        "description": "Italian white — Tuscany."
       },
       {
-        "name": "Bonizio Bianco by Cecchi (Tuscany)",
-        "description": "White blend."
+        "name": "Santa Margherita Pinot Grigio",
+        "description": "Pinot Grigio — Italy."
       },
       {
-        "name": "Santa Margherita Pinot Grigio (Italy)",
-        "description": "Pinot Grigio."
+        "name": "Imagery Sauvignon Blanc",
+        "description": "Sauvignon Blanc — Sonoma."
       },
       {
-        "name": "Imagery Sauvignon Blanc (Sonoma)",
-        "description": "Sauvignon Blanc."
-      },
-      {
-        "name": "Quilt 'Threadcount' Sauvignon Blanc (California)",
-        "description": "Sauvignon Blanc."
-      },
-      {
-        "name": "Kim Crawford Sauvignon Blanc (New Zealand)",
-        "description": "Sauvignon Blanc."
+        "name": "Kim Crawford Sauvignon Blanc",
+        "description": "Sauvignon Blanc — New Zealand."
       }
     ]
   },
   {
-    "section": "WINE - CHARDONNAYS",
+    "section": "WINE - CHARDONNAY",
     "items": [
       {
-        "name": "Antinori 'Tormaresca' (Italy)",
-        "description": "Chardonnay."
+        "name": "Antinori “Tormaresca” Chardonnay",
+        "description": "Chardonnay — Italy."
       },
       {
-        "name": "William Hill (California)",
-        "description": "Chardonnay."
+        "name": "William Hill Chardonnay",
+        "description": "Chardonnay — California."
       },
       {
-        "name": "Kendall-Jackson (California)",
-        "description": "Chardonnay."
+        "name": "Kendall-Jackson Chardonnay",
+        "description": "Chardonnay — California."
       },
       {
-        "name": "Rombauer (California)",
-        "description": "Chardonnay."
+        "name": "Rombauer Chardonnay",
+        "description": "Chardonnay — California."
       }
     ]
   },
   {
-    "section": "WINE - PINOT NOIRS",
+    "section": "WINE - PINOT NOIR",
     "items": [
       {
-        "name": "Mark West (Sonoma)",
-        "description": "Pinot Noir."
+        "name": "Mark West Pinot Noir",
+        "description": "Pinot Noir — Sonoma."
       },
       {
-        "name": "Meiomi (California)",
-        "description": "Pinot Noir."
+        "name": "Meiomi Pinot Noir",
+        "description": "Pinot Noir — California."
       },
       {
-        "name": "Belle Glos Balade (California)",
-        "description": "Pinot Noir."
+        "name": "Belle Glos “Balade” Pinot Noir",
+        "description": "Pinot Noir — California."
       },
       {
-        "name": "Duckhorn 'Goldeneye' (California)",
-        "description": "Pinot Noir."
+        "name": "Goldeneye Pinot Noir",
+        "description": "Pinot Noir — California."
       }
     ]
   },
   {
-    "section": "WINE - RICH & VELVETY REDS",
+    "section": "WINE - RED BLENDS & MERLOT",
     "items": [
       {
-        "name": "Bogle Merlot (California)",
-        "description": "Merlot."
+        "name": "Apothic Red",
+        "description": "Red blend — California."
       },
       {
-        "name": "Conundrum Red Blend (California)",
-        "description": "Red blend."
+        "name": "Alamos Malbec",
+        "description": "Malbec — Argentina."
       },
       {
-        "name": "Apothic Red Blend (California)",
-        "description": "Red blend."
+        "name": "DAOU “Pessimist” Red Blend",
+        "description": "Red blend — California."
       },
       {
-        "name": "DAOU 'Pessimist' Red Blend (California)",
-        "description": "Red blend."
+        "name": "Orin Swift “Abstract” Red Blend",
+        "description": "Red blend — California."
       },
       {
-        "name": "Orin Swift 'Abstract' (California)",
-        "description": "Red blend."
+        "name": "The Prisoner Red Blend",
+        "description": "Red blend — California."
       },
       {
-        "name": "The Prisoner (California)",
-        "description": "Red blend."
-      },
-      {
-        "name": "Duckhorn 'Decoy' Merlot (Sonoma)",
-        "description": "Merlot."
+        "name": "Duckhorn “Decoy” Merlot",
+        "description": "Merlot — California."
       }
     ]
   },
@@ -329,57 +507,53 @@
     "section": "WINE - ITALIAN REDS",
     "items": [
       {
-        "name": "Allegrini Valpolicella (Verona)",
-        "description": "Italian red."
+        "name": "Cecchi Chianti",
+        "description": "Chianti — Tuscany."
       },
       {
-        "name": "Ruffino Chianti DOCG (Tuscany)",
-        "description": "Chianti."
+        "name": "Cecchi Chianti Classico",
+        "description": "Chianti Classico — Tuscany."
       },
       {
-        "name": "Bonizio Rosso by Cecchi (Italy)",
-        "description": "Red blend."
+        "name": "Banfi Chianti Classico Riserva",
+        "description": "Chianti Classico Riserva — Tuscany."
       },
       {
-        "name": "Cecchi Chianti Classico (Tuscany)",
-        "description": "Chianti Classico."
-      },
-      {
-        "name": "Il Borro 'Pian di Nova' Super Tuscan (Tuscany)",
-        "description": "Super Tuscan."
+        "name": "Il Borro “Pian Di Nova” Super Tuscan",
+        "description": "Super Tuscan red blend — Tuscany."
       }
     ]
   },
   {
-    "section": "WINE - CABERNET SAUVIGNONS",
+    "section": "WINE - CABERNET SAUVIGNON",
     "items": [
       {
-        "name": "Beringer Founders' Estate (California)",
-        "description": "Cabernet Sauvignon."
+        "name": "Beringer Founders’ Estate Cabernet Sauvignon",
+        "description": "Cabernet Sauvignon — California."
       },
       {
-        "name": "Josh Cellars (California)",
-        "description": "Cabernet Sauvignon."
+        "name": "Josh Cellars Cabernet Sauvignon",
+        "description": "Cabernet Sauvignon — California."
       },
       {
-        "name": "Coppola Diamond (California)",
-        "description": "Cabernet Sauvignon."
+        "name": "Coppola “Diamond Collection” Cabernet Sauvignon",
+        "description": "Cabernet Sauvignon — California."
       },
       {
-        "name": "J. Lohr 'Seven Oaks' (Paso Robles)",
-        "description": "Cabernet Sauvignon."
+        "name": "J. Lohr “Seven Oaks” Cabernet Sauvignon",
+        "description": "Cabernet Sauvignon — Paso Robles."
       },
       {
-        "name": "Stag's Leap Artemis (Napa Valley)",
-        "description": "Cabernet Sauvignon."
+        "name": "Stag’s Leap Wine Cellars “Artemis” Cabernet Sauvignon",
+        "description": "Cabernet Sauvignon — Napa Valley."
       },
       {
-        "name": "DAOU (Paso Robles)",
-        "description": "Cabernet Sauvignon."
+        "name": "DAOU Cabernet Sauvignon",
+        "description": "Cabernet Sauvignon — Paso Robles."
       },
       {
-        "name": "Caymus Cabernet Sauvignon (Napa Valley, 1 Liter)",
-        "description": "Cabernet Sauvignon."
+        "name": "Caymus Cabernet Sauvignon",
+        "description": "Cabernet Sauvignon — Napa Valley (1 Liter)."
       }
     ]
   }
