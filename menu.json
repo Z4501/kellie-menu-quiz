@@ -1,156 +1,147 @@
 [
   {
-    "section": "Trios",
+    "section": "TRIOS",
     "items": [
       {
         "name": "Chicken Trio",
-        "description": "Chicken Bryan, Pollo Rosa Maria & Chicken Marsala, served with your choice of a side.",
-        "price": 31.49,
-        "calories": 750,
-        "tags": ["GF"]
+        "description": "Chicken Bryan, Pollo Rosa Maria & Chicken Marsala, served with your choice of a side."
       },
       {
         "name": "The Johnny Trio",
-        "description": "7oz Tuscan-Grilled Sirloin Marsala, Chicken Bryan & Mezzaluna.",
-        "price": 32.99,
-        "calories": 1010,
-        "upgrade": "Upgrade to 10oz Sirloin add 3.00",
-        "upgrade_calories": 1130
+        "description": "Tuscan-grilled sirloin Marsala, Chicken Bryan & Mezzaluna."
       },
       {
-        "name": "Carrabba's Italian Classics Trio",
-        "description": "Chicken Parmesan, Lasagne & Fettuccine Alfredo.",
-        "price": 27.49,
-        "calories": 1600
+        "name": "Carrabba’s Italian Classics Trio",
+        "description": "Chicken Parmesan, Lasagne & Fettuccine Alfredo."
       }
     ]
   },
   {
-    "section": "Specialties",
-    "served_with": "A cup of soup (140-240 calories) or a salad. One side or upgrade to premium side.",
-    "premium_sides": [
-      { "name": "Rosemary Parmesan Fries", "add": 1.99 },
-      { "name": "Sautéed Spinach", "add": 1.99 },
-      { "name": "Grilled Asparagus", "add": 2.99 },
-      { "name": "Fettuccine Alfredo", "add": 2.99 }
-    ],
+    "section": "SPECIALTIES",
     "items": [
       {
-        "name": "Chicken Bryan",
-        "description": "Wood-grilled and topped with goat cheese, sun-dried tomatoes, basil and our lemon butter sauce.",
-        "price": 25.99,
-        "calories": 490,
-        "tags": ["GF"]
-      },
-      {
-        "name": "Eggplant Parmesan",
-        "description": "Layers of sliced eggplant coated with seasoned breadcrumbs and topped with pomodoro sauce, parmesan, romano and mozzarella cheese.",
-        "price": 21.99,
-        "calories": 1950
-      },
-      {
         "name": "Chicken Parmesan",
-        "description": "Coated with Mama Mandola’s breadcrumbs, sautéed and topped with our pomodoro sauce, parmesan, romano and mozzarella cheese.",
-        "price": 24.49,
-        "calories": 760
+        "description": "Coated with Mama Mandola’s breadcrumbs, sautéed and topped with pomodoro sauce, parmesan, romano and mozzarella cheese."
       },
       {
         "name": "Chicken Piccata",
-        "description": "Thin, tender cutlets of chicken lightly dusted with flour, sautéed and topped with lemon butter sauce, parsley and capers.",
-        "price": 24.99,
-        "calories": 580
+        "description": "Thin, tender cutlets of chicken lightly dusted with flour, sautéed and topped with lemon butter sauce, parsley and capers."
       },
       {
         "name": "Tuscan-Grilled Chicken",
-        "description": "Wood-grilled and seasoned with Mr. C’s Grill Baste, olive oil and herbs.",
-        "price": 22.99,
-        "calories": 270,
-        "tags": ["GF"]
+        "description": "Wood-grilled and seasoned with Mr. C’s Grill Baste, olive oil and herbs."
       },
       {
         "name": "Chicken Marsala",
-        "description": "Wood-grilled and topped with mushrooms and our Lombardo Marsala wine sauce.",
-        "price": 25.99,
-        "calories": 460,
-        "tags": ["GF"]
+        "description": "Wood-grilled and topped with mushrooms and our Lombardo Marsala wine sauce."
+      },
+      {
+        "name": "Pollo Rosa Maria",
+        "description": "Wood-grilled chicken stuffed with fontina cheese and prosciutto, topped with mushrooms and our basil lemon butter sauce."
+      },
+      {
+        "name": "Chicken Bryan",
+        "description": "Wood-grilled and topped with goat cheese, sun-dried tomatoes, basil and our lemon butter sauce."
+      },
+      {
+        "name": "Eggplant Parmesan",
+        "description": "Layers of sliced eggplant coated with seasoned breadcrumbs and topped with pomodoro sauce, parmesan, romano and mozzarella cheese."
       }
     ]
   },
   {
-    "section": "Steaks & Chops",
-    "served_with": "A cup of soup (140-240 calories) or a salad. TWO sides or upgrade to premium sides.",
+    "section": "TOPPINGS",
     "items": [
       {
-        "name": "Tuscan-Grilled Sirloin 7oz",
-        "price": 24.49,
-        "calories": 310,
-        "tags": ["GF"]
+        "name": "Spicy Sicilian Butter",
+        "description": "A spicy butter topping."
       },
       {
-        "name": "Tuscan-Grilled Sirloin 10oz",
-        "price": 28.49,
-        "calories": 440,
-        "tags": ["GF"]
+        "name": "Marsala Sauce",
+        "description": "Mushrooms and our Lombardo Marsala wine sauce."
       },
       {
-        "name": "Tuscan-Grilled Filet 9oz Barrel Cut",
-        "price": 38.99,
-        "calories": 610,
-        "tags": ["GF"]
+        "name": "Ardente Topping",
+        "description": "Tomatoes, garlic, basil and melted gorgonzola cheese."
       },
       {
-        "name": "Tuscan-Grilled Ribeye 16oz",
-        "price": 37.99,
-        "calories": 870,
-        "tags": ["GF"]
-      },
-      {
-        "name": "Tuscan-Grilled Pork Chop One Chop",
-        "price": 24.99,
-        "calories": 400,
-        "tags": ["GF"]
-      },
-      {
-        "name": "Tuscan-Grilled Pork Chop Two Chops",
-        "price": 29.99,
-        "calories": 800,
-        "tags": ["GF"]
+        "name": "Bryan Topping",
+        "description": "Goat cheese, sun-dried tomatoes, basil and lemon butter sauce."
       }
     ]
   },
   {
-    "section": "Desserts",
+    "section": "STEAKS & CHOPS",
     "items": [
       {
-        "name": "Sogno Di Cioccolata 'Chocolate Dream'",
-        "description": "A rich fudge brownie with chocolate mousse, fresh whipped cream and chocolate sauce.",
-        "price": 10.99,
-        "calories": 1200
+        "name": "Tuscan-Grilled Sirloin",
+        "description": "Tuscan-grilled sirloin steak."
+      },
+      {
+        "name": "Tuscan-Grilled Filet",
+        "description": "Tuscan-grilled filet (barrel cut)."
+      },
+      {
+        "name": "Tuscan-Grilled Ribeye",
+        "description": "Tuscan-grilled ribeye."
+      },
+      {
+        "name": "Tuscan-Grilled Pork Chop",
+        "description": "Tuscan-grilled pork chop (one or two chops)."
+      }
+    ]
+  },
+  {
+    "section": "BEVERAGES",
+    "items": [
+      {
+        "name": "Premium Flavored Lemonades",
+        "description": "Strawberry or Raspberry."
+      },
+      {
+        "name": "Flavored Iced Tea of the Day",
+        "description": "Gold Peak iced tea flavored with one of our favorites (ask server for today’s options)."
+      },
+      {
+        "name": "Soft Drinks",
+        "description": "Coke, Diet Coke, Sprite, Hi-C, Dr Pepper, Minute Maid Lemonade."
+      },
+      {
+        "name": "Freshly Brewed Iced Tea",
+        "description": "Gold Peak Tea (fresh brewed) and Iced Tea."
+      },
+      {
+        "name": "Italian Bottled Water",
+        "description": "Acqua Panna Still or San Pellegrino Sparkling."
+      },
+      {
+        "name": "Coffees",
+        "description": "Coffee, Cappuccino, Espresso, Caffè Latte."
+      }
+    ]
+  },
+  {
+    "section": "DESSERTS",
+    "items": [
+      {
+        "name": "Sogno Di Cioccolata (Chocolate Dream)",
+        "description": "A rich fudge brownie with chocolate mousse, fresh whipped cream and chocolate sauce."
       },
       {
         "name": "Strawberry Cheesecake",
-        "description": "Creamy New York-style cheesecake topped with our strawberry purée.",
-        "price": 11.49,
-        "calories": 990
+        "description": "Creamy New York-style cheesecake topped with strawberry purée."
       },
       {
         "name": "Tiramisù",
-        "description": "Lady fingers dipped in liqueur-laced espresso, layered with sweetened mascarpone, Myers’s Rum and chocolate shavings.",
-        "price": 11.49,
-        "calories": 950
+        "description": "Lady fingers dipped in liqueur-laced espresso, layered with sweetened mascarpone, Myers’s Rum and chocolate shavings."
       },
       {
         "name": "John Cole",
-        "description": "Vanilla ice cream with caramel sauce and roasted cinnamon rum pecans.",
-        "price": 8.99,
-        "calories": 630,
-        "tags": ["GF"]
+        "description": "Vanilla ice cream with caramel sauce and roasted cinnamon rum pecans."
       },
       {
-        "name": "Cannoli Cake For Two",
-        "description": "Vanilla cake with layers of cannoli filling topped with a mini cannoli, pistachios and chocolate sauce with a chocolate chip crust.",
-        "price": 12.99,
-        "calories": 2170
+        "name": "Cannoli Cake for Two",
+        "description": "Vanilla cake with layers of cannoli filling, topped with a mini cannoli, pistachios and chocolate sauce, with a chocolate chip crust."
       }
     ]
   }
