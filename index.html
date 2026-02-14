@@ -3,605 +3,640 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Carrabba’s Menu Quiz (Kellie)</title>
+  <title>Carrabba’s Menu Quiz</title>
   <style>
-    :root { --bg:#0b0f0d; --card:#111814; --text:#e8f1ea; --muted:#9fb1a6; --accent:#3ddc97; --bad:#ff5a5f; --good:#3ddc97; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--text); }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 16px; }
-    .top { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
-    .brand { font-weight: 800; letter-spacing:.3px; }
-    .pill { padding:6px 10px; border:1px solid #243328; border-radius: 999px; color: var(--muted); font-size: 12px; }
-    .card { background:var(--card); border:1px solid #1f2a23; border-radius:16px; padding:16px; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
-    .grid { display:grid; grid-template-columns: 1fr; gap:12px; }
-    @media (min-width: 860px){ .grid { grid-template-columns: 1.1fr .9fr; } }
-    h1 { margin: 10px 0 2px; font-size: 20px; }
-    .muted { color: var(--muted); font-size: 13px; line-height: 1.35; }
-    .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    button { background:#16231b; color:var(--text); border:1px solid #284231; padding:10px 12px; border-radius:12px; font-weight:650; cursor:pointer; }
-    button:hover { border-color: #3a6448; }
-    button.primary { background: #123a2a; border-color: #2b8b61; }
-    button.primary:hover { border-color:#46d39a; }
-    button.danger { background: #3a1416; border-color:#7f2a2e; }
-    .opt { display:block; width:100%; text-align:left; padding:12px; margin:10px 0; border-radius:14px; border:1px solid #2a3a30; background:#0f1512; }
-    .opt.correct { border-color: rgba(61,220,151,.7); box-shadow: 0 0 0 2px rgba(61,220,151,.18) inset; }
-    .opt.wrong { border-color: rgba(255,90,95,.7); box-shadow: 0 0 0 2px rgba(255,90,95,.18) inset; }
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0f1512; border:1px solid #243328; padding:2px 6px; border-radius:8px; }
-    .hr { height:1px; background:#1f2a23; margin:14px 0; }
-    .small { font-size:12px; color: var(--muted); }
-    textarea { width:100%; min-height:140px; border-radius:14px; border:1px solid #243328; background:#0f1512; color:var(--text); padding:12px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
-    .badge { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid #243328; border-radius: 999px; font-size:12px; color:var(--muted); }
-    .dot { width:8px; height:8px; border-radius:50%; background: var(--accent); display:inline-block; }
+    :root{
+      --bg:#060807;
+      --card:#0e1411;
+      --card2:#0b100e;
+      --text:#e7efe9;
+      --muted:#9fb2a6;
+      --border:#1f2b25;
+      --btn:#0f3a25;
+      --btn2:#1a2a22;
+      --danger:#3a1212;
+      --ok:#1f5a3a;
+      --warn:#5a4a1f;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --r:16px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 800px at 50% -10%, rgba(43,110,70,.18), transparent 60%) , var(--bg);
+      color:var(--text);
+      font-family:var(--sans);
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:18px 14px 40px;
+    }
+    .wrap{width:min(980px,100%);}
+    header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin:6px 0 16px;
+    }
+    .title{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    h1{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.2px;
+      font-weight:700;
+    }
+    .sub{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .pillbar{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:var(--muted);
+      display:flex;
+      gap:8px;
+      align-items:center;
+      box-shadow: var(--shadow);
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      background:#777;
+      box-shadow:0 0 0 2px rgba(0,0,0,.2);
+    }
+    .dot.ok{background:#35c26b;}
+    .dot.bad{background:#d15454;}
+    main{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid var(--border);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .hd{
+      padding:14px 14px 10px;
+      border-bottom:1px solid rgba(255,255,255,.04);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .card .hd strong{font-size:14px;}
+    .card .bd{padding:14px;}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    button{
+      cursor:pointer;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius: 12px;
+      font-size:13px;
+      font-weight:650;
+    }
+    button.primary{
+      background: linear-gradient(180deg, rgba(34,170,95,.22), rgba(34,170,95,.10));
+      border-color: rgba(53,194,107,.35);
+    }
+    button.secondary{
+      background: rgba(255,255,255,.02);
+    }
+    button.danger{
+      background: rgba(209,84,84,.10);
+      border-color: rgba(209,84,84,.30);
+    }
+    button:disabled{
+      opacity:.45;
+      cursor:not-allowed;
+    }
+    .qbox{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .prompt{
+      background: rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius: 14px;
+      padding:12px 12px;
+      line-height:1.35;
+    }
+    .kicker{
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:6px;
+      letter-spacing:.2px;
+    }
+    .big{
+      font-size:15px;
+      font-weight:700;
+      margin:0;
+    }
+    .desc{
+      margin:8px 0 0;
+      font-size:14px;
+      color: rgba(231,239,233,.92);
+    }
+    .choices{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    .choice{
+      text-align:left;
+      padding:12px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.06);
+      line-height:1.25;
+    }
+    .choice small{
+      display:block;
+      margin-top:6px;
+      color:var(--muted);
+      font-weight:600;
+      font-size:12px;
+    }
+    .choice.correct{
+      background: rgba(53,194,107,.12);
+      border-color: rgba(53,194,107,.35);
+    }
+    .choice.wrong{
+      background: rgba(209,84,84,.12);
+      border-color: rgba(209,84,84,.35);
+    }
+    .footerline{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .result{
+      background: rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius: 14px;
+      padding:12px 12px;
+      line-height:1.35;
+    }
+    .result strong{color:var(--text)}
+    .tiny{font-size:12px;color:var(--muted)}
+    @media (min-width: 840px){
+      main{grid-template-columns: 1fr;}
+      h1{font-size:20px}
+    }
   </style>
 </head>
+
 <body>
-<div class="wrap">
-  <div class="top">
-    <div class="brand">Carrabba’s Menu Quiz <span class="pill">mobile • randomized • graded</span></div>
-    <div class="row">
-      <span class="badge"><span class="dot"></span><span id="dataStatus">Loading menu data…</span></span>
-      <span class="pill">Q: <span id="qCount">20</span></span>
-      <span class="pill">Seen: <span id="seenCount">0</span></span>
-    </div>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>Carrabba’s Menu Quiz</h1>
+        <p class="sub">20 randomized questions · multiple choice · graded</p>
+      </div>
+      <div class="pillbar">
+        <div class="pill" title="menu.json load status">
+          <span id="loadDot" class="dot bad"></span>
+          <span id="loadText">Loading menu…</span>
+        </div>
+        <div class="pill" title="question count">
+          <span>Q:</span><strong id="pillQ">0/20</strong>
+        </div>
+        <div class="pill" title="already seen (to avoid repeats)">
+          <span>Seen:</span><strong id="pillSeen">0</strong>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="card">
+        <div class="hd">
+          <strong>Controls</strong>
+          <span class="tiny" id="modeText">Ready</span>
+        </div>
+        <div class="bd">
+          <div class="row">
+            <button class="primary" id="btnStart20">Start 20-Question Quiz</button>
+            <button class="secondary" id="btnPractice10">Practice Mode (10)</button>
+            <button class="danger" id="btnReset">Reset History</button>
+          </div>
+          <div class="footerline">
+            <div>Tip: This avoids repeats until it runs out, then reshuffles.</div>
+            <div>Works on phone storage (local).</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="hd">
+          <strong id="panelTitle">Quiz</strong>
+          <span class="tiny" id="panelMeta"></span>
+        </div>
+        <div class="bd">
+          <div id="stage" class="qbox"></div>
+        </div>
+      </section>
+    </main>
   </div>
-
-  <div class="grid" style="margin-top:12px;">
-    <div class="card">
-      <h1 id="screenTitle">Ready</h1>
-      <div class="muted" id="screenHint">
-        Tap <span class="kbd">Start</span>. 20 questions. No pity points. Minimal mercy.
-      </div>
-      <div class="hr"></div>
-
-      <div id="quizArea" style="display:none;">
-        <div class="muted" style="margin-bottom:8px;">
-          <span class="pill">Question <span id="qIndex">1</span>/<span id="qTotal">20</span></span>
-          <span class="pill">Score <span id="scoreNow">0</span></span>
-        </div>
-        <div class="card" style="padding:14px; border-radius:14px; background:#0f1512;">
-          <div style="font-weight:800; font-size:16px;" id="questionText"></div>
-          <div class="small" id="questionMeta" style="margin-top:6px;"></div>
-        </div>
-
-        <div id="options"></div>
-
-        <div class="row" style="justify-content:space-between;">
-          <button id="skipBtn">Skip</button>
-          <button class="primary" id="nextBtn" disabled>Next</button>
-        </div>
-      </div>
-
-      <div id="homeArea">
-        <div class="row">
-          <button class="primary" id="startBtn">Start 20-Question Quiz</button>
-          <button id="practiceBtn">Practice Mode (10)</button>
-          <button class="danger" id="resetBtn">Reset History</button>
-        </div>
-        <div class="hr"></div>
-        <div class="muted">
-          <b>How it works:</b><br/>
-          • Pulls exact items from <span class="kbd">menu.json</span> if present.<br/>
-          • If not, uses the embedded data block below (you can paste your extracted menu in later).<br/>
-          • Avoids repeating questions until it runs out, using phone storage (localStorage).
-        </div>
-      </div>
-
-      <div id="resultsArea" style="display:none;">
-        <h1>Results</h1>
-        <div class="muted" id="resultsText"></div>
-        <div class="hr"></div>
-        <div id="review"></div>
-        <div class="hr"></div>
-        <div class="row">
-          <button id="againBtn" class="primary">Run Again</button>
-          <button id="backBtn">Back</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h1>Menu Data</h1>
-      <div class="muted">
-        Put a <span class="kbd">menu.json</span> next to this file and it will auto-load it.<br/>
-        If you don’t have it yet, ignore this for now — but this is where the “strictly match the photos” part lives.
-      </div>
-      <div class="hr"></div>
-
-      <div class="muted"><b>Required JSON shape:</b></div>
-      <textarea readonly>[
-  {
-    "section": "APPETIZERS",
-    "items": [
-      {
-        "name": "CALAMARI",
-        "description": "Hand-breaded to order and served with our marinara and Ricardo sauces",
-        "price": 15.99,
-        "calories": 1160
-      }
-    ]
-  }
-]</textarea>
-
-      <div class="hr"></div>
-      <div class="muted"><b>Embedded fallback data (edit later):</b></div>
-      <textarea id="embedEditor"></textarea>
-      <div class="row" style="margin-top:10px;">
-        <button id="loadEmbeddedBtn">Load Embedded Into App</button>
-        <button id="exportEmbeddedBtn">Export Embedded to menu.json</button>
-      </div>
-      <div class="small" style="margin-top:10px;">
-        TARS note: you can paste your extracted items here even before we finish a full OCR-perfect JSON.
-      </div>
-    </div>
-  </div>
-</div>
 
 <script>
-/**
- * ====== MENU DATA ======
- * Prefer: ./menu.json
- * Fallback: MENU_EMBEDDED below (editable in UI)
- */
-const MENU_EMBEDDED = [
-  // Paste your real extracted sections/items here.
-  // This is only a placeholder so the app runs.
-];
+(() => {
+  // =========================
+  // Settings
+  // =========================
+  const QUIZ_DEFAULT = 20;
+  const PRACTICE_DEFAULT = 10;
+  const CHOICES = 4;
 
-/**
- * ====== QUIZ ENGINE ======
- * Question types:
- *  - price: Which price matches item?
- *  - section: Which section is this item in?
- *  - description: Which description matches item?
- *  - itemFromDesc: Which item matches description?
- */
+  // Storage keys
+  const LS_SEEN = "kellie_menu_seen_v1";
 
-const LS_SEEN_KEY = "kellie_menuquiz_seen_v1";
+  // DOM
+  const loadDot = document.getElementById("loadDot");
+  const loadText = document.getElementById("loadText");
+  const pillQ = document.getElementById("pillQ");
+  const pillSeen = document.getElementById("pillSeen");
+  const modeText = document.getElementById("modeText");
+  const panelTitle = document.getElementById("panelTitle");
+  const panelMeta = document.getElementById("panelMeta");
+  const stage = document.getElementById("stage");
+  const btnStart20 = document.getElementById("btnStart20");
+  const btnPractice10 = document.getElementById("btnPractice10");
+  const btnReset = document.getElementById("btnReset");
 
-const state = {
-  menu: [],
-  flatItems: [],
-  seen: new Set(),
-  quiz: [],
-  answers: [],
-  idx: 0,
-  score: 0,
-  current: null,
-  locked: false,
-  total: 20
-};
+  // State
+  let allItems = [];      // flattened items
+  let pool = [];          // items not yet used (this session)
+  let seenSet = new Set(); // persisted between sessions
+  let session = null;     // current quiz session object
 
-function money(n){
-  // keep exact display like menu (2 decimals)
-  return "$" + Number(n).toFixed(2);
-}
+  // =========================
+  // Utilities
+  // =========================
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const norm = (s) => String(s ?? "").trim().replace(/\s+/g, " ");
+  const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  const shuffle = (arr) => {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  };
 
-function normalizeText(s){
-  return (s || "").toString().replace(/\s+/g," ").trim();
-}
-
-function buildFlat(menu){
-  const flat = [];
-  for (const sec of menu){
-    const section = sec.section;
-    for (const it of (sec.items||[])){
-      flat.push({
-        section,
-        name: normalizeText(it.name),
-        description: normalizeText(it.description),
-        price: (it.price ?? null),
-        calories: (it.calories ?? null),
-        notes: normalizeText(it.notes || ""),
-        flags: (it.flags || {}) // ex: {GF:true,V:true}
-      });
+  function loadSeen() {
+    try {
+      const raw = localStorage.getItem(LS_SEEN);
+      if (!raw) return new Set();
+      const arr = JSON.parse(raw);
+      if (!Array.isArray(arr)) return new Set();
+      return new Set(arr);
+    } catch {
+      return new Set();
     }
   }
-  return flat.filter(x => x.name);
-}
 
-function loadSeen(){
-  try{
-    const raw = localStorage.getItem(LS_SEEN_KEY);
-    if (!raw) return new Set();
-    const arr = JSON.parse(raw);
-    return new Set(Array.isArray(arr) ? arr : []);
-  }catch(e){ return new Set(); }
-}
-
-function saveSeen(){
-  localStorage.setItem(LS_SEEN_KEY, JSON.stringify(Array.from(state.seen)));
-  document.getElementById("seenCount").textContent = state.seen.size.toString();
-}
-
-function shuffle(a){
-  for (let i=a.length-1; i>0; i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [a[i],a[j]] = [a[j],a[i]];
+  function saveSeen() {
+    try {
+      localStorage.setItem(LS_SEEN, JSON.stringify(Array.from(seenSet)));
+    } catch {}
   }
-  return a;
-}
 
-function pickN(pool, n){
-  const copy = pool.slice();
-  shuffle(copy);
-  return copy.slice(0,n);
-}
+  function setLoaded(ok, msg) {
+    loadDot.classList.remove("ok","bad");
+    loadDot.classList.add(ok ? "ok" : "bad");
+    loadText.textContent = msg;
+  }
 
-function uniqueKey(q){
-  // stable-ish key to avoid repeating the same question
-  return `${q.type}::${q.item?.name || ""}::${q.prompt || ""}`;
-}
-
-function genQuestion(){
-  const items = state.flatItems;
-  if (items.length < 6) return null;
-
-  const types = ["price","section","description","itemFromDesc"];
-  const type = types[Math.floor(Math.random()*types.length)];
-
-  const item = items[Math.floor(Math.random()*items.length)];
-
-  // helper pools
-  const otherItems = items.filter(x => x.name !== item.name);
-  const sectionNames = Array.from(new Set(state.menu.map(s => s.section)));
-
-  if (type === "price"){
-    if (item.price == null) return null;
-    const correct = money(item.price);
-    const distract = otherItems.filter(x => x.price != null).map(x => money(x.price));
-    const opts = new Set([correct]);
-    while (opts.size < 4 && distract.length){
-      opts.add(distract[Math.floor(Math.random()*distract.length)]);
+  function updatePills() {
+    pillSeen.textContent = String(seenSet.size);
+    if (!session) {
+      pillQ.textContent = `0/${QUIZ_DEFAULT}`;
+      return;
     }
-    if (opts.size < 4){
-      // fabricate nearby prices if menu is sparse
-      while (opts.size < 4){
-        const v = (Number(item.price) + (Math.random()<0.5?-1:1) * (Math.floor(Math.random()*7)+1)).toFixed(2);
-        opts.add("$"+v);
+    pillQ.textContent = `${session.idx}/${session.total}`;
+  }
+
+  function flattenMenu(json) {
+    const out = [];
+    for (const sec of (json || [])) {
+      const section = norm(sec.section);
+      const items = Array.isArray(sec.items) ? sec.items : [];
+      for (const it of items) {
+        const name = norm(it.name);
+        const description = norm(it.description);
+        if (!name || !description) continue;
+        const id = `${section}::${name}`.toLowerCase();
+        out.push({ id, section, name, description });
       }
     }
-    const options = shuffle(Array.from(opts));
-    return {
-      type,
-      item,
-      prompt: `What is the price of "${item.name}"?`,
-      meta: item.section,
-      options,
-      correct
-    };
+    return out;
   }
 
-  if (type === "section"){
-    const correct = item.section;
-    const opts = new Set([correct]);
-    while (opts.size < 4 && sectionNames.length){
-      opts.add(sectionNames[Math.floor(Math.random()*sectionNames.length)]);
+  function refillPool() {
+    // New pool = items not in seenSet; if empty, allow repeats (but still shuffle)
+    const fresh = allItems.filter(x => !seenSet.has(x.id));
+    pool = fresh.length ? fresh : [...allItems];
+    shuffle(pool);
+  }
+
+  function nextItem() {
+    if (!pool.length) refillPool();
+    return pool.pop();
+  }
+
+  // =========================
+  // Question generation
+  // =========================
+  function buildQuestion(item) {
+    // Alternate styles:
+    // A) Given NAME -> pick correct DESCRIPTION
+    // B) Given DESCRIPTION -> pick correct NAME
+    const flip = Math.random() < 0.5;
+
+    // Build distractors (same "type" as correct target)
+    const distractors = [];
+    const used = new Set([item.id]);
+
+    while (distractors.length < (CHOICES - 1) && used.size < allItems.length) {
+      const cand = pick(allItems);
+      if (used.has(cand.id)) continue;
+
+      // Mild guard: avoid identical descriptions across items (rare, but possible)
+      if (!flip && norm(cand.name).toLowerCase() === norm(item.name).toLowerCase()) continue;
+      if (flip && norm(cand.description).toLowerCase() === norm(item.description).toLowerCase()) continue;
+
+      used.add(cand.id);
+      distractors.push(cand);
     }
-    const options = shuffle(Array.from(opts));
-    return {
-      type,
-      item,
-      prompt: `Which section is "${item.name}" in?`,
-      meta: (item.price!=null?money(item.price):""),
-      options,
-      correct
-    };
-  }
 
-  if (type === "description"){
-    if (!item.description) return null;
-    const correct = item.description;
-    const distract = otherItems.filter(x => x.description).map(x => x.description);
-    const opts = new Set([correct]);
-    while (opts.size < 4 && distract.length){
-      opts.add(distract[Math.floor(Math.random()*distract.length)]);
+    if (!flip) {
+      // DESCRIPTION -> NAME
+      const correct = item.name;
+      const options = shuffle([correct, ...distractors.map(d => d.name)]).map(v => ({ label: v, isCorrect: v === correct }));
+      return {
+        type: "desc_to_name",
+        item,
+        promptKicker: "What dish is this?",
+        promptMain: item.description,
+        options
+      };
+    } else {
+      // NAME -> DESCRIPTION
+      const correct = item.description;
+      const options = shuffle([correct, ...distractors.map(d => d.description)]).map(v => ({ label: v, isCorrect: v === correct }));
+      return {
+        type: "name_to_desc",
+        item,
+        promptKicker: "What is it?",
+        promptMain: item.name,
+        options
+      };
     }
-    const options = shuffle(Array.from(opts));
-    return {
-      type,
-      item,
-      prompt: `Which description matches "${item.name}"?`,
-      meta: item.section,
-      options,
-      correct
-    };
   }
 
-  if (type === "itemFromDesc"){
-    if (!item.description) return null;
-    const correct = item.name;
-    const distract = otherItems.map(x => x.name);
-    const opts = new Set([correct]);
-    while (opts.size < 4 && distract.length){
-      opts.add(distract[Math.floor(Math.random()*distract.length)]);
-    }
-    const options = shuffle(Array.from(opts));
-    return {
-      type,
-      item,
-      prompt: `Which item matches this description?`,
-      meta: item.section,
-      stem: item.description,
-      options,
-      correct
-    };
-  }
-
-  return null;
-}
-
-function buildQuiz(total){
-  const quiz = [];
-  const maxAttempts = total * 30;
-  let attempts = 0;
-
-  while (quiz.length < total && attempts < maxAttempts){
-    attempts++;
-    const q = genQuestion();
-    if (!q) continue;
-    const key = uniqueKey(q);
-    if (state.seen.has(key)) continue;
-    // also avoid duplicates inside same run
-    if (quiz.some(x => uniqueKey(x) === key)) continue;
-    q._key = key;
-    quiz.push(q);
-  }
-  return quiz;
-}
-
-function setStatus(ok, msg){
-  document.getElementById("dataStatus").textContent = msg;
-  document.querySelector(".dot").style.background = ok ? "var(--accent)" : "var(--bad)";
-}
-
-async function loadMenuData(){
-  // Try menu.json first
-  try{
-    const res = await fetch("./menu.json", { cache: "no-store" });
-    if (res.ok){
-      const menu = await res.json();
-      return { menu, source:"menu.json" };
-    }
-  }catch(e){ /* ignore */ }
-
-  // Fallback to embedded
-  return { menu: MENU_EMBEDDED, source:"embedded" };
-}
-
-function showHome(){
-  state.idx = 0; state.score = 0; state.quiz = []; state.answers = [];
-  document.getElementById("homeArea").style.display = "";
-  document.getElementById("quizArea").style.display = "none";
-  document.getElementById("resultsArea").style.display = "none";
-  document.getElementById("screenTitle").textContent = "Ready";
-  document.getElementById("screenHint").textContent = "Tap Start. 20 questions. No pity points. Minimal mercy.";
-}
-
-function showQuiz(){
-  document.getElementById("homeArea").style.display = "none";
-  document.getElementById("resultsArea").style.display = "none";
-  document.getElementById("quizArea").style.display = "";
-}
-
-function renderQuestion(){
-  state.locked = false;
-  document.getElementById("nextBtn").disabled = true;
-
-  const q = state.quiz[state.idx];
-  state.current = q;
-
-  document.getElementById("qIndex").textContent = (state.idx+1).toString();
-  document.getElementById("qTotal").textContent = state.total.toString();
-  document.getElementById("scoreNow").textContent = state.score.toString();
-
-  const qText = document.getElementById("questionText");
-  const qMeta = document.getElementById("questionMeta");
-  const optionsDiv = document.getElementById("options");
-
-  qText.textContent = q.prompt;
-  qMeta.textContent = q.meta ? `Hint: ${q.meta}` : "";
-
-  optionsDiv.innerHTML = "";
-  if (q.stem){
-    const stem = document.createElement("div");
-    stem.className = "card";
-    stem.style.cssText = "padding:12px;border-radius:14px;background:#0b0f0d;border:1px solid #1f2a23;margin-top:10px;";
-    stem.innerHTML = `<div class="muted"><b>Description:</b></div><div style="margin-top:6px;">${escapeHtml(q.stem)}</div>`;
-    optionsDiv.appendChild(stem);
-  }
-
-  for (const opt of q.options){
-    const btn = document.createElement("button");
-    btn.className = "opt";
-    btn.textContent = opt;
-    btn.onclick = () => choose(opt, btn);
-    optionsDiv.appendChild(btn);
-  }
-}
-
-function escapeHtml(s){
-  return (s||"").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-}
-
-function choose(value, btn){
-  if (state.locked) return;
-  state.locked = true;
-
-  const q = state.current;
-  const correct = q.correct;
-
-  const opts = Array.from(document.querySelectorAll("#options .opt"));
-  for (const b of opts){
-    if (b.textContent === correct) b.classList.add("correct");
-  }
-  if (value !== correct){
-    btn.classList.add("wrong");
-  }
-
-  const isCorrect = (value === correct);
-  if (isCorrect) state.score++;
-
-  state.answers.push({
-    q,
-    picked: value,
-    correct,
-    ok: isCorrect
-  });
-
-  // mark as seen so we don't repeat endlessly across runs
-  state.seen.add(q._key);
-  saveSeen();
-
-  document.getElementById("nextBtn").disabled = false;
-}
-
-function skip(){
-  if (state.locked) return;
-  state.answers.push({
-    q: state.current,
-    picked: "(skipped)",
-    correct: state.current.correct,
-    ok: false
-  });
-  state.seen.add(state.current._key);
-  saveSeen();
-  next();
-}
-
-function next(){
-  if (state.idx >= state.total-1){
-    showResults();
-    return;
-  }
-  state.idx++;
-  renderQuestion();
-}
-
-function showResults(){
-  document.getElementById("quizArea").style.display = "none";
-  document.getElementById("resultsArea").style.display = "";
-
-  const total = state.total;
-  const score = state.score;
-  const pct = Math.round((score/total)*100);
-
-  document.getElementById("resultsText").innerHTML =
-    `Score: <b>${score}/${total}</b> (${pct}%).<br/>` +
-    (pct >= 90 ? "Excellent. You may now intimidate the POS system."
-      : pct >= 75 ? "Solid. Keep grinding."
-      : pct >= 60 ? "Close. Run it again."
-      : "We are not done here.");
-
-  const review = document.getElementById("review");
-  review.innerHTML = "";
-
-  state.answers.forEach((a, i) => {
-    const div = document.createElement("div");
-    div.className = "card";
-    div.style.cssText = "margin:10px 0; padding:12px; border-radius:14px; background:#0f1512;";
-    div.innerHTML = `
-      <div class="small">${i+1}. ${escapeHtml(a.q.prompt)}</div>
-      ${a.q.stem ? `<div class="small" style="margin-top:6px;"><b>Desc:</b> ${escapeHtml(a.q.stem)}</div>` : ""}
-      <div style="margin-top:6px;">
-        Picked: <b style="color:${a.ok?'var(--good)':'var(--bad)'}">${escapeHtml(a.picked)}</b><br/>
-        Correct: <b>${escapeHtml(a.correct)}</b>
+  // =========================
+  // UI rendering
+  // =========================
+  function renderReady() {
+    panelTitle.textContent = "Quiz";
+    panelMeta.textContent = "";
+    modeText.textContent = "Ready";
+    stage.innerHTML = `
+      <div class="prompt">
+        <div class="kicker">How it works</div>
+        <p class="desc" style="margin:0">
+          Tap <strong>Start</strong>. Answer 20 questions. You’ll get a score at the end.
+          It avoids repeats until it runs out.
+        </p>
       </div>
     `;
-    review.appendChild(div);
-  });
-}
-
-function startQuiz(total){
-  state.total = total;
-  document.getElementById("qCount").textContent = total.toString();
-
-  const quiz = buildQuiz(total);
-  if (quiz.length < total){
-    alert("Not enough menu data to build a full quiz yet. Add more items to menu.json or embedded data.");
-    return;
+    updatePills();
   }
 
-  state.quiz = quiz;
-  state.answers = [];
-  state.idx = 0;
-  state.score = 0;
+  function renderQuestion() {
+    const q = session.current;
+    panelTitle.textContent = "Quiz";
+    panelMeta.textContent = `Section: ${q.item.section}`;
+    modeText.textContent = "In progress";
 
-  showQuiz();
-  renderQuestion();
-}
+    const promptHTML = `
+      <div class="prompt">
+        <div class="kicker">${esc(q.promptKicker)}</div>
+        <p class="big">${esc(q.promptMain)}</p>
+        <p class="desc"><span class="tiny">(${esc(q.item.section)})</span></p>
+      </div>
+    `;
 
-function resetHistory(){
-  if (!confirm("Reset seen-question history on this device?")) return;
-  localStorage.removeItem(LS_SEEN_KEY);
-  state.seen = new Set();
-  saveSeen();
-  alert("History reset.");
-}
+    const choicesHTML = q.options.map((o, idx) => `
+      <button class="choice" data-idx="${idx}">
+        ${esc(o.label)}
+      </button>
+    `).join("");
 
-function setEmbeddedEditor(){
-  const ta = document.getElementById("embedEditor");
-  ta.value = JSON.stringify(MENU_EMBEDDED, null, 2);
-}
+    stage.innerHTML = `
+      ${promptHTML}
+      <div class="choices">${choicesHTML}</div>
+      <div class="footerline">
+        <div>Question <strong>${session.idx}</strong> of <strong>${session.total}</strong></div>
+        <div>Correct: <strong>${session.correct}</strong> · Wrong: <strong>${session.wrong}</strong></div>
+      </div>
+    `;
 
-function loadEmbeddedFromEditor(){
-  try{
-    const raw = document.getElementById("embedEditor").value;
-    const menu = JSON.parse(raw);
-    applyMenu(menu, "embedded-editor");
-  }catch(e){
-    alert("Embedded JSON is not valid. Fix it and try again.");
+    // Bind clicks
+    stage.querySelectorAll(".choice").forEach(btn => {
+      btn.addEventListener("click", () => onAnswer(Number(btn.dataset.idx)));
+    });
+
+    updatePills();
   }
-}
 
-function exportEmbeddedToFile(){
-  try{
-    const raw = document.getElementById("embedEditor").value;
-    JSON.parse(raw); // validate
-    const blob = new Blob([raw], {type:"application/json"});
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "menu.json";
-    a.click();
-  }catch(e){
-    alert("Embedded JSON is not valid. Fix it first.");
+  function revealAnswer(chosenIdx) {
+    const q = session.current;
+    const buttons = Array.from(stage.querySelectorAll(".choice"));
+    buttons.forEach((b, idx) => {
+      const opt = q.options[idx];
+      b.disabled = true;
+      if (opt.isCorrect) b.classList.add("correct");
+      if (idx === chosenIdx && !opt.isCorrect) b.classList.add("wrong");
+    });
+
+    // Show “correct answer” details
+    const correctOpt = q.options.find(o => o.isCorrect);
+    const detail = document.createElement("div");
+    detail.className = "result";
+    detail.innerHTML = `
+      <div class="kicker">Answer</div>
+      <div><strong>${esc(q.item.name)}</strong></div>
+      <div class="tiny" style="margin-top:6px">${esc(q.item.description)}</div>
+    `;
+    stage.appendChild(detail);
   }
-}
 
-function applyMenu(menu, source){
-  state.menu = Array.isArray(menu) ? menu : [];
-  state.flatItems = buildFlat(state.menu);
+  function renderFinal() {
+    panelTitle.textContent = "Results";
+    panelMeta.textContent = "";
+    modeText.textContent = "Completed";
 
-  const ok = state.flatItems.length >= 6;
-  setStatus(ok, ok
-    ? `Loaded ${state.flatItems.length} items (${source})`
-    : `Loaded ${state.flatItems.length} items (${source}) — need more data`
-  );
+    const pct = session.total ? Math.round((session.correct / session.total) * 100) : 0;
 
-  // update UI counts
-  state.seen = loadSeen();
-  document.getElementById("seenCount").textContent = state.seen.size.toString();
-}
+    stage.innerHTML = `
+      <div class="result">
+        <div class="kicker">Final score</div>
+        <div style="font-size:18px;font-weight:800">${pct}%</div>
+        <div class="tiny" style="margin-top:6px">
+          Correct: <strong>${session.correct}</strong> · Wrong: <strong>${session.wrong}</strong> · Total: <strong>${session.total}</strong>
+        </div>
+      </div>
 
-(async function init(){
-  // wire buttons
-  document.getElementById("startBtn").onclick = () => startQuiz(20);
-  document.getElementById("practiceBtn").onclick = () => startQuiz(10);
-  document.getElementById("resetBtn").onclick = resetHistory;
-  document.getElementById("nextBtn").onclick = next;
-  document.getElementById("skipBtn").onclick = skip;
-  document.getElementById("againBtn").onclick = () => startQuiz(state.total);
-  document.getElementById("backBtn").onclick = showHome;
+      <div class="prompt">
+        <div class="kicker">Next move</div>
+        <p class="desc" style="margin:0">
+          Run it again. Same menu. Different questions. Same chef. Less mercy.
+        </p>
+      </div>
+    `;
+    updatePills();
+  }
 
-  document.getElementById("loadEmbeddedBtn").onclick = loadEmbeddedFromEditor;
-  document.getElementById("exportEmbeddedBtn").onclick = exportEmbeddedToFile;
+  // =========================
+  // Actions
+  // =========================
+  function startSession(total) {
+    if (!allItems.length) return;
 
-  // set editor content
-  setEmbeddedEditor();
+    session = {
+      total,
+      idx: 0,
+      correct: 0,
+      wrong: 0,
+      current: null
+    };
 
-  // load menu data
-  const { menu, source } = await loadMenuData();
-  applyMenu(menu, source);
+    refillPool();
+    nextQuestion();
+  }
 
-  showHome();
+  function nextQuestion() {
+    if (!session) return;
+
+    if (session.idx >= session.total) {
+      renderFinal();
+      return;
+    }
+
+    const item = nextItem();
+    session.idx += 1;
+    session.current = buildQuestion(item);
+
+    renderQuestion();
+  }
+
+  function onAnswer(chosenIdx) {
+    const q = session.current;
+    const chosen = q.options[chosenIdx];
+    const ok = !!chosen?.isCorrect;
+
+    if (ok) session.correct += 1;
+    else session.wrong += 1;
+
+    // Mark as seen (persisted)
+    seenSet.add(q.item.id);
+    saveSeen();
+
+    revealAnswer(chosenIdx);
+    updatePills();
+
+    // Move on after a short delay (tap-friendly)
+    const nextBtn = document.createElement("button");
+    nextBtn.className = "primary";
+    nextBtn.style.marginTop = "12px";
+    nextBtn.textContent = (session.idx >= session.total) ? "View Results" : "Next Question";
+    nextBtn.addEventListener("click", () => nextQuestion());
+    stage.appendChild(nextBtn);
+  }
+
+  function resetHistory() {
+    seenSet = new Set();
+    saveSeen();
+    refillPool();
+    updatePills();
+    renderReady();
+  }
+
+  // =========================
+  // Load menu.json
+  // =========================
+  async function loadMenu() {
+    setLoaded(false, "Loading menu…");
+    btnStart20.disabled = true;
+    btnPractice10.disabled = true;
+
+    try {
+      const res = await fetch("./menu.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("menu.json not found");
+      const json = await res.json();
+      allItems = flattenMenu(json);
+
+      if (!allItems.length) throw new Error("menu.json has no items");
+
+      seenSet = loadSeen();
+      refillPool();
+
+      setLoaded(true, `Loaded ${allItems.length} items`);
+      btnStart20.disabled = false;
+      btnPractice10.disabled = false;
+
+      updatePills();
+      renderReady();
+    } catch (e) {
+      setLoaded(false, "menu.json missing / invalid");
+      stage.innerHTML = `
+        <div class="result">
+          <div class="kicker">Problem</div>
+          <div><strong>menu.json</strong> is missing or invalid.</div>
+          <div class="tiny" style="margin-top:6px">
+            Add menu.json next to index.html in the repo, commit, refresh.
+          </div>
+        </div>
+      `;
+      updatePills();
+    }
+  }
+
+  // Buttons
+  btnStart20.addEventListener("click", () => startSession(QUIZ_DEFAULT));
+  btnPractice10.addEventListener("click", () => startSession(PRACTICE_DEFAULT));
+  btnReset.addEventListener("click", resetHistory);
+
+  // Boot
+  renderReady();
+  loadMenu();
 })();
 </script>
 </body>
