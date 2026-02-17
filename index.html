@@ -14,6 +14,7 @@
       --accent:#20c997;
       --bad:#ff6b6b;
       --good:#51cf66;
+      --warn:#ffd43b;
       --line:#1f2b28;
       --btn:#15211e;
     }
@@ -77,6 +78,7 @@
     button.primary{border-color:#1d3f36;background:#0f2a24}
     button.danger{border-color:#4b1f24;background:#261014}
     button:disabled{opacity:.5;cursor:not-allowed}
+
     .qhead{
       display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
       margin-bottom:10px;
@@ -105,6 +107,7 @@
     .opt small{display:block;color:var(--muted);font-weight:500;margin-top:6px}
     .opt.correct{border-color: rgba(81,207,102,.55); box-shadow: 0 0 0 2px rgba(81,207,102,.15) inset;}
     .opt.wrong{border-color: rgba(255,107,107,.55); box-shadow: 0 0 0 2px rgba(255,107,107,.12) inset;}
+
     .footerline{
       margin-top:12px;
       padding-top:10px;
@@ -124,8 +127,57 @@
       padding:10px 12px;
     }
     .row b{display:block;margin-bottom:4px}
+
+    /* Mode UI */
+    .modewrap{margin-top:12px}
+    .modes{
+      display:flex;gap:8px;flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .modebtn{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      font-weight:700;
+      font-size:12px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .modebtn.active{
+      border-color: rgba(32,201,151,.45);
+      background: rgba(32,201,151,.12);
+      color: var(--text);
+    }
+    .tinyrow{
+      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    /* Timer bar (Timed mode) */
+    .tbar{
+      margin:8px 0 12px 0;
+      height:8px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,0.05);
+      overflow:hidden;
+      display:none;
+    }
+    .tbar.show{display:block;}
+    .tfill{
+      height:100%;
+      width:100%;
+      transform-origin:left center;
+      transform:scaleX(1);
+      background: rgba(255,212,59,.8);
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="top">
@@ -144,23 +196,35 @@
       <div class="card">
         <h2>Controls</h2>
         <div class="muted">
-          She’s memorizing dish names + what they are. This drills both directions.
+          Menu retention + real-world server pressure tests. Pick a mode, then run 10 or 20.
         </div>
+
+        <div class="modewrap">
+          <div class="muted">Modes</div>
+          <div class="modes" id="modes"></div>
+
+          <div class="tinyrow">
+            <span id="poolInfo">Pool: …</span>
+            <span id="modeHelp">—</span>
+          </div>
+        </div>
+
         <div class="btnrow">
           <button class="primary" id="start20">Start 20-Question Quiz</button>
           <button class="primary" id="start10">Practice Mode (10)</button>
           <button class="danger" id="reset">Reset History</button>
         </div>
+
         <div class="footerline">
-          <span id="poolInfo">Pool: …</span>
-          <span id="note">No prices. No pairings. No mercy.</span>
+          <span id="timerInfo">Timed: 15s/question (Timed mode only)</span>
+          <span class="muted">No prices.</span>
         </div>
       </div>
 
       <div class="card" id="stageCard">
         <div id="stage">
           <h2>Ready</h2>
-          <div class="muted">Tap a button on the left to begin.</div>
+          <div class="muted">Pick a mode, then tap a button on the left.</div>
         </div>
       </div>
     </div>
@@ -169,6 +233,7 @@
 <script>
 (() => {
   const LS_SEEN = "kmq_seen_ids_v1";
+  const LS_MODE = "kmq_mode_v1";
 
   const $ = (id) => document.getElementById(id);
 
@@ -176,18 +241,38 @@
   const seenPill = $("seenPill");
   const modePill = $("modePill");
   const poolInfo = $("poolInfo");
+  const modeHelp = $("modeHelp");
 
   const start20 = $("start20");
   const start10 = $("start10");
   const resetBtn = $("reset");
   const stage = $("stage");
+  const modesEl = $("modes");
 
-  let pool = [];      // flat list of {id, section, name, description}
-  let seen = new Set();  // ids already used (persisted)
+  // Modes (all at once)
+  const MODES = [
+    { id:"mixed",   label:"Mixed",   help:"Random: description↔name. Your original behavior." },
+    { id:"classic", label:"Classic", help:"Description → pick the dish name." },
+    { id:"reverse", label:"Reverse", help:"Dish name → pick the description." },
+    { id:"timed",   label:"Timed",   help:"Mixed, but 15s/question. Timeout = wrong." },
+    { id:"allergy", label:"Allergy", help:"Pick safest item for restriction. Uses heuristics." },
+    { id:"upsell",  label:"Upsell",  help:"Pick best wine for the dish (from wine list)." },
+    { id:"sim",     label:"Sim",     help:"Table scenario constraints → best recommendation." },
+  ];
+
+  let mode = loadMode();   // current mode
+  let pool = [];           // all items flat
+  let foodPool = [];       // foods only
+  let winePool = [];       // wines only
+  let seen = new Set();    // ids already used (persisted)
   let quiz = null;
 
+  // timed mode state
+  const TIMED_MS = 15000;
+  let timerHandle = null;
+  let timerStart = 0;
+
   function idFor(item){
-    // stable-ish ID: section|name
     return (item.section + "|" + item.name).toLowerCase().replace(/\s+/g," ").trim();
   }
 
@@ -211,6 +296,41 @@
     seenPill.textContent = `Seen: ${seen.size}`;
   }
 
+  function loadMode(){
+    const raw = localStorage.getItem(LS_MODE);
+    const valid = MODES.some(m => m.id === raw);
+    return valid ? raw : "mixed";
+  }
+
+  function saveMode(){
+    localStorage.setItem(LS_MODE, mode);
+  }
+
+  function setMode(newMode){
+    mode = newMode;
+    saveMode();
+    renderModes();
+    modePill.textContent = quiz ? `Mode: ${MODES.find(m=>m.id===mode)?.label || mode}` : "Mode: Ready";
+  }
+
+  function renderModes(){
+    modesEl.innerHTML = MODES.map(m => {
+      const active = m.id === mode ? "active" : "";
+      return `<span class="modebtn ${active}" data-mode="${m.id}">${m.label}</span>`;
+    }).join("");
+
+    const m = MODES.find(x => x.id === mode);
+    modeHelp.textContent = m ? m.help : "—";
+
+    modesEl.querySelectorAll(".modebtn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const m = btn.getAttribute("data-mode");
+        setMode(m);
+        renderReady(); // bounce to ready when mode changes
+      });
+    });
+  }
+
   function shuffle(a){
     for(let i=a.length-1;i>0;i--){
       const j = Math.floor(Math.random()*(i+1));
@@ -225,31 +345,38 @@
     return copy.slice(0,n);
   }
 
-  function pickNextItems(count){
-    // Prefer unseen. If not enough unseen, reset automatically (but keep working).
-    const unseen = pool.filter(x => !seen.has(x.id));
+  function pickNextItems(basePool, count){
+    const unseen = basePool.filter(x => !seen.has(x.id));
     let chosen = [];
     if(unseen.length >= count){
       chosen = sample(unseen, count);
     } else {
-      // take all remaining unseen, then refill from full pool without duplicates in this session set
       const needed = count - unseen.length;
-      const rest = pool.filter(x => !unseen.includes(x));
+      const rest = basePool.filter(x => !unseen.includes(x));
       chosen = unseen.concat(sample(rest, needed));
     }
     return chosen;
   }
 
   function renderReady(){
+    stopTimer();
     modePill.textContent = "Mode: Ready";
     stage.innerHTML = `
       <h2>Ready</h2>
-      <div class="muted">Tap a button on the left to begin.</div>
+      <div class="muted">Pick a mode, then tap a button on the left.</div>
     `;
   }
 
   function startQuiz(count){
-    const items = pickNextItems(count);
+    stopTimer();
+
+    // Choose which pool to quiz from, depending on mode
+    let basePool = pool;
+    if (mode === "upsell" || mode === "allergy" || mode === "sim") basePool = foodPool;
+    if (mode === "upsell" && winePool.length === 0) basePool = foodPool; // still works, but less fun
+
+    const items = pickNextItems(basePool, count);
+
     quiz = {
       total: count,
       index: 0,
@@ -257,58 +384,270 @@
       items,
       results: []
     };
-    modePill.textContent = `Mode: ${count}Q`;
+    modePill.textContent = `Mode: ${MODES.find(m=>m.id===mode)?.label || mode} • ${count}Q`;
     showQuestion();
   }
 
-  function makeQuestion(item){
-    // Randomly choose direction:
-    // A) show description -> pick name
-    // B) show name -> pick description
+  // ---------- Heuristics ----------
+  function norm(s){ return String(s||"").toLowerCase(); }
+
+  function inferTags(it){
+    const t = norm(it.name + " " + it.description + " " + it.section);
+    const tags = new Set();
+    if (t.includes("shrimp") || t.includes("scallop") || t.includes("crab") || t.includes("lobster") || t.includes("salmon") || t.includes("trout")) tags.add("seafood");
+    if (t.includes("sirloin") || t.includes("ribeye") || t.includes("filet") || t.includes("steak")) tags.add("beef");
+    if (t.includes("pork")) tags.add("pork");
+    if (t.includes("chicken")) tags.add("chicken");
+    if (t.includes("eggplant") || t.includes("spinach") || t.includes("zucchini")) tags.add("veg");
+    if (t.includes("spicy") || t.includes("ardente") || t.includes("pepper")) tags.add("spicy");
+    if (t.includes("alfredo") || t.includes("cream")) tags.add("creamy");
+    return [...tags];
+  }
+
+  function inferAllergens(it){
+    const t = norm(it.name + " " + it.description);
+    const out = new Set();
+    const dairy = ["cheese","mozzarella","parmesan","romano","ricotta","cream","alfredo","butter","burrata","aioli","mascarpone"];
+    const gluten = ["bread","breadcrumbs","crouton","pasta","fettuccine","lasagne","spaghetti","linguine","rigatoni","ravioli","flour","cake","lady fingers"];
+    const shellfish = ["shrimp","crab","lobster","scallop","shellfish"];
+    const nuts = ["pistachio","pecan","walnut","almond","nut"];
+
+    if (dairy.some(w=>t.includes(w))) out.add("dairy");
+    if (gluten.some(w=>t.includes(w))) out.add("gluten");
+    if (shellfish.some(w=>t.includes(w))) out.add("shellfish");
+    if (nuts.some(w=>t.includes(w))) out.add("nuts");
+    return [...out];
+  }
+
+  function wineStyleFromName(wineName){
+    const t = norm(wineName);
+    if (t.includes("cabernet") || t.includes("chianti") || t.includes("merlot") || t.includes("malbec") || t.includes("red blend") || t.includes("pinot noir")) return "red";
+    if (t.includes("chardonnay") || t.includes("sauvignon") || t.includes("pinot grigio") || t.includes("riesling") || t.includes("moscato") || t.includes("rosé") || t.includes("rose")) return "white";
+    if (t.includes("prosecco") || t.includes("champagne") || t.includes("brut") || t.includes("bubbly")) return "bubbly";
+    return "unknown";
+  }
+
+  // ---------- Question Builders ----------
+  function makeBaseMC(options, correctId){
+    const opts = shuffle(options).map(x => ({
+      label: x.label,
+      meta: x.meta,
+      isCorrect: x.id === correctId
+    }));
+    return opts;
+  }
+
+  function makeMixedQuestion(item){
     const dir = Math.random() < 0.5 ? "DESC_TO_NAME" : "NAME_TO_DESC";
+    if (dir === "DESC_TO_NAME") return makeClassicQuestion(item);
+    return makeReverseQuestion(item);
+  }
 
-    const distractors = pool.filter(x => x.id !== item.id);
-    const wrongs = sample(distractors, 3);
+  function makeClassicQuestion(item){
+    const distractors = foodPool.length ? foodPool : pool;
+    const wrongs = sample(distractors.filter(x => x.id !== item.id), 3);
+    const options = makeBaseMC(
+      [ {id:item.id, label:item.name, meta:item.section},
+        ...wrongs.map(x => ({id:x.id, label:x.name, meta:x.section})) ],
+      item.id
+    );
 
-    if(dir === "DESC_TO_NAME"){
-      const options = shuffle([item, ...wrongs]).map(x => ({
-        label: x.name,
-        meta: x.section,
-        isCorrect: x.id === item.id
-      }));
+    return {
+      type: "Classic: What dish is this?",
+      prompt: item.description,
+      section: item.section,
+      options,
+      correctLabel: item.name
+    };
+  }
+
+  function makeReverseQuestion(item){
+    const distractors = foodPool.length ? foodPool : pool;
+    const wrongs = sample(distractors.filter(x => x.id !== item.id), 3);
+
+    const options = makeBaseMC(
+      [ {id:item.id, label:item.description, meta:item.section + " • " + item.name},
+        ...wrongs.map(x => ({id:x.id, label:x.description, meta:x.section + " • " + x.name})) ],
+      item.id
+    );
+
+    return {
+      type: "Reverse: What is it?",
+      prompt: item.name,
+      section: item.section,
+      options,
+      correctLabel: item.description
+    };
+  }
+
+  function makeAllergyQuestion(item){
+    const allergyTypes = ["dairy","gluten","shellfish","nuts"];
+    const allergy = allergyTypes[Math.floor(Math.random()*allergyTypes.length)];
+
+    // Build candidates from food pool
+    const candidates = sample(foodPool, Math.min(18, foodPool.length));
+    if (!candidates.length) return makeClassicQuestion(item);
+
+    // Choose a "safe" correct item if possible
+    const safe = candidates.filter(x => !inferAllergens(x).includes(allergy));
+    const risky = candidates.filter(x => inferAllergens(x).includes(allergy));
+
+    const correct = safe.length ? safe[Math.floor(Math.random()*safe.length)] : candidates[0];
+    const wrongs = sample((risky.length ? risky : candidates).filter(x => x.id !== correct.id), 3);
+
+    const options = makeBaseMC(
+      [ {id:correct.id, label:correct.name, meta:correct.section},
+        ...wrongs.map(x => ({id:x.id, label:x.name, meta:x.section})) ],
+      correct.id
+    );
+
+    return {
+      type: `Allergy: Guest cannot have ${allergy}. Safest choice?`,
+      prompt: "Pick the item most likely to avoid the restriction (heuristics based on description).",
+      section: "ALLERGY MODE",
+      options,
+      correctLabel: correct.name,
+      explain: `Heuristic allergens for correct choice: [${inferAllergens(correct).join(", ") || "none"}].`
+    };
+  }
+
+  function chooseWineForDish(dish){
+    if (!winePool.length) return null;
+
+    const tags = inferTags(dish);
+    let desired = "unknown";
+
+    // Simple matching
+    if (tags.includes("beef") || tags.includes("pork")) desired = "red";
+    else if (tags.includes("seafood")) desired = "white";
+    else if (tags.includes("spicy")) desired = "white";
+    else desired = "red";
+
+    const matches = winePool.filter(w => wineStyleFromName(w.name) === desired);
+    const poolPick = matches.length ? matches : winePool;
+    return poolPick[Math.floor(Math.random()*poolPick.length)];
+  }
+
+  function makeUpsellQuestion(item){
+    const dish = item;
+    const correctWine = chooseWineForDish(dish);
+
+    // If no wines, fallback to classic
+    if (!correctWine){
       return {
-        type: "What dish is this?",
-        prompt: item.description,
-        options,
-        correctLabel: item.name
+        type: "Upsell: Wine Pairing",
+        prompt: "No wine list found in menu.json. Add WINE sections to enable this mode.",
+        section: "UPSELL MODE",
+        options: makeBaseMC(
+          [ {id:dish.id,label:dish.name,meta:dish.section},
+            ...sample(foodPool.filter(x=>x.id!==dish.id),3).map(x=>({id:x.id,label:x.name,meta:x.section})) ],
+          dish.id
+        ),
+        correctLabel: dish.name
       };
-    } else {
-      const options = shuffle([item, ...wrongs]).map(x => ({
-        label: x.description,
-        meta: x.section + " • " + x.name,
-        isCorrect: x.id === item.id
-      }));
-      return {
-        type: "What is it?",
-        prompt: item.name,
-        options,
-        correctLabel: item.description
-      };
+    }
+
+    // distractor wines
+    const wrongs = sample(winePool.filter(w => w.id !== correctWine.id), 3);
+
+    const options = makeBaseMC(
+      [ {id:correctWine.id, label:correctWine.name, meta:correctWine.description},
+        ...wrongs.map(w => ({id:w.id, label:w.name, meta:w.description})) ],
+      correctWine.id
+    );
+
+    return {
+      type: `Upsell: Best wine with "${dish.name}"?`,
+      prompt: "Pick the best wine suggestion for this order.",
+      section: dish.section,
+      options,
+      correctLabel: correctWine.name,
+      explain: `Heuristic pairing: ${inferTags(dish).includes("seafood") ? "white" : inferTags(dish).includes("beef") ? "red" : "red"} leaning.`
+    };
+  }
+
+  function makeSimQuestion(){
+    const scenarios = [
+      { text:"Table: gluten-free guest", avoid:["gluten"], want:[] },
+      { text:"Table: dairy allergy", avoid:["dairy"], want:[] },
+      { text:"Table: seafood lover (no shellfish)", avoid:["shellfish"], want:["seafood"] },
+      { text:"Table: wants something spicy", avoid:[], want:["spicy"] },
+    ];
+    const sc = scenarios[Math.floor(Math.random()*scenarios.length)];
+
+    const scored = foodPool.map(d => {
+      const alls = inferAllergens(d);
+      const tags = inferTags(d);
+
+      let score = 0;
+      for (const a of sc.avoid) score += alls.includes(a) ? -4 : +1;
+      for (const w of sc.want) score += tags.includes(w) ? +3 : 0;
+
+      // small bias toward mains over sides/bev
+      if (norm(d.section).includes("sides") || norm(d.section).includes("beers") || norm(d.section).includes("beverages")) score -= 2;
+
+      return { d, score, alls, tags };
+    }).sort((a,b)=>b.score-a.score);
+
+    const best = scored[0]?.d;
+    if (!best) return null;
+
+    const distractors = sample(scored.slice(1, 20).map(x=>x.d).filter(x=>x.id!==best.id), 3);
+
+    const options = makeBaseMC(
+      [ {id:best.id, label:best.name, meta:best.section},
+        ...distractors.map(x => ({id:x.id, label:x.name, meta:x.section})) ],
+      best.id
+    );
+
+    return {
+      type: `Simulation: ${sc.text}`,
+      prompt: "Pick the best recommendation given the constraint(s).",
+      section: "SIM MODE",
+      options,
+      correctLabel: best.name,
+      explain: `Tags: [${inferTags(best).join(", ")||"none"}] • Allergens: [${inferAllergens(best).join(", ")||"none"}]`
+    };
+  }
+
+  function makeQuestion(item){
+    switch(mode){
+      case "mixed":   return makeMixedQuestion(item);
+      case "classic": return makeClassicQuestion(item);
+      case "reverse": return makeReverseQuestion(item);
+      case "timed":   return makeMixedQuestion(item); // timed is mixed question style + timer behavior
+      case "allergy": return makeAllergyQuestion(item);
+      case "upsell":  return makeUpsellQuestion(item);
+      case "sim": {
+        const q = makeSimQuestion();
+        return q || makeClassicQuestion(item);
+      }
+      default: return makeMixedQuestion(item);
     }
   }
 
+  // ---------- Rendering / Grading ----------
   function showQuestion(){
+    stopTimer();
+
     const item = quiz.items[quiz.index];
     const q = makeQuestion(item);
+
+    const timedUi = (mode === "timed");
+    const timerHtml = `
+      <div class="tbar ${timedUi ? "show":""}" id="tbar"><div class="tfill" id="tfill"></div></div>
+    `;
 
     stage.innerHTML = `
       <div class="qhead">
         <div>
           <h2>Question ${quiz.index + 1} / ${quiz.total}</h2>
-          <div class="qtype">${q.type}</div>
+          <div class="qtype">${escapeHtml(q.type)}</div>
         </div>
-        <div class="muted">${item.section}</div>
+        <div class="muted">${escapeHtml(q.section || item.section)}</div>
       </div>
+
+      ${timerHtml}
 
       <div class="prompt">${escapeHtml(q.prompt)}</div>
 
@@ -316,14 +655,14 @@
         ${q.options.map((o, i) => `
           <button class="opt" data-idx="${i}">
             ${escapeHtml(o.label)}
-            <small>${escapeHtml(o.meta)}</small>
+            <small>${escapeHtml(o.meta || "")}</small>
           </button>
         `).join("")}
       </div>
 
       <div class="footerline">
         <span>Score: <b>${quiz.correct}</b> / ${quiz.total}</span>
-        <span class="muted">Tap an answer.</span>
+        <span class="muted">${mode === "timed" ? "Answer fast." : "Tap an answer."}</span>
       </div>
     `;
 
@@ -331,18 +670,26 @@
     buttons.forEach(btn => {
       btn.addEventListener("click", () => {
         const idx = Number(btn.getAttribute("data-idx"));
-        gradeAnswer(item, q, idx, buttons);
+        gradeAnswer(item, q, idx, buttons, false);
       }, { once:true });
+    });
+
+    if (mode === "timed") startTimer(() => {
+      // timeout = wrong
+      gradeAnswer(item, q, -1, buttons, true);
     });
   }
 
-  function gradeAnswer(item, q, chosenIdx, buttons){
+  function gradeAnswer(item, q, chosenIdx, buttons, timedOut){
+    stopTimer();
+
+    // prevent double grade
     buttons.forEach(b => b.disabled = true);
 
-    const chosen = q.options[chosenIdx];
-    const wasCorrect = !!chosen.isCorrect;
+    const chosen = (chosenIdx >= 0) ? q.options[chosenIdx] : null;
+    const wasCorrect = chosen ? !!chosen.isCorrect : false;
 
-    if(wasCorrect){
+    if (wasCorrect){
       quiz.correct++;
     }
 
@@ -350,32 +697,41 @@
     q.options.forEach((o, i) => {
       if(o.isCorrect) buttons[i].classList.add("correct");
     });
-    if(!wasCorrect){
+    if(!wasCorrect && chosenIdx >= 0){
       buttons[chosenIdx].classList.add("wrong");
     }
 
-    // persist seen
-    seen.add(item.id);
-    saveSeen();
+    // persist seen (only for actual pool items)
+    if (item && item.id) {
+      seen.add(item.id);
+      saveSeen();
+    }
 
     quiz.results.push({
       section: item.section,
       name: item.name,
       description: item.description,
-      correct: wasCorrect
+      correct: wasCorrect,
+      mode
     });
+
+    const explainLine = q.explain ? `<div class="muted" style="margin-top:10px">${escapeHtml(q.explain)}</div>` : "";
+    const timedLine = timedOut ? `<div class="muted" style="margin-top:10px;color:var(--warn)">Timed out.</div>` : "";
 
     setTimeout(() => {
       quiz.index++;
       if(quiz.index >= quiz.total){
         showResults();
       } else {
-        showQuestion();
+        // show a short post-grade note before next question
+        stage.insertAdjacentHTML("beforeend", `${timedLine}${explainLine}`);
+        setTimeout(showQuestion, 450);
       }
-    }, 650);
+    }, 450);
   }
 
   function showResults(){
+    stopTimer();
     modePill.textContent = "Mode: Results";
     const pct = Math.round((quiz.correct / quiz.total) * 100);
 
@@ -392,7 +748,7 @@
         ${quiz.results.map(r => `
           <div class="row">
             <b>${r.correct ? "✅" : "❌"} ${escapeHtml(r.name)}</b>
-            <div class="muted">${escapeHtml(r.section)}</div>
+            <div class="muted">${escapeHtml(r.section)} • Mode: ${escapeHtml(r.mode)}</div>
             <div style="margin-top:6px">${escapeHtml(r.description)}</div>
           </div>
         `).join("")}
@@ -400,7 +756,36 @@
     `;
 
     $("againSame").addEventListener("click", () => startQuiz(quiz.total));
-    $("backReady").addEventListener("click", () => renderReady());
+    $("backReady").addEventListener("click", () => { quiz = null; renderReady(); });
+  }
+
+  // ---------- Timer ----------
+  function startTimer(onTimeout){
+    stopTimer();
+    const tbar = $("tbar");
+    const tfill = $("tfill");
+    if (!tbar || !tfill) return;
+
+    timerStart = performance.now();
+    tbar.classList.add("show");
+    tfill.style.transform = "scaleX(1)";
+
+    timerHandle = setInterval(() => {
+      const elapsed = performance.now() - timerStart;
+      const r = Math.max(0, 1 - elapsed / TIMED_MS);
+      tfill.style.transform = `scaleX(${r})`;
+      if (elapsed >= TIMED_MS){
+        stopTimer();
+        onTimeout();
+      }
+    }, 40);
+  }
+
+  function stopTimer(){
+    if (timerHandle){
+      clearInterval(timerHandle);
+      timerHandle = null;
+    }
   }
 
   function escapeHtml(str){
@@ -412,8 +797,22 @@
       .replaceAll("'","&#039;");
   }
 
+  // ---------- Data Load ----------
+  function isFoodSection(section){
+    const s = norm(section);
+    if (s.includes("wine")) return false;
+    if (s.includes("beer")) return false;
+    // beverages/desserts are still "food-ish" but we keep them out of allergy/sim by biasing sections
+    if (s.includes("beverages")) return false;
+    return true;
+  }
+
+  function isWineSection(section){
+    const s = norm(section);
+    return s.includes("wine");
+  }
+
   async function boot(){
-    // load menu.json only (no embedded fallback)
     try{
       const res = await fetch("./menu.json", { cache: "no-store" });
       if(!res.ok) throw new Error("menu.json not found");
@@ -436,11 +835,16 @@
       }
 
       pool = flat;
+      foodPool = flat.filter(x => isFoodSection(x.section) && !isWineSection(x.section));
+      winePool = flat.filter(x => isWineSection(x.section));
+
       seen = loadSeen();
 
       loadedPill.textContent = `Loaded ${pool.length} items`;
-      poolInfo.textContent = `Pool: ${pool.length} items`;
+      poolInfo.textContent = `Pool: ${pool.length} items • Food: ${foodPool.length} • Wine: ${winePool.length}`;
       updateSeenUI();
+
+      renderModes();
 
       start20.disabled = false;
       start10.disabled = false;
@@ -466,6 +870,7 @@
     localStorage.removeItem(LS_SEEN);
     seen = new Set();
     updateSeenUI();
+    quiz = null;
     renderReady();
   });
 
@@ -473,6 +878,8 @@
   start20.disabled = true;
   start10.disabled = true;
 
+  // init
+  setMode(mode);
   boot();
 })();
 </script>
