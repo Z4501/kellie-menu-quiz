@@ -706,13 +706,20 @@
       saveSeen();
     }
 
-    quiz.results.push({
-      section: item.section,
-      name: item.name,
-      description: item.description,
-      correct: wasCorrect,
-      mode
-    });
+    const correctOpt = q.options.find(o => o.isCorrect);
+
+quiz.results.push({
+  mode,
+  qtype: q.type,
+  section: q.section || item.section,
+  prompt: q.prompt,
+
+  chosen: chosen ? chosen.label : "(no answer)",
+  correctAnswer: correctOpt ? correctOpt.label : "(unknown)",
+  correct: wasCorrect,
+
+  explain: q.explain || `The correct answer matches the official menu description for "${item.name}".`
+});
 
     const explainLine = q.explain ? `<div class="muted" style="margin-top:10px">${escapeHtml(q.explain)}</div>` : "";
     const timedLine = timedOut ? `<div class="muted" style="margin-top:10px;color:var(--warn)">Timed out.</div>` : "";
@@ -744,14 +751,38 @@
       </div>
 
       <div class="review">
-        ${quiz.results.map(r => `
-          <div class="row">
-            <b>${r.correct ? "✅" : "❌"} ${escapeHtml(r.name)}</b>
-            <div class="muted">${escapeHtml(r.section)} • Mode: ${escapeHtml(r.mode)}</div>
-            <div style="margin-top:6px">${escapeHtml(r.description)}</div>
-          </div>
-        `).join("")}
+  ${quiz.results.map((r, i) => `
+    <div class="row">
+      <b>${r.correct ? "✅ Correct" : "❌ Incorrect"} — Question ${i+1}</b>
+      <div class="muted">${escapeHtml(r.section)} • ${escapeHtml(r.qtype)}</div>
+
+      <div style="margin-top:8px">
+        <div class="muted">Prompt</div>
+        <div>${escapeHtml(r.prompt)}</div>
       </div>
+
+      <div style="margin-top:8px">
+        <div class="muted">Your Answer</div>
+        <div style="${r.correct ? "color:var(--good)" : "color:var(--bad)"}">
+          ${escapeHtml(r.chosen)}
+        </div>
+      </div>
+
+      <div style="margin-top:8px">
+        <div class="muted">Correct Answer</div>
+        <div style="color:var(--good); font-weight:600;">
+          ${escapeHtml(r.correctAnswer)}
+        </div>
+      </div>
+
+      <div style="margin-top:8px">
+        <div class="muted">Why</div>
+        <div>${escapeHtml(r.explain)}</div>
+      </div>
+    </div>
+  `).join("")}
+</div>
+
     `;
 
     $("againSame").addEventListener("click", () => startQuiz(quiz.total));
@@ -884,4 +915,5 @@
 </script>
 </body>
 </html>
+
 
