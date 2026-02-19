@@ -146,7 +146,7 @@
     "section": "WINE - WINES WE LOVE",
     "items": [
       { "name": "Caymus Cabernet Sauvignon", "description": "Cabernet Sauvignon — Napa Valley (1 Liter)." },
-      { "name": "Il Borro “Pian di Nova” Super Tuscan", "description": "Super Tuscan — Tuscany." },
+      { "name": "Il Borro “Pian Di Nova” Super Tuscan", "description": "Super Tuscan red blend — Tuscany." },
       { "name": "Quilt “Threadcount” Sauvignon Blanc", "description": "Sauvignon Blanc — California." }
     ]
   },
@@ -166,11 +166,9 @@
       { "name": "Chateau Ste. Michelle Riesling", "description": "Riesling — Washington." },
       { "name": "Fleurs de Prairie Rosé", "description": "Rosé — France." },
       { "name": "Ecco Domani Pinot Grigio", "description": "Pinot Grigio — Italy." },
-      { "name": "Chloe Pinot Grigio", "description": "Pinot Grigio — Italy." },
       { "name": "Bonizio Bianco by Cecchi", "description": "Italian white — Tuscany." },
       { "name": "Santa Margherita Pinot Grigio", "description": "Pinot Grigio — Italy." },
       { "name": "Imagery Sauvignon Blanc", "description": "Sauvignon Blanc — Sonoma." },
-      { "name": "Quilt “Threadcount” Sauvignon Blanc", "description": "Sauvignon Blanc — California." },
       { "name": "Kim Crawford Sauvignon Blanc", "description": "Sauvignon Blanc — New Zealand." }
     ]
   },
@@ -189,29 +187,27 @@
       { "name": "Mark West Pinot Noir", "description": "Pinot Noir — Sonoma." },
       { "name": "Meiomi Pinot Noir", "description": "Pinot Noir — California." },
       { "name": "Belle Glos “Balade” Pinot Noir", "description": "Pinot Noir — California." },
-      { "name": "Duckhorn “Goldeneye” Pinot Noir", "description": "Pinot Noir — California." }
+      { "name": "Goldeneye Pinot Noir", "description": "Pinot Noir — California." }
     ]
   },
   {
     "section": "WINE - RED BLENDS & MERLOT",
     "items": [
-      { "name": "Bogle Merlot", "description": "Merlot — California." },
-      { "name": "Conundrum Red Blend", "description": "Red blend — California." },
       { "name": "Apothic Red", "description": "Red blend — California." },
+      { "name": "Alamos Malbec", "description": "Malbec — Argentina." },
       { "name": "DAOU “Pessimist” Red Blend", "description": "Red blend — California." },
       { "name": "Orin Swift “Abstract” Red Blend", "description": "Red blend — California." },
       { "name": "The Prisoner Red Blend", "description": "Red blend — California." },
-      { "name": "Duckhorn “Decoy” Merlot", "description": "Merlot — Sonoma." }
+      { "name": "Duckhorn “Decoy” Merlot", "description": "Merlot — California." }
     ]
   },
   {
     "section": "WINE - ITALIAN REDS",
     "items": [
-      { "name": "Allegrini Valpolicella", "description": "Valpolicella — Verona." },
-      { "name": "Ruffino Chianti DOCG", "description": "Chianti DOCG — Tuscany." },
-      { "name": "Bonizio Rosso by Cecchi", "description": "Red blend — Italy." },
+      { "name": "Cecchi Chianti", "description": "Chianti — Tuscany." },
       { "name": "Cecchi Chianti Classico", "description": "Chianti Classico — Tuscany." },
-      { "name": "Il Borro “Pian di Nova” Super Tuscan", "description": "Super Tuscan — Tuscany." }
+      { "name": "Banfi Chianti Classico Riserva", "description": "Chianti Classico Riserva — Tuscany." },
+      { "name": "Il Borro “Pian Di Nova” Super Tuscan", "description": "Super Tuscan red blend — Tuscany." }
     ]
   },
   {
@@ -219,7 +215,7 @@
     "items": [
       { "name": "Beringer Founders’ Estate Cabernet Sauvignon", "description": "Cabernet Sauvignon — California." },
       { "name": "Josh Cellars Cabernet Sauvignon", "description": "Cabernet Sauvignon — California." },
-      { "name": "Coppola “Diamond” Cabernet Sauvignon", "description": "Cabernet Sauvignon — California." },
+      { "name": "Coppola “Diamond Collection” Cabernet Sauvignon", "description": "Cabernet Sauvignon — California." },
       { "name": "J. Lohr “Seven Oaks” Cabernet Sauvignon", "description": "Cabernet Sauvignon — Paso Robles." },
       { "name": "Stag’s Leap Wine Cellars “Artemis” Cabernet Sauvignon", "description": "Cabernet Sauvignon — Napa Valley." },
       { "name": "DAOU Cabernet Sauvignon", "description": "Cabernet Sauvignon — Paso Robles." },
@@ -228,24 +224,120 @@
   },
 
   {
-    "section": "WINE - LEARN THE LIST",
+    "section": "WINE - TRAINING",
     "items": [
-      { "name": "Bubbly vs White vs Red", "description": "Bubbly = Prosecco/Champagne. Whites = Sauvignon Blanc/Pinot Grigio/Chardonnay/Riesling/Moscato. Reds = Cabernet/Chianti/Merlot/Red Blends/Pinot Noir." },
-      { "name": "Crisp Whites (high acid)", "description": "Sauvignon Blanc, Pinot Grigio, Riesling. Keywords: crisp, bright, citrus, refreshing." },
-      { "name": "Fuller Whites", "description": "Chardonnay. Keywords: fuller body, sometimes creamy/oaky." },
-      { "name": "Light/Medium Reds", "description": "Pinot Noir, Valpolicella, some Chianti. Keywords: smoother, lighter red fruit, easy drinking." },
-      { "name": "Bold Reds", "description": "Cabernet Sauvignon, many red blends. Keywords: bold, structured, rich, steak-friendly." }
-    ]
-  },
-  {
-    "section": "WINE - PAIRINGS TO MEALS",
-    "items": [
-      { "name": "Seafood + Lemon/Butter", "description": "Pick: crisp whites (Sauvignon Blanc, Pinot Grigio) or bubbly. Why: acidity cuts richness and matches citrus." },
-      { "name": "Creamy Alfredo / Cheese-heavy", "description": "Pick: Chardonnay. Why: fuller white complements cream and cheese." },
-      { "name": "Steak / Ribeye / Filet / Grilled meats", "description": "Pick: Cabernet Sauvignon or bold red blends. Why: body + tannin match char and richness." },
-      { "name": "Tomato sauces (marinara/pomodoro/vodka)", "description": "Pick: Chianti / Italian reds or red blends. Why: acidity + red fruit handle tomato." },
-      { "name": "Mushrooms / Marsala", "description": "Pick: reds (Cab, Merlot, Pinot Noir). Why: savory/earthy flavors match red depth." },
-      { "name": "Appetizer start / celebration", "description": "Pick: bubbly (Prosecco / Champagne). Why: bright bubbles work with salty/fried starters." }
+      {
+        "name": "Kim Crawford Sauvignon Blanc",
+        "description": "PROFILE: Dry white • Light body • High acidity • Citrus, lime, green apple.\nPAIRS: Seafood, lemon-butter sauces, light pastas, Caprese.\nDish examples: Shrimp Scampi, Salmon Capperi, Linguine Positano, Tomato Caprese with Fresh Burrata.\nWHY: High acidity cuts through butter/oil and makes seafood taste brighter.\nLINE: If you like crisp and refreshing, this is perfect with our seafood and lemon-butter dishes."
+      },
+      {
+        "name": "Imagery Sauvignon Blanc",
+        "description": "PROFILE: Dry white • Light-medium body • Bright acidity • Citrus + herb notes.\nPAIRS: Seafood, salads, lighter pastas.\nDish examples: Shrimp Scampi, Caesar Salad, Italian Salad, Linguine Positano.\nWHY: Crisp whites match fresh herbs and keep rich sauces from feeling heavy.\nLINE: This is a clean, zesty white that stays refreshing with salads and seafood."
+      },
+      {
+        "name": "Quilt “Threadcount” Sauvignon Blanc",
+        "description": "PROFILE: Dry white • Medium body • Vibrant fruit • Smooth finish.\nPAIRS: Seafood, creamy-but-not-heavy pastas, chicken.\nDish examples: Shrimp Scampi, Chicken Piccata, Linguine Positano.\nWHY: Medium-bodied Sauvignon Blanc can handle more richness without losing freshness.\nLINE: If you want crisp but with a little more weight, this is a great step up."
+      },
+      {
+        "name": "Santa Margherita Pinot Grigio",
+        "description": "PROFILE: Dry white • Light body • High acidity • Clean, crisp, easy.\nPAIRS: Appetizers, salads, seafood.\nDish examples: Calamari, Caprese with Burrata, Caesar Salad, Simply Grilled Salmon.\nWHY: High-acid light whites are a safe, classy match for lighter foods.\nLINE: This is the classic crisp Pinot Grigio — clean, refreshing, and super food-friendly."
+      },
+      {
+        "name": "Ecco Domani Pinot Grigio",
+        "description": "PROFILE: Dry white • Light body • Crisp + simple.\nPAIRS: Appetizers, salads, seafood.\nDish examples: Calamari, Zucchini Fritte, Italian Salad, Simply Grilled Trout.\nWHY: Light whites don’t fight delicate flavors.\nLINE: Easy-drinking and crisp — great if they want something light."
+      },
+      {
+        "name": "Chateau Ste. Michelle Riesling",
+        "description": "PROFILE: Off-dry white • Light body • Bright acidity • Peach/citrus.\nPAIRS: Spicy dishes, salty appetizers, seafood.\nDish examples: Fettuccine Weesie (spicy), Calamari, Shrimp Scampi.\nWHY: A touch of sweetness calms spice and balances salty foods.\nLINE: If they like a little sweetness, this pairs beautifully with spicy or salty dishes."
+      },
+      {
+        "name": "Seven Daughters Moscato",
+        "description": "PROFILE: Sweet white • Light body • Floral/peach.\nPAIRS: Dessert, spicy dishes (if they want sweet), easy sipping.\nDish examples: Tiramisù, Strawberry Cheesecake, Fettuccine Weesie (if guest prefers sweet).\nWHY: Sweetness pairs with dessert and softens heat.\nLINE: This is the go-to when they want sweet — great with dessert or spicy food."
+      },
+      {
+        "name": "Fleurs de Prairie Rosé",
+        "description": "PROFILE: Dry rosé • Light-medium body • Crisp berries.\nPAIRS: Salads, seafood, chicken.\nDish examples: Johnny Rocco Salad, Simply Grilled Salmon, Chicken Piccata.\nWHY: Rosé sits between white and red — flexible with lots of foods.\nLINE: Rosé is a great middle ground — crisp like white, but with a little red-fruit depth."
+      },
+      {
+        "name": "Copper Ridge White Zinfandel",
+        "description": "PROFILE: Off-dry rosé • Light body • Sweet red fruit.\nPAIRS: Guests who want sweet, easy, low-tannin.\nDish examples: Calamari, Caprese, salads.\nWHY: Light sweetness makes it very approachable for non-wine people.\nLINE: If they usually don’t love wine, White Zin is sweet, easy, and super approachable."
+      },
+      {
+        "name": "Riondo Prosecco",
+        "description": "PROFILE: Sparkling • Dry to off-dry • Light body • Crisp bubbles.\nPAIRS: Appetizers, celebrations, light seafood.\nDish examples: Calamari, Caprese with Burrata, Shrimp Scampi.\nWHY: Bubbles reset the palate and feel celebratory.\nLINE: If you want something festive and refreshing, Prosecco is always a win."
+      },
+      {
+        "name": "La Marca Prosecco Rosé",
+        "description": "PROFILE: Sparkling rosé • Crisp berries • Light body.\nPAIRS: Appetizers, salads, seafood.\nDish examples: Caprese with Burrata, Calamari, Simply Grilled Salmon.\nWHY: Sparkling rosé is food-friendly and feels upscale.\nLINE: This is a fun, classy sparkling rosé — light, crisp, and perfect to start the meal."
+      },
+      {
+        "name": "Veuve Clicquot Yellow Label Brut",
+        "description": "PROFILE: Champagne Brut • Dry • Fine bubbles • Toasty citrus.\nPAIRS: Any celebration, appetizers, seafood.\nDish examples: Crab Cakes, Calamari, Caprese.\nWHY: Brut Champagne is versatile and elevates the whole experience.\nLINE: If they’re celebrating, Veuve is the upgrade — crisp, elegant, and extremely food-friendly."
+      },
+      {
+        "name": "Mark West Pinot Noir",
+        "description": "PROFILE: Dry red • Light body • Low tannin • Cherry/berry.\nPAIRS: Salmon, chicken, lighter pastas.\nDish examples: Salmon Capperi, Tuscan-Grilled Chicken, Mezzaluna.\nWHY: Pinot Noir is the red that won’t bully lighter dishes.\nLINE: Pinot Noir is a softer red — great if they want red wine without heaviness."
+      },
+      {
+        "name": "Meiomi Pinot Noir",
+        "description": "PROFILE: Dry red • Medium body • Smooth • Dark fruit.\nPAIRS: Salmon, chicken, rich pastas.\nDish examples: Salmon Capperi, Chicken Bryan, Rigatoni Martino.\nWHY: A richer Pinot can handle more sauce while staying smooth.\nLINE: If they like Pinot but want it fuller and smooth, Meiomi is a strong pick."
+      },
+      {
+        "name": "Cecchi Chianti",
+        "description": "PROFILE: Dry red • Medium body • Bright acidity • Cherry + herbs.\nPAIRS: Tomato sauces, Italian classics.\nDish examples: Lasagne, Spaghetti, Chicken Parmesan.\nWHY: Italian reds love tomato — acidity matches acidity.\nLINE: Chianti is made for Italian food — it’s perfect with tomato-based dishes."
+      },
+      {
+        "name": "Banfi Chianti Classico Riserva",
+        "description": "PROFILE: Dry red • Medium-full body • Structured • Cherry/leather.\nPAIRS: Tomato sauces + grilled meats.\nDish examples: Lasagne, Spaghetti, Tuscan-Grilled Sirloin.\nWHY: More structure = better with richer foods.\nLINE: This is the more serious Chianti — richer, deeper, and amazing with Italian classics."
+      },
+      {
+        "name": "Duckhorn “Decoy” Merlot",
+        "description": "PROFILE: Dry red • Medium body • Smooth • Plum/cherry.\nPAIRS: Chicken, pork, steaks (softer than Cab).\nDish examples: Tuscan-Grilled Pork Chop, Tuscan-Grilled Chicken, Sirloin.\nWHY: Merlot is plush and easy — great for guests who fear tannin.\nLINE: Merlot is smooth and crowd-pleasing — great if they want red without sharp tannins."
+      },
+      {
+        "name": "Alamos Malbec",
+        "description": "PROFILE: Dry red • Full body • Dark fruit • Smooth tannins.\nPAIRS: Steaks, grilled meats.\nDish examples: Tuscan-Grilled Ribeye, Sirloin, Pork Chop.\nWHY: Malbec loves char and protein.\nLINE: If they’re ordering steak, Malbec is bold, smooth, and built for grilled meats."
+      },
+      {
+        "name": "Apothic Red",
+        "description": "PROFILE: Red blend • Medium-full body • Smooth • Dark fruit.\nPAIRS: Crowd-pleaser red for steaks/pasta.\nDish examples: Sirloin, Lasagne, Rigatoni Martino.\nWHY: Blends are easy and approachable.\nLINE: This is a smooth, easy red blend — a safe pick if they want something bold but not harsh."
+      },
+      {
+        "name": "DAOU “Pessimist” Red Blend",
+        "description": "PROFILE: Red blend • Full body • Dark fruit, cocoa • Big feel.\nPAIRS: Steaks, richer dishes.\nDish examples: Ribeye, Sirloin, Filet & Shrimp Pasta Toscana.\nWHY: Full-bodied reds match fat, char, and rich sauces.\nLINE: If they like bold reds, this one is rich, smooth, and made for hearty entrees."
+      },
+      {
+        "name": "The Prisoner Red Blend",
+        "description": "PROFILE: Red blend • Full body • Dark fruit + spice • Powerful.\nPAIRS: Big meats, rich pastas.\nDish examples: Ribeye, Sirloin, Lasagne.\nWHY: Intensity stands up to strong flavors.\nLINE: This is the statement red — bold, layered, and perfect for someone who wants a premium red."
+      },
+      {
+        "name": "Orin Swift “Abstract” Red Blend",
+        "description": "PROFILE: Red blend • Full body • Dark fruit • Lux feel.\nPAIRS: Steaks and rich dishes.\nDish examples: Ribeye, Sirloin, Pork Chop.\nWHY: Full-bodied blends pair with protein and char.\nLINE: Abstract is a great upgrade — bold, smooth, and really impressive with grilled meats."
+      },
+      {
+        "name": "Josh Cellars Cabernet Sauvignon",
+        "description": "PROFILE: Cabernet • Full body • Firm tannin • Dark fruit.\nPAIRS: Steaks, grilled meats.\nDish examples: Ribeye, Sirloin, Filet.\nWHY: Tannin + protein = perfect match.\nLINE: Cabernet is the classic steak wine — bold enough to stand up to the grill."
+      },
+      {
+        "name": "J. Lohr “Seven Oaks” Cabernet Sauvignon",
+        "description": "PROFILE: Cabernet • Full body • Structured • Dark fruit.\nPAIRS: Steaks and rich entrees.\nDish examples: Ribeye, Sirloin, Filet & Shrimp Toscana.\nWHY: Full body holds up to fat and char.\nLINE: If they want a serious Cabernet with steak, this is a great choice."
+      },
+      {
+        "name": "Stag’s Leap Wine Cellars “Artemis” Cabernet Sauvignon",
+        "description": "PROFILE: Cabernet • Full body • Premium Napa style • Deep, smooth.\nPAIRS: Steaks, upscale dinners.\nDish examples: Ribeye, Filet, Sirloin.\nWHY: Premium Cab elevates the entrée experience.\nLINE: If they want to upgrade, Artemis is a beautiful Napa Cabernet — smooth, powerful, and perfect with steak."
+      },
+      {
+        "name": "Caymus Cabernet Sauvignon",
+        "description": "PROFILE: Cabernet • Full body • Iconic Napa • Rich, plush.\nPAIRS: Steaks, celebratory dinners.\nDish examples: Ribeye, Filet, Sirloin.\nWHY: Big, plush Cabernet matches fat/char and feels like a splurge.\nLINE: Caymus is the big-name Napa Cab — rich, smooth, and fantastic with steak."
+      },
+      {
+        "name": "Rombauer Chardonnay",
+        "description": "PROFILE: Chardonnay • Full-bodied white • Rich, creamy, buttery.\nPAIRS: Cream sauces, rich pasta, chicken.\nDish examples: Fettuccine Alfredo, Mezzaluna, Chicken Bryan.\nWHY: Rich Chardonnay matches rich sauce — like butter meeting butter.\nLINE: If they like a richer white, Rombauer is creamy and amazing with Alfredo-style dishes."
+      },
+      {
+        "name": "Kendall-Jackson Chardonnay",
+        "description": "PROFILE: Chardonnay • Medium-full body • Smooth fruit + soft oak.\nPAIRS: Chicken, creamy pastas, seafood (if they want richer white).\nDish examples: Chicken Piccata, Mezzaluna, Filet & Shrimp Toscana.\nWHY: Medium-bodied Chardonnay bridges seafood and creamy sauces.\nLINE: This is a smooth, classic Chardonnay — great if they want a richer white without going too heavy."
+      }
     ]
   }
 ]
