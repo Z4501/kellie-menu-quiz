@@ -3,18 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Desha’s American Tavern — Menu & Wine Trainer</title>
+  <title>Desha’s American Tavern — Menu Trainer (Multiple Choice)</title>
   <style>
     :root{
       --bg:#0b0f0e;
-      --panel:#121918;
-      --panel2:#0f1413;
       --text:#eaf2ef;
       --muted:#a8b6b0;
       --accent:#caa34a;
       --accent2:#7bd7b5;
       --danger:#ff6b6b;
-      --ok:#7CFF6B;
       --border:rgba(255,255,255,.10);
       --shadow: 0 18px 40px rgba(0,0,0,.38);
       --radius:18px;
@@ -82,9 +79,7 @@
       background: linear-gradient(180deg, rgba(202,163,74,.25), rgba(202,163,74,.12));
       border-color: rgba(202,163,74,.45);
     }
-    .btnGhost{
-      background: rgba(255,255,255,.03);
-    }
+    .btnGhost{background: rgba(255,255,255,.03)}
     .btnDanger{
       background: linear-gradient(180deg, rgba(255,107,107,.20), rgba(255,107,107,.10));
       border-color: rgba(255,107,107,.40);
@@ -97,9 +92,7 @@
       border-radius: var(--radius2);
       padding:12px;
     }
-    .big{
-      font-size:20px; margin:0 0 6px 0; letter-spacing:.2px
-    }
+    .big{font-size:20px; margin:0 0 6px 0; letter-spacing:.2px}
     .desc{margin:0; color:var(--muted); line-height:1.45}
     .tagRow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
     .tag{
@@ -110,16 +103,8 @@
       background: rgba(255,255,255,.03);
       color:var(--muted);
     }
-    .tag.good{border-color: rgba(123,215,181,.35); color: rgba(185,255,232,.9)}
     .tag.warn{border-color: rgba(202,163,74,.4); color: rgba(255,228,170,.92)}
-    .tag.bad{border-color: rgba(255,107,107,.35); color: rgba(255,180,180,.95)}
-    .twoCol{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-    @media (max-width: 600px){ .twoCol{grid-template-columns:1fr} }
-    details{border:1px solid var(--border); border-radius: 14px; background: rgba(0,0,0,.20); padding:10px}
-    summary{cursor:pointer; color:var(--text); font-weight:650}
-    .k{color:var(--accent); font-weight:700}
-    .small{font-size:12px}
-    .list{margin:8px 0 0 18px; color:var(--muted); line-height:1.45}
+    .tag.good{border-color: rgba(123,215,181,.35); color: rgba(185,255,232,.9)}
     .note{
       border-left:3px solid rgba(202,163,74,.55);
       padding:8px 10px;
@@ -128,12 +113,42 @@
       color: var(--muted);
       font-size:13px;
     }
-    .qPrompt{
-      font-size:13px; color:var(--muted); margin:0 0 8px 0
+    .qPrompt{font-size:13px; color:var(--muted); margin:0 0 10px 0}
+    .k{color:var(--accent); font-weight:700}
+    .list{margin:8px 0 0 18px; color:var(--muted); line-height:1.45}
+
+    .choices{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:12px;
     }
+    @media (max-width: 700px){ .choices{grid-template-columns:1fr} }
+
+    .choiceBtn{
+      text-align:left;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      cursor:pointer;
+      line-height:1.25;
+    }
+    .choiceBtn:hover{border-color: rgba(202,163,74,.45)}
+    .choiceBtn.correct{
+      border-color: rgba(123,215,181,.55);
+      background: rgba(123,215,181,.10);
+    }
+    .choiceBtn.wrong{
+      border-color: rgba(255,107,107,.55);
+      background: rgba(255,107,107,.10);
+    }
+    .choiceBtn.locked{cursor:default; opacity:.95}
+    .choiceMeta{font-size:12px; color:var(--muted); margin-top:4px}
     .answerBox{
       display:none;
-      margin-top:10px;
+      margin-top:12px;
       padding:10px;
       border-radius: 12px;
       border:1px solid rgba(123,215,181,.35);
@@ -141,6 +156,17 @@
       color: var(--text);
     }
     .answerBox.show{display:block}
+
+    .statline{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      font-size:12px; color:var(--muted);
+    }
+    .statpill{
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.18);
+      padding:6px 10px;
+      border-radius:999px;
+    }
     .footer{
       margin-top:16px;
       color:var(--muted);
@@ -154,49 +180,49 @@
   <div class="wrap">
     <header>
       <div class="title">
-        <h1>Desha’s American Tavern — Menu & Wine Trainer</h1>
+        <h1>Desha’s American Tavern — Menu Trainer</h1>
         <div class="sub">
-          TARS Mode: efficient, calm, and table-proof. Train <strong>menu mastery</strong>, <strong>wine intelligence</strong>, and <strong>pairings</strong> without sounding rehearsed.
+          TARS Mode: efficient, calm, table-proof. Multiple choice reps for speed. No typing. No excuses.
         </div>
       </div>
       <div class="pillbar">
-        <div class="pill"><strong>Modes:</strong> Menu • Wine • Pairing • Safe</div>
-        <div class="pill"><strong>Goal:</strong> confident selling + don’t look dumb</div>
+        <div class="pill"><strong>Mode:</strong> Multiple Choice</div>
+        <div class="pill"><strong>Rule:</strong> Say it out loud first</div>
       </div>
     </header>
 
     <div class="grid">
-      <!-- LEFT: TRAINING -->
       <div class="panel">
         <div class="panelHead">
-          <h2>Training Console</h2>
+          <h2>Menu Quiz (MCQ)</h2>
           <div class="row">
-            <select id="mode">
-              <option value="menu">Menu Quiz</option>
-              <option value="wine">Wine Learning</option>
-              <option value="pair">Meal Pairing Trainer</option>
-              <option value="safe">Safe Mode</option>
-            </select>
-
             <select id="sectionSelect"></select>
-
+            <select id="difficulty">
+              <option value="mixed" selected>Mixed</option>
+              <option value="nameFromDesc">Name from Description</option>
+              <option value="descFromName">Description from Name</option>
+              <option value="sectionFromName">Section from Name</option>
+            </select>
             <button class="btnAccent" id="nextBtn">Next</button>
             <button class="btnGhost" id="revealBtn">Reveal</button>
             <button class="btnDanger" id="resetBtn">Reset</button>
           </div>
+          <div class="statline" style="width:100%;margin-top:6px">
+            <span class="statpill">✅ Correct: <span id="statCorrect">0</span></span>
+            <span class="statpill">❌ Wrong: <span id="statWrong">0</span></span>
+            <span class="statpill">🎯 Accuracy: <span id="statAcc">0%</span></span>
+          </div>
         </div>
-
         <div class="panelBody">
           <div id="stage"></div>
         </div>
       </div>
 
-      <!-- RIGHT: QUICK REFERENCE -->
       <div class="panel">
         <div class="panelHead">
-          <h2>Quick Reference</h2>
+          <h2>Quick Search</h2>
           <div class="row">
-            <input id="search" placeholder="Search menu / wines (type & hit enter)" style="min-width:260px" />
+            <input id="search" placeholder="Search menu (type & hit enter)" style="min-width:260px" />
             <button id="searchBtn" class="btnGhost">Search</button>
           </div>
         </div>
@@ -210,373 +236,321 @@
 <script>
   const state = {
     menu: null,
-    wines: null,
-    flatMenuItems: [],
-    flatWineItems: [],
+    flat: [],
+    sections: [],
     history: new Set(),
-    last: null
+    current: null,
+    locked: false,
+    correct: 0,
+    wrong: 0
   };
 
   function $(id){ return document.getElementById(id); }
   function esc(s){ return (s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
 
-  async function loadAll(){
-    const [menuRes, wineRes] = await Promise.all([
-      fetch('./menu.json', {cache:'no-store'}),
-      fetch('./wines.json', {cache:'no-store'})
-    ]);
-    state.menu = await menuRes.json();
-    state.wines = await wineRes.json();
+  function updateStats(){
+    $('statCorrect').textContent = state.correct;
+    $('statWrong').textContent = state.wrong;
+    const total = state.correct + state.wrong;
+    const acc = total ? Math.round((state.correct/total)*100) : 0;
+    $('statAcc').textContent = acc + '%';
+  }
 
-    // Flatten menu items
-    state.flatMenuItems = [];
+  async function loadAll(){
+    const res = await fetch('./menu.json', {cache:'no-store'});
+    state.menu = await res.json();
+
+    state.flat = [];
+    state.sections = [];
+
     for (const sec of state.menu.sections){
+      state.sections.push(sec.section);
       for (const item of sec.items){
-        state.flatMenuItems.push({section: sec.section, ...item});
+        // skip empty side items with no desc? keep them but they make weak questions
+        state.flat.push({section: sec.section, ...item});
       }
     }
-    // Flatten wines
-    state.flatWineItems = (state.wines.wines || []).map(w => ({...w}));
 
     buildSectionDropdown();
     renderRefHome();
+    updateStats();
     next();
   }
 
   function buildSectionDropdown(){
-    const mode = $('mode').value;
     const sel = $('sectionSelect');
     sel.innerHTML = '';
 
-    const optAll = document.createElement('option');
-    optAll.value = '__ALL__';
-    optAll.textContent = 'All Sections';
-    sel.appendChild(optAll);
+    const all = document.createElement('option');
+    all.value = '__ALL__';
+    all.textContent = 'All Sections';
+    sel.appendChild(all);
 
-    if (mode === 'menu' || mode === 'pair' || mode === 'safe'){
-      const sections = state.menu.sections.map(s => s.section);
-      for (const s of sections){
-        const o = document.createElement('option');
-        o.value = s;
-        o.textContent = s;
-        sel.appendChild(o);
-      }
-    } else if (mode === 'wine'){
-      const groups = state.wines.groups || [];
-      for (const g of groups){
-        const o = document.createElement('option');
-        o.value = g;
-        o.textContent = g;
-        sel.appendChild(o);
-      }
+    for (const s of state.sections){
+      const o = document.createElement('option');
+      o.value = s;
+      o.textContent = s;
+      sel.appendChild(o);
     }
   }
 
   function pickRandom(arr){
     if (!arr.length) return null;
-    // try to avoid repeats
-    for (let i=0;i<30;i++){
+    for (let i=0;i<40;i++){
       const x = arr[Math.floor(Math.random()*arr.length)];
-      const key = JSON.stringify(x);
+      const key = x.section + '|' + x.name;
       if (!state.history.has(key)){
         state.history.add(key);
         return x;
       }
     }
-    // if we're saturated, allow repeats
     return arr[Math.floor(Math.random()*arr.length)];
   }
 
-  function next(){
-    const mode = $('mode').value;
-    const section = $('sectionSelect').value;
+  function shuffle(a){
+    const arr = a.slice();
+    for (let i=arr.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
 
-    if (mode === 'menu'){
-      let pool = state.flatMenuItems;
-      if (section !== '__ALL__') pool = pool.filter(x => x.section === section);
-      const item = pickRandom(pool);
-      state.last = {mode, item};
-      renderMenuQuiz(item);
+  function takeDistinct(pool, n, avoidSet){
+    const out = [];
+    const used = new Set();
+    for (let i=0;i<pool.length && out.length<n;i++){
+      const x = pool[i];
+      const key = typeof x === 'string' ? x : (x.section + '|' + x.name);
+      if (avoidSet.has(key)) continue;
+      if (used.has(key)) continue;
+      used.add(key);
+      out.push(x);
     }
-    else if (mode === 'wine'){
-      let pool = state.flatWineItems;
-      if (section !== '__ALL__') pool = pool.filter(w => w.group === section);
-      const wine = pickRandom(pool);
-      state.last = {mode, wine};
-      renderWineLearning(wine);
+    return out;
+  }
+
+  function cleanDesc(d){
+    return (d||"").trim();
+  }
+
+  function getPoolForSection(section){
+    let pool = state.flat;
+    if (section !== '__ALL__') pool = pool.filter(x => x.section === section);
+    return pool;
+  }
+
+  // Build wrong answer candidates that feel plausible
+  function getDistractorItems(correctItem, pool, count){
+    // Prefer same section, similar tags if available
+    const tags = new Set((correctItem.tags||[]).map(t=>t.toLowerCase()));
+    const scored = pool
+      .filter(x => x.name !== correctItem.name)
+      .map(x => {
+        let s = 0;
+        if (x.section === correctItem.section) s += 3;
+        const xtags = new Set((x.tags||[]).map(t=>t.toLowerCase()));
+        for (const t of tags) if (xtags.has(t)) s += 2;
+        // prefer items with real descriptions
+        if ((x.description||"").trim().length > 10) s += 1;
+        return {x, s};
+      })
+      .sort((a,b)=>b.s-a.s);
+
+    const avoid = new Set([correctItem.section + '|' + correctItem.name]);
+    const picks = takeDistinct(scored.map(o=>o.x), count, avoid);
+    // if not enough, fill with random from all
+    while (picks.length < count){
+      const r = pool[Math.floor(Math.random()*pool.length)];
+      const key = r.section + '|' + r.name;
+      if (!avoid.has(key) && !picks.some(p=>p.name===r.name)) picks.push(r);
     }
-    else if (mode === 'pair'){
-      // pick a menu item and ask for best wine + reason
-      let pool = state.flatMenuItems;
-      if (section !== '__ALL__') pool = pool.filter(x => x.section === section);
-      const item = pickRandom(pool);
-      state.last = {mode, item};
-      renderPairTrainer(item);
+    return picks.slice(0,count);
+  }
+
+  function getDistractorDescriptions(correctItem, pool, count){
+    const candidates = pool
+      .filter(x => x.name !== correctItem.name)
+      .filter(x => (x.description||"").trim().length > 10);
+
+    const distractors = getDistractorItems(correctItem, candidates, count);
+    return distractors.map(x => cleanDesc(x.description));
+  }
+
+  function next(){
+    state.locked = false;
+    const section = $('sectionSelect').value;
+    const pool = getPoolForSection(section);
+
+    // Avoid weak questions: prefer items with meaningful description for certain modes
+    const meaningful = pool.filter(x => (x.description||"").trim().length > 10);
+    const pickFrom = meaningful.length ? meaningful : pool;
+
+    const item = pickRandom(pickFrom);
+    if (!item){
+      $('stage').innerHTML = `<div class="note">No items found in that section.</div>`;
+      return;
     }
-    else if (mode === 'safe'){
-      state.last = {mode};
-      renderSafeMode();
-    }
+
+    const difficulty = $('difficulty').value;
+    const type = difficulty === 'mixed'
+      ? shuffle(['nameFromDesc','descFromName','sectionFromName'])[0]
+      : difficulty;
+
+    state.current = {type, item, pool};
+
+    if (type === 'nameFromDesc') renderQ_NameFromDesc(item, pool);
+    else if (type === 'descFromName') renderQ_DescFromName(item, pool);
+    else renderQ_SectionFromName(item);
+  }
+
+  function renderQ_NameFromDesc(item, pool){
+    const correct = item.name;
+    const wrongItems = getDistractorItems(item, pool, 3).map(x=>x.name);
+    const choices = shuffle([correct, ...wrongItems]).map(text => ({text, isCorrect: text === correct}));
+
+    $('stage').innerHTML = `
+      <div class="card">
+        <div class="qPrompt"><span class="k">Question:</span> Which item matches this description?</div>
+        <div class="desc">${esc(cleanDesc(item.description) || "(No description listed)")}</div>
+        <div class="tagRow">
+          <span class="tag warn">Filter: ${esc($('sectionSelect').value === '__ALL__' ? 'All Sections' : $('sectionSelect').value)}</span>
+          <span class="tag">Type: Name from Description</span>
+        </div>
+
+        <div class="choices" id="choices"></div>
+
+        <div class="answerBox" id="answerBox">
+          <div><span class="k">Correct:</span> ${esc(item.name)} ${item.price ? `<span class="muted">(${esc(item.price)})</span>` : ''}</div>
+          <div style="margin-top:6px"><span class="k">Section:</span> ${esc(item.section)}</div>
+        </div>
+      </div>
+    `;
+    renderChoices(choices, item);
+  }
+
+  function renderQ_DescFromName(item, pool){
+    const correct = cleanDesc(item.description) || "(No description listed)";
+    const wrong = getDistractorDescriptions(item, pool, 3);
+    const choices = shuffle([correct, ...wrong]).map(text => ({text, isCorrect: text === correct}));
+
+    $('stage').innerHTML = `
+      <div class="card">
+        <div class="qPrompt"><span class="k">Question:</span> Which description matches this item?</div>
+        <h3 class="big">${esc(item.name)} ${item.price ? `<span class="muted" style="font-size:13px">(${esc(item.price)})</span>` : ''}</h3>
+        <div class="tagRow">
+          <span class="tag warn">Filter: ${esc($('sectionSelect').value === '__ALL__' ? 'All Sections' : $('sectionSelect').value)}</span>
+          <span class="tag">Type: Description from Name</span>
+        </div>
+
+        <div class="choices" id="choices"></div>
+
+        <div class="answerBox" id="answerBox">
+          <div><span class="k">Correct description:</span> ${esc(correct)}</div>
+          <div style="margin-top:6px"><span class="k">Section:</span> ${esc(item.section)}</div>
+        </div>
+      </div>
+    `;
+    renderChoices(choices, item);
+  }
+
+  function renderQ_SectionFromName(item){
+    const correct = item.section;
+    const wrong = shuffle(state.sections.filter(s => s !== correct)).slice(0,3);
+    const choices = shuffle([correct, ...wrong]).map(text => ({text, isCorrect: text === correct}));
+
+    $('stage').innerHTML = `
+      <div class="card">
+        <div class="qPrompt"><span class="k">Question:</span> What section is this item in?</div>
+        <h3 class="big">${esc(item.name)} ${item.price ? `<span class="muted" style="font-size:13px">(${esc(item.price)})</span>` : ''}</h3>
+        <div class="choices" id="choices"></div>
+
+        <div class="answerBox" id="answerBox">
+          <div><span class="k">Correct section:</span> ${esc(item.section)}</div>
+          ${item.description ? `<div style="margin-top:6px"><span class="k">Description:</span> ${esc(item.description)}</div>` : ''}
+        </div>
+      </div>
+    `;
+    renderChoices(choices, item);
+  }
+
+  function renderChoices(choices, item){
+    const el = document.getElementById('choices');
+    el.innerHTML = choices.map((c,i)=>`
+      <button class="choiceBtn" data-idx="${i}">
+        ${esc(c.text)}
+      </button>
+    `).join('');
+
+    el.querySelectorAll('button').forEach(btn=>{
+      btn.addEventListener('click', () => {
+        if (state.locked) return;
+        state.locked = true;
+
+        const idx = Number(btn.getAttribute('data-idx'));
+        const selected = choices[idx];
+
+        // mark all
+        el.querySelectorAll('button').forEach((b, j)=>{
+          const isC = choices[j].isCorrect;
+          b.classList.add('locked');
+          if (isC) b.classList.add('correct');
+        });
+
+        if (!selected.isCorrect){
+          btn.classList.add('wrong');
+          state.wrong++;
+        } else {
+          state.correct++;
+        }
+
+        updateStats();
+        // auto show answer box after selection
+        const box = document.getElementById('answerBox');
+        if (box) box.classList.add('show');
+      });
+    });
   }
 
   function reveal(){
-    const stage = $('stage');
-    const box = stage.querySelector('.answerBox');
+    const box = document.getElementById('answerBox');
     if (box) box.classList.toggle('show');
   }
 
   function resetAll(){
     state.history = new Set();
-    state.last = null;
+    state.current = null;
+    state.locked = false;
+    state.correct = 0;
+    state.wrong = 0;
+    updateStats();
     renderRefHome();
     next();
-  }
-
-  function renderMenuQuiz(item){
-    if (!item){
-      $('stage').innerHTML = `<div class="note">No items found in that section.</div>`;
-      return;
-    }
-    const prompt = `
-      <div class="card">
-        <div class="qPrompt">Menu Quiz — say this like you’re at a table.</div>
-        <h3 class="big">${esc(item.name)} <span class="muted small">${esc(item.price || "")}</span></h3>
-        <div class="tagRow">
-          <span class="tag warn">Section: ${esc(item.section)}</span>
-          ${item.tags?.map(t=>`<span class="tag">${esc(t)}</span>`).join('') || ''}
-        </div>
-
-        <div class="divider"></div>
-        <div class="twoCol">
-          <div class="card">
-            <div class="muted small"><span class="k">Task</span>: Describe it in one clean sentence.</div>
-            <ul class="list">
-              <li>What is it?</li>
-              <li>What are the key components?</li>
-              <li>What sauce / special element sells it?</li>
-            </ul>
-          </div>
-          <div class="card">
-            <div class="muted small"><span class="k">Upsell</span>: suggest a pairing or add-on.</div>
-            <ul class="list">
-              <li>Wine / cocktail that fits</li>
-              <li>Side swap if relevant</li>
-              <li>Spice warning if needed</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="answerBox">
-          <div><span class="k">What it is:</span> ${esc(item.description || "")}</div>
-          ${item.upsell ? `<div style="margin-top:6px"><span class="k">Easy upsell line:</span> ${esc(item.upsell)}</div>` : ''}
-        </div>
-      </div>
-    `;
-    $('stage').innerHTML = prompt;
-  }
-
-  function renderWineLearning(w){
-    if (!w){
-      $('stage').innerHTML = `<div class="note">No wines found in that group.</div>`;
-      return;
-    }
-    $('stage').innerHTML = `
-      <div class="card">
-        <div class="qPrompt">Wine Learning — understanding > memorizing.</div>
-        <h3 class="big">${esc(w.name)} <span class="muted small">(${esc(w.type)} • ${esc(w.region)})</span></h3>
-        <div class="tagRow">
-          <span class="tag warn">Group: ${esc(w.group)}</span>
-          <span class="tag">${esc(w.grape)}</span>
-          <span class="tag good">${esc(w.body)} body</span>
-          <span class="tag">${esc(w.acidity)} acidity</span>
-          <span class="tag">${esc(w.sweetness)} sweet</span>
-          ${w.tannin ? `<span class="tag">${esc(w.tannin)} tannin</span>` : ''}
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="twoCol">
-          <div class="card">
-            <div class="muted small"><span class="k">Task</span>: explain this wine to a guest in 10 seconds.</div>
-            <ul class="list">
-              <li>What does it taste like?</li>
-              <li>Who is it perfect for?</li>
-              <li>What is the “safe pairing”?</li>
-            </ul>
-          </div>
-          <div class="card">
-            <div class="muted small"><span class="k">Avoid</span>: what guest type will hate it?</div>
-            <ul class="list">
-              <li>Too sweet / too dry?</li>
-              <li>Too oaky?</li>
-              <li>Too tannic?</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="answerBox">
-          <div><span class="k">Flavor:</span> ${esc(w.flavor)}</div>
-          <div style="margin-top:6px"><span class="k">Best for:</span> ${esc(w.bestFor)}</div>
-          <div style="margin-top:6px"><span class="k">Table pitch:</span> ${esc(w.pitch)}</div>
-          <div style="margin-top:6px"><span class="k">Top pairings:</span> ${esc((w.pairWith || []).join(", "))}</div>
-          <div style="margin-top:6px"><span class="k">If they say “I don’t like…”:</span> ${esc(w.avoidIf)}</div>
-        </div>
-      </div>
-    `;
-  }
-
-  function renderPairTrainer(item){
-    if (!item){
-      $('stage').innerHTML = `<div class="note">No items found in that section.</div>`;
-      return;
-    }
-    // Suggest a few wines that match by tags (very simple heuristic)
-    const tags = new Set((item.tags||[]).map(t=>t.toLowerCase()));
-    const wines = state.flatWineItems;
-
-    function scoreWine(w){
-      let s = 0;
-      const type = (w.type||"").toLowerCase();
-      const flavor = (w.flavor||"").toLowerCase();
-
-      if (tags.has('seafood') && (type.includes('white') || type.includes('prosecco') || type.includes('rosé'))) s += 3;
-      if (tags.has('spicy') && (type.includes('riesling') || type.includes('moscato') || type.includes('rosé'))) s += 3;
-      if (tags.has('bbq') && (type.includes('zinfandel') || type.includes('red blend') || type.includes('cabernet'))) s += 2;
-      if (tags.has('steak') && (type.includes('cabernet') || type.includes('malbec') || type.includes('zinfandel'))) s += 3;
-      if (tags.has('cheese') && (type.includes('chardonnay') || type.includes('pinot noir') || type.includes('prosecco'))) s += 2;
-      if (tags.has('fried') && (type.includes('prosecco') || type.includes('sauvignon') || type.includes('rosé'))) s += 2;
-
-      // fallback: acidity helps food
-      if ((w.acidity||"").toLowerCase().includes('high')) s += 1;
-
-      // small bonus if menu keywords appear in wine pairing list
-      const pair = (w.pairWith||[]).join(' ').toLowerCase();
-      const name = (item.name||"").toLowerCase();
-      if (pair.includes('fish') && name.includes('fish')) s += 2;
-      if (pair.includes('salmon') && name.includes('salmon')) s += 2;
-      if (pair.includes('prime rib') && name.includes('prime rib')) s += 2;
-
-      return s;
-    }
-
-    const top = [...wines]
-      .map(w => ({w, s: scoreWine(w)}))
-      .sort((a,b)=>b.s-a.s)
-      .slice(0,3)
-      .map(x => x.w);
-
-    $('stage').innerHTML = `
-      <div class="card">
-        <div class="qPrompt">Pairing Trainer — pick a wine and explain why in one sentence.</div>
-        <h3 class="big">${esc(item.name)} <span class="muted small">${esc(item.price || "")}</span></h3>
-        <p class="desc">${esc(item.description || "")}</p>
-
-        <div class="tagRow">
-          <span class="tag warn">Section: ${esc(item.section)}</span>
-          ${(item.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="twoCol">
-          <div class="card">
-            <div class="muted small"><span class="k">Task</span></div>
-            <ul class="list">
-              <li>Suggest 1 wine and give 1 reason.</li>
-              <li>Offer a second option if they say “I want something lighter.”</li>
-              <li>Offer a third if they say “I want red.”</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <div class="muted small"><span class="k">Hints</span> (optional)</div>
-            <div class="muted small">You can use “acid cuts richness” and “bubbles clean fried food” safely.</div>
-          </div>
-        </div>
-
-        <div class="answerBox">
-          <div><span class="k">Strong suggestions from the list:</span></div>
-          <ul class="list">
-            ${top.map(w=>`<li><strong>${esc(w.name)}</strong> — ${esc(w.pitch)}</li>`).join('')}
-          </ul>
-        </div>
-      </div>
-    `;
-  }
-
-  function renderSafeMode(){
-    $('stage').innerHTML = `
-      <div class="card">
-        <div class="qPrompt">Safe Mode — when a guest asks and your brain goes blank.</div>
-
-        <details open>
-          <summary>3 safe wines that won’t embarrass you</summary>
-          <ul class="list">
-            <li><span class="k">Dashwood Sauvignon Blanc</span> — crisp, clean, works with fish/salads, “not sweet.”</li>
-            <li><span class="k">Josh Cabernet Sauvignon</span> — classic red, steak/prime rib, “smooth and familiar.”</li>
-            <li><span class="k">Zardetto Prosecco</span> — bubbly, refreshes, great with apps/fried/celebrations.</li>
-          </ul>
-        </details>
-
-        <div class="divider"></div>
-
-        <details>
-          <summary>Universal pairing lines</summary>
-          <ul class="list">
-            <li>“If you want something refreshing that goes with almost anything, I’d do the Sauvignon Blanc.”</li>
-            <li>“For steak or prime rib, Cabernet is the safest win — bold but smooth.”</li>
-            <li>“If you’re doing fried or spicy, bubbles or a touch of fruitiness plays really well.”</li>
-          </ul>
-        </details>
-
-        <div class="divider"></div>
-
-        <details>
-          <summary>When they say…</summary>
-          <ul class="list">
-            <li><span class="k">“I don’t like sweet wine.”</span> → Sauvignon Blanc, Pinot Grigio, Cabernet, Pinot Noir.</li>
-            <li><span class="k">“I want something light.”</span> → Pinot Grigio, Rosé, Prosecco.</li>
-            <li><span class="k">“I want red but not heavy.”</span> → Pinot Noir, Red Blend.</li>
-            <li><span class="k">“Spicy food.”</span> → Riesling or Moscato (light sweetness), or Rosé.</li>
-          </ul>
-        </details>
-      </div>
-    `;
   }
 
   function renderRefHome(){
     $('ref').innerHTML = `
       <div class="note">
-        <strong>Quick Reference</strong><br/>
-        Search any menu item, wine, cocktail, bourbon, or beer. This panel will show matches instantly.
+        <strong>Quick Search</strong><br/>
+        Type any menu item or ingredient keyword (e.g., “goetta”, “grouper”, “gorgonzola”, “Nashville”).<br/>
+        It will show matches instantly.
       </div>
       <div class="divider"></div>
       <div class="card">
-        <div class="muted small"><span class="k">Tip</span>: In training mode, hit <strong>Reveal</strong> only after she answers out loud.</div>
+        <div class="muted"><span class="k">Pro tip:</span> Run “Name from Description” until she’s fast. Then switch to “Description from Name.”</div>
       </div>
     `;
   }
 
   function searchAll(q){
     q = (q||"").trim().toLowerCase();
-    if (!q){
-      renderRefHome();
-      return;
-    }
+    if (!q){ renderRefHome(); return; }
 
-    const menuHits = state.flatMenuItems.filter(x =>
+    const hits = state.flat.filter(x =>
       (x.name||"").toLowerCase().includes(q) ||
       (x.description||"").toLowerCase().includes(q) ||
       (x.section||"").toLowerCase().includes(q)
-    ).slice(0, 12);
-
-    const wineHits = state.flatWineItems.filter(w =>
-      (w.name||"").toLowerCase().includes(q) ||
-      (w.grape||"").toLowerCase().includes(q) ||
-      (w.type||"").toLowerCase().includes(q) ||
-      (w.region||"").toLowerCase().includes(q) ||
-      (w.flavor||"").toLowerCase().includes(q)
-    ).slice(0, 12);
+    ).slice(0, 18);
 
     const miscHits = (state.menu.misc || []).filter(m =>
       (m.section||"").toLowerCase().includes(q) ||
@@ -585,29 +559,24 @@
 
     $('ref').innerHTML = `
       <div class="card">
-        <div class="muted small"><span class="k">Search</span>: "${esc(q)}"</div>
+        <div class="muted"><span class="k">Search</span>: "${esc(q)}"</div>
       </div>
 
       <div class="divider"></div>
 
       <div class="card">
-        <div><span class="k">Menu matches</span> <span class="muted small">(${menuHits.length})</span></div>
-        ${menuHits.length ? `
+        <div><span class="k">Menu matches</span> <span class="muted">(${hits.length})</span></div>
+        ${hits.length ? `
           <ul class="list">
-            ${menuHits.map(m=>`<li><strong>${esc(m.name)}</strong> <span class="muted small">(${esc(m.section)})</span><br/><span class="muted small">${esc(m.description||"")}</span></li>`).join('')}
+            ${hits.map(m=>`
+              <li>
+                <strong>${esc(m.name)}</strong>
+                <span class="muted">(${esc(m.section)}${m.price ? ` • ${esc(m.price)}` : ''})</span><br/>
+                <span class="muted">${esc(m.description||"")}</span>
+              </li>
+            `).join('')}
           </ul>
-        ` : `<div class="muted small">None.</div>`}
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="card">
-        <div><span class="k">Wine matches</span> <span class="muted small">(${wineHits.length})</span></div>
-        ${wineHits.length ? `
-          <ul class="list">
-            ${wineHits.map(w=>`<li><strong>${esc(w.name)}</strong> <span class="muted small">(${esc(w.type)} • ${esc(w.region)})</span><br/><span class="muted small">${esc(w.pitch)}</span></li>`).join('')}
-          </ul>
-        ` : `<div class="muted small">None.</div>`}
+        ` : `<div class="muted">None.</div>`}
       </div>
 
       ${miscHits.length ? `
@@ -617,7 +586,7 @@
           ${miscHits.map(m=>`
             <div style="margin-top:10px">
               <div><strong>${esc(m.section)}</strong></div>
-              <div class="muted small">${(m.items||[]).map(x=>esc(x)).join(" • ")}</div>
+              <div class="muted" style="font-size:12px;line-height:1.4">${(m.items||[]).map(x=>esc(x)).join(" • ")}</div>
             </div>
           `).join('')}
         </div>
@@ -626,21 +595,22 @@
   }
 
   // UI events
-  $('mode').addEventListener('change', () => { buildSectionDropdown(); next(); });
   $('sectionSelect').addEventListener('change', () => next());
+  $('difficulty').addEventListener('change', () => next());
   $('nextBtn').addEventListener('click', () => next());
   $('revealBtn').addEventListener('click', () => reveal());
   $('resetBtn').addEventListener('click', () => resetAll());
 
   $('searchBtn').addEventListener('click', () => searchAll($('search').value));
-  $('search').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') searchAll($('search').value);
-  });
+  $('search').addEventListener('keydown', (e) => { if (e.key === 'Enter') searchAll($('search').value); });
 
   loadAll().catch(err=>{
-    $('stage').innerHTML = `<div class="note"><strong>Error loading JSON.</strong><br/>Make sure <code>menu.json</code> and <code>wines.json</code> are in the same folder as <code>index.html</code>.</div>
-    <div class="divider"></div>
-    <div class="card"><pre class="muted small" style="white-space:pre-wrap">${esc(String(err))}</pre></div>`;
+    $('stage').innerHTML = `
+      <div class="note"><strong>Error loading menu.json.</strong><br/>
+      Make sure <code>menu.json</code> is in the same folder as <code>index.html</code> in your GitHub repo.</div>
+      <div class="divider"></div>
+      <div class="card"><pre class="muted" style="white-space:pre-wrap;font-size:12px">${esc(String(err))}</pre></div>
+    `;
   });
 </script>
 </body>
