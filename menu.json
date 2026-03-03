@@ -1,327 +1,262 @@
 {
-  "groups": ["White", "Red", "House Wines"],
-  "wines": [
+  "name": "Desha’s American Tavern",
+  "sections": [
     {
-      "group": "White",
-      "name": "Seven Daughters Moscato",
-      "type": "Moscato",
-      "region": "Italy",
-      "grape": "Moscato",
-      "body": "Light",
-      "acidity": "Medium",
-      "sweetness": "Sweet",
-      "tannin": "",
-      "flavor": "Peach, orange blossom, honey, light citrus. Soft and fruity.",
-      "bestFor": "Guests who want sweet, easy, and not harsh.",
-      "pitch": "Sweet, fruity, and super easy to drink — great with anything spicy or dessert.",
-      "pairWith": ["Nashville Hot Chicken", "Wings (Buffalo)", "Cranberry Pecan Salad", "Desserts"],
-      "avoidIf": "They say: “I hate sweet wine.”"
-    },
-    {
-      "group": "White",
-      "name": "Chateau Ste. Michelle Riesling",
-      "type": "Riesling",
-      "region": "Columbia Valley, WA",
-      "grape": "Riesling",
-      "body": "Light",
-      "acidity": "High",
-      "sweetness": "Off-dry",
-      "tannin": "",
-      "flavor": "Crisp apple, peach, citrus, bright finish; slight sweetness.",
-      "bestFor": "Spicy food people or anyone who wants light but flavorful.",
-      "pitch": "Crisp and refreshing with a touch of fruit — perfect with spicy dishes.",
-      "pairWith": ["Wings (Buffalo)", "Nashville Hot Chicken", "Jambalaya", "Chicken & Andouille Spring Rolls"],
-      "avoidIf": "They want bone-dry white."
-    },
-    {
-      "group": "White",
-      "name": "Ruffino Pinot Grigio",
-      "type": "Pinot Grigio",
-      "region": "Italy",
-      "grape": "Pinot Grigio",
-      "body": "Light",
-      "acidity": "Medium-High",
-      "sweetness": "Dry",
-      "tannin": "",
-      "flavor": "Crisp, clean citrus, pear, light mineral.",
-      "bestFor": "Guests who say “I want something light and not sweet.”",
-      "pitch": "Light, clean, and dry — an easy pick if you don’t want anything sweet.",
-      "pairWith": ["House Salad", "Caesar", "Traditional Breakfast", "Seafood starters"],
-      "avoidIf": "They want a rich/oaky Chardonnay."
-    },
-    {
-      "group": "White",
-      "name": "Dashwood Sauvignon Blanc",
-      "type": "Sauvignon Blanc",
-      "region": "New Zealand",
-      "grape": "Sauvignon Blanc",
-      "body": "Light",
-      "acidity": "High",
-      "sweetness": "Dry",
-      "tannin": "",
-      "flavor": "Citrus, lime, grapefruit, fresh herbs; very crisp.",
-      "bestFor": "Guests who want crisp, dry, refreshing.",
-      "pitch": "Crisp and super refreshing — the safest dry white with food.",
-      "pairWith": ["Fish & Chips", "Crab Cake", "Salmon", "Salads"],
-      "avoidIf": "They want buttery/oaky."
-    },
-    {
-      "group": "White",
-      "name": "Mariana Rosé",
-      "type": "Rosé",
-      "region": "Portugal",
-      "grape": "Rosé blend",
-      "body": "Light",
-      "acidity": "Medium-High",
-      "sweetness": "Dry to off-dry",
-      "tannin": "Low",
-      "flavor": "Strawberry, citrus, refreshing finish.",
-      "bestFor": "Guests who want something light but not boring.",
-      "pitch": "Light, refreshing, and food-friendly — great if they can’t decide between red and white.",
-      "pairWith": ["Blackened Grouper", "Jambalaya", "Chicken Quesadilla", "BBQ Shrimp Cornbread"],
-      "avoidIf": "They want a big bold red."
-    },
-    {
-      "group": "White",
-      "name": "Kendall-Jackson Vintner’s Reserve Chardonnay",
-      "type": "Chardonnay",
-      "region": "Sonoma County, CA",
-      "grape": "Chardonnay",
-      "body": "Medium-Full",
-      "acidity": "Medium",
-      "sweetness": "Dry",
-      "tannin": "",
-      "flavor": "Apple, pear, vanilla, buttery/oaky notes.",
-      "bestFor": "Guests who like rich, smooth whites.",
-      "pitch": "Classic rich Chardonnay — smooth, slightly buttery, and great with creamy dishes.",
-      "pairWith": ["Smoked Gouda & Chicken Pasta", "Spinach & Artichoke Bake", "Pimento Cheese", "Hot Brown"],
-      "avoidIf": "They say: “No oak/butter.”"
-    },
-    {
-      "group": "White",
-      "name": "Stoller Chardonnay",
-      "type": "Chardonnay",
-      "region": "Willamette Valley, OR",
-      "grape": "Chardonnay",
-      "body": "Medium",
-      "acidity": "Medium-High",
-      "sweetness": "Dry",
-      "tannin": "",
-      "flavor": "Brighter, cleaner chardonnay style; citrus/apple; less heavy.",
-      "bestFor": "Chardonnay drinkers who don’t want super buttery.",
-      "pitch": "A cleaner, brighter Chardonnay — smooth but not heavy.",
-      "pairWith": ["Crab Stuffed Mushrooms", "Salmon", "Quiche", "Cheese apps"],
-      "avoidIf": "They want very buttery/oaky."
-    },
-    {
-      "group": "White",
-      "name": "Zardetto Prosecco",
-      "type": "Prosecco",
-      "region": "Italy",
-      "grape": "Glera",
-      "body": "Light",
-      "acidity": "High",
-      "sweetness": "Dry to off-dry",
-      "tannin": "",
-      "flavor": "Green apple, pear, citrus; crisp bubbles.",
-      "bestFor": "Celebrations, brunch, fried food, ‘just want something fun.’",
-      "pitch": "Crisp bubbles — perfect with apps, brunch, and anything fried.",
-      "pairWith": ["Fish & Chips", "Wings", "Goetta Fries", "Brunch items"],
-      "avoidIf": "They want a still wine only."
+      "section": "Starters",
+      "items": [
+        {"name":"Crab Cake","price":"$17","description":"Served over sweet chili slaw with chipotle aioli.","tags":["seafood","rich"],"upsell":"Pairs great with Prosecco or Sauvignon Blanc."},
+        {"name":"Traditional Wings","price":"6 $11 / 10 $17","description":"Dry-rubbed with spice blend. Choice of: Buffalo with blue cheese OR Maker’s Mark BBQ with ranch.","tags":["spicy","bbq","fried"],"upsell":"For Buffalo: Riesling or Prosecco. For BBQ: Zinfandel or Red Blend."},
+        {"name":"Boneless Wings","price":"$14","description":"Dry-rubbed with spice blend. Choice of: Buffalo with blue cheese OR Maker’s Mark BBQ with ranch OR Nashville Hot with pickles & spicy ranch.","tags":["spicy","bbq","fried"],"upsell":"Nashville Hot loves a touch of sweetness: Riesling or Moscato."},
+        {"name":"Goetta Fries","price":"$12","description":"French fries topped with goetta, cheddar, jalapeño-sour cream, green onion.","tags":["rich","spicy","fried","cheese"],"upsell":"Prosecco cuts the richness; Chardonnay also works."},
+        {"name":"Bacon Bourbon Pimento Cheese","price":"$12","description":"Served warm with crackers.","tags":["rich","cheese"],"upsell":"Chardonnay or Pinot Noir is a safe move here."},
+        {"name":"BBQ Shrimp Cornbread","price":"$17","description":"Sliced cornbread, sautéed BBQ shrimp, scallions.","tags":["seafood","bbq","rich"],"upsell":"Try Rosé or Sauvignon Blanc; for bolder guests, Zinfandel."},
+        {"name":"Spinach & Artichoke Bake","price":"$14.5","description":"Corn tortilla chips, pico de gallo.","tags":["rich","cheese"],"upsell":"Chardonnay is the easy win."},
+        {"name":"Crab Stuffed Mushrooms","price":"$14.5","description":"Lump crabmeat, cream cheese, provolone, parmesan, broiled to golden brown.","tags":["seafood","rich","cheese"],"upsell":"Prosecco or Sauvignon Blanc."},
+        {"name":"Margherita Flatbread","price":"$13","description":"Garlic oil, three cheese blend, tomato, basil, naan bread.","tags":["cheese","herby"],"upsell":"Pinot Noir or Sauvignon Blanc."},
+        {"name":"Chicken Quesadilla","price":"$15.5","description":"Blackened chicken, roasted corn salsa, cheddar, guacamole, green onion, pico, sour cream.","tags":["spicy","rich","cheese"],"upsell":"Rosé or Riesling plays well with blackened spice."},
+        {"name":"Chicken & Andouille Spring Rolls","price":"$14.5","description":"Blackened chicken, sharp cheddar, sweet chili sauce.","tags":["spicy","rich"],"upsell":"Riesling or Prosecco."}
+      ]
     },
 
     {
-      "group": "Red",
-      "name": "La Crema Pinot Noir",
-      "type": "Pinot Noir",
-      "region": "Sonoma County, CA",
-      "grape": "Pinot Noir",
-      "body": "Light-Medium",
-      "acidity": "Medium-High",
-      "sweetness": "Dry",
-      "tannin": "Low-Medium",
-      "flavor": "Cherry, raspberry, light spice; smooth finish.",
-      "bestFor": "Red drinkers who want smooth and not heavy.",
-      "pitch": "Smooth, lighter red — great if they want red but not too bold.",
-      "pairWith": ["Salmon", "Pimento Cheese", "Turkey-Bacon Club", "Flatbreads"],
-      "avoidIf": "They want big/bold/tannic."
-    },
-    {
-      "group": "Red",
-      "name": "Uno Malbec",
-      "type": "Malbec",
-      "region": "Argentina",
-      "grape": "Malbec",
-      "body": "Medium-Full",
-      "acidity": "Medium",
-      "sweetness": "Dry",
-      "tannin": "Medium",
-      "flavor": "Dark fruit, plum, cocoa, smooth spice.",
-      "bestFor": "Steak/prime rib guests who want bold but smooth.",
-      "pitch": "Bold dark-fruit red that’s smooth — killer with steak.",
-      "pairWith": ["Filet Mignon", "Prime Rib", "Pot Roast Melt", "Meatloaf"],
-      "avoidIf": "They want light reds only."
-    },
-    {
-      "group": "Red",
-      "name": "Optima Zinfandel",
-      "type": "Zinfandel",
-      "region": "Sonoma County, CA",
-      "grape": "Zinfandel",
-      "body": "Full",
-      "acidity": "Medium",
-      "sweetness": "Dry",
-      "tannin": "Medium",
-      "flavor": "Jammy berry, pepper, smoky spice.",
-      "bestFor": "BBQ lovers and richer foods.",
-      "pitch": "Bold, spicy red — awesome with BBQ and anything smoky.",
-      "pairWith": ["Pulled Pork", "Maker’s Mac & Cheese", "Meatloaf Sliders", "BBQ Tavern Crisps"],
-      "avoidIf": "They want delicate wines."
-    },
-    {
-      "group": "Red",
-      "name": "Silk & Spice Red Blend",
-      "type": "Red Blend",
-      "region": "Portugal",
-      "grape": "Red blend",
-      "body": "Medium",
-      "acidity": "Medium",
-      "sweetness": "Dry",
-      "tannin": "Medium",
-      "flavor": "Dark fruit, spice, smooth finish.",
-      "bestFor": "Guests who want a smooth ‘easy red’ without overthinking.",
-      "pitch": "Smooth, crowd-pleasing red with a little spice — easy pick for almost anyone.",
-      "pairWith": ["Meatloaf", "Pot Roast", "Burgers", "BBQ items"],
-      "avoidIf": "They want a very light red."
-    },
-    {
-      "group": "Red",
-      "name": "Josh Cabernet Sauvignon",
-      "type": "Cabernet Sauvignon",
-      "region": "Central Coast, CA",
-      "grape": "Cabernet Sauvignon",
-      "body": "Full",
-      "acidity": "Medium",
-      "sweetness": "Dry",
-      "tannin": "Medium-High",
-      "flavor": "Black cherry, plum, light oak, smooth tannins.",
-      "bestFor": "Classic red drinkers and steak/prime rib.",
-      "pitch": "Classic cab — bold, smooth, and made for steak.",
-      "pairWith": ["Prime Rib", "Filet Mignon", "Pot Roast", "Burgers"],
-      "avoidIf": "They want light reds only."
-    },
-    {
-      "group": "Red",
-      "name": "Dough Cabernet Sauvignon",
-      "type": "Cabernet Sauvignon",
-      "region": "Mendocino, CA",
-      "grape": "Cabernet Sauvignon",
-      "body": "Full",
-      "acidity": "Medium",
-      "sweetness": "Dry",
-      "tannin": "Medium-High",
-      "flavor": "Dark fruit, oak, structured finish.",
-      "bestFor": "Cab lovers wanting something a bit more serious.",
-      "pitch": "A richer cab with more structure — excellent with prime rib.",
-      "pairWith": ["Prime Rib", "Filet Mignon", "Burgers"],
-      "avoidIf": "They want something soft/light."
-    },
-    {
-      "group": "Red",
-      "name": "Justin Cabernet Sauvignon",
-      "type": "Cabernet Sauvignon",
-      "region": "Paso Robles, CA",
-      "grape": "Cabernet Sauvignon",
-      "body": "Full",
-      "acidity": "Medium",
-      "sweetness": "Dry",
-      "tannin": "High",
-      "flavor": "Dark berries, oak, spice; fuller tannin grip.",
-      "bestFor": "Guests who like bold, steakhouse-style reds.",
-      "pitch": "Big, bold cab — the steakhouse pick.",
-      "pairWith": ["Filet Mignon", "Prime Rib"],
-      "avoidIf": "They dislike tannins / want soft reds."
-    },
-    {
-      "group": "Red",
-      "name": "La Crema Cabernet Sauvignon",
-      "type": "Cabernet Sauvignon",
-      "region": "Alexander Valley, CA",
-      "grape": "Cabernet Sauvignon",
-      "body": "Full",
-      "acidity": "Medium",
-      "sweetness": "Dry",
-      "tannin": "Medium-High",
-      "flavor": "Dark fruit, oak spice, polished finish.",
-      "bestFor": "Cab drinkers who want a nicer upgrade option.",
-      "pitch": "A more polished cab — great upgrade for prime rib.",
-      "pairWith": ["Prime Rib", "Filet Mignon", "Pot Roast"],
-      "avoidIf": "They want light reds."
+      "section": "Soups & Salads",
+      "items": [
+        {"name":"Soup (Cup)","price":"$5.75","description":"Tomato Basil, French Onion, or Soup of the Day.","tags":["soup"],"upsell":"Pair with Sauvignon Blanc or Pinot Grigio."},
+        {"name":"Soup (Bowl)","price":"$7.75","description":"Tomato Basil, French Onion, or Soup of the Day.","tags":["soup"],"upsell":"Pair with Sauvignon Blanc or Pinot Grigio."},
+        {"name":"Chopped Salad","price":"$11","description":"Iceberg, bacon, blue cheese crumbles, tomato, ranch.","tags":["salad","rich"],"upsell":"Sauvignon Blanc or Rosé."},
+        {"name":"Spinach Salad","price":"$11","description":"Fresh spinach, red onion, tomato, bacon, hard-cooked egg, dried cranberries, house maple balsamic.","tags":["salad","sweet-tangy"],"upsell":"Riesling or Pinot Grigio."},
+        {"name":"Farmhouse Salad","price":"$12","description":"Mixed greens, goat cheese, blueberries, bacon, spiced pepitas, honey basil vinaigrette.","tags":["salad","fruity"],"upsell":"Sauvignon Blanc or Rosé."},
+        {"name":"Roasted Butternut Squash Salad","price":"$12","description":"Mixed greens, gorgonzola, red onion, walnuts, pear vinaigrette.","tags":["salad","rich","fruity"],"upsell":"Chardonnay or Rosé."},
+        {"name":"Cranberry Pecan Salad","price":"$12","description":"Mixed greens, dried cranberries, blue cheese, sweet roasted pecans, orange-cranberry splash dressing.","tags":["salad","sweet"],"upsell":"Riesling or Moscato."},
+        {"name":"Caesar (Small)","price":"$7","description":"Romaine hearts, croutons, parmesan, caesar dressing.","tags":["salad"],"upsell":"Sauvignon Blanc."},
+        {"name":"Caesar (Regular)","price":"$10","description":"Romaine hearts, croutons, parmesan, caesar dressing.","tags":["salad"],"upsell":"Sauvignon Blanc."},
+        {"name":"House Salad (Small)","price":"$7","description":"Mixed greens, tomato, almonds, feta, cornbread croutons, house balsamic vinaigrette.","tags":["salad"],"upsell":"Pinot Grigio or Sauvignon Blanc."},
+        {"name":"House Salad (Regular)","price":"$10","description":"Mixed greens, tomato, almonds, feta, cornbread croutons, house balsamic vinaigrette.","tags":["salad"],"upsell":"Pinot Grigio or Sauvignon Blanc."}
+      ]
     },
 
     {
-      "group": "House Wines",
-      "name": "Trinity Oaks Chardonnay",
-      "type": "House Chardonnay",
-      "region": "House",
-      "grape": "Chardonnay",
-      "body": "Medium",
-      "acidity": "Medium",
-      "sweetness": "Dry",
-      "tannin": "",
-      "flavor": "Easy, smooth chardonnay style.",
-      "bestFor": "Guests who want house wine and something simple.",
-      "pitch": "Smooth, simple house Chardonnay — easy with food.",
-      "pairWith": ["Cheese apps", "Pasta", "Chicken"],
-      "avoidIf": "They want crisp/dry like Sauvignon Blanc."
+      "section": "Tavern Fare",
+      "items": [
+        {"name":"deSha’s Fish & Chips (Small)","price":"$17","description":"Panko-breaded Atlantic haddock, fries, coleslaw, tartar sauce.","tags":["seafood","fried"],"upsell":"Prosecco or Sauvignon Blanc (acid cuts fried)."},
+        {"name":"deSha’s Fish & Chips (Regular)","price":"$19.5","description":"Panko-breaded Atlantic haddock, fries, coleslaw, tartar sauce.","tags":["seafood","fried"],"upsell":"Prosecco or Sauvignon Blanc (acid cuts fried)."},
+        {"name":"The Pub Fish & Chips","price":"$21.95","description":"Beer-battered Atlantic haddock, fries, coleslaw, tartar sauce.","tags":["seafood","fried"],"upsell":"Prosecco or Sauvignon Blanc."},
+        {"name":"Blackened Grouper","price":"$27","description":"Angel hair pasta, gorgonzola cream sauce, cherry tomatoes, spinach.","tags":["seafood","spicy","rich"],"upsell":"Rosé or Sauvignon Blanc; Chardonnay if they love creamy."},
+        {"name":"Grilled Salmon (Entrée)","price":"$27","description":"Herbed rice, roasted corn salsa, basil oil.","tags":["seafood","herby"],"upsell":"Sauvignon Blanc or Pinot Noir."},
+        {"name":"Smoked Gouda & Chicken Pasta","price":"$18","description":"Chicken, bacon, broccoli, red pepper, green onion, gouda cream sauce, parmesan, penne.","tags":["rich","cheese"],"upsell":"Chardonnay is the slam dunk."},
+        {"name":"Filet Mignon","price":"$36.5","description":"6 oz. grilled filet, asparagus, mashed red potatoes, garlic butter.","tags":["steak","rich"],"upsell":"Cabernet Sauvignon or Malbec."},
+        {"name":"Prime Rib (10 oz)","price":"$33","description":"Mashed red potatoes, au jus, mushroom caps, creamy horseradish.","tags":["steak","rich"],"upsell":"Cabernet Sauvignon or Malbec."},
+        {"name":"Prime Rib (14 oz)","price":"$37","description":"Mashed red potatoes, au jus, mushroom caps, creamy horseradish.","tags":["steak","rich"],"upsell":"Cabernet Sauvignon or Malbec."}
+      ]
+    },
+
+    {
+      "section": "Southern Favorites",
+      "items": [
+        {"name":"Southern Style Meatloaf","price":"$20","description":"Mashed red potatoes, country green beans, BBQ ketchup.","tags":["bbq","rich"],"upsell":"Zinfandel or Red Blend."},
+        {"name":"Maker’s Mac & Cheese","price":"$17","description":"Maker’s Mark BBQ pulled pork over smoked gouda mac & cheese, green onion.","tags":["bbq","rich","cheese"],"upsell":"Zinfandel or Red Blend; Chardonnay if they want white."},
+        {"name":"Classic Pot Roast","price":"$20","description":"Mashed red potatoes, root vegetables, bordelaise.","tags":["rich"],"upsell":"Cabernet or Red Blend."},
+        {"name":"Kentucky Hot Brown","price":"$16.5","description":"Toasted sourdough, turkey, cheddar, bacon, tomato, cream sauce.","tags":["rich","cheese"],"upsell":"Chardonnay or Pinot Noir."},
+        {"name":"Jambalaya","price":"$25.5","description":"Jumbo shrimp, chicken, andouille sausage, creole rice.","tags":["spicy","seafood"],"upsell":"Riesling or Rosé."},
+        {"name":"Buttermilk Fried Chicken (Small)","price":"$17","description":"Mashed red potatoes, country green beans, bacon pan gravy.","tags":["fried","rich"],"upsell":"Prosecco or Sauvignon Blanc."},
+        {"name":"Buttermilk Fried Chicken (Regular)","price":"$21","description":"Mashed red potatoes, country green beans, bacon pan gravy.","tags":["fried","rich"],"upsell":"Prosecco or Sauvignon Blanc."}
+      ]
+    },
+
+    {
+      "section": "Pick 2 Combos",
+      "items": [
+        {"name":"Pick 2 Combo","price":"$15","description":"Choose two: Sandwich (Grilled 3Cheese on Sourdough / Chicken Salad Sandwich / Open-Faced Tuna Melt), Soup (French Onion / Tomato Basil / Soup of the Day), Garden Quiche (tomato, broccoli, spinach, cheddar), Salad (House or Caesar).","tags":["combo"],"upsell":"Ask if they want a crisp glass of Sauvignon Blanc with it."}
+      ]
+    },
+
+    {
+      "section": "Sandwiches",
+      "items": [
+        {"name":"Crab Cake Sandwich","price":"$18","description":"Lemon garlic aioli, marinated tomatoes, brioche. Served with fries.","tags":["seafood","rich"],"upsell":"Prosecco or Sauvignon Blanc."},
+        {"name":"Pot Roast Melt","price":"$16.5","description":"Swiss & American, caramelized onions, Texas toast, creamy horseradish. Served with fries.","tags":["rich"],"upsell":"Cabernet or Red Blend."},
+        {"name":"Pulled Pork","price":"$15.5","description":"Maker’s Mark BBQ pulled pork, coleslaw, brioche. Served with fries.","tags":["bbq"],"upsell":"Zinfandel or Red Blend."},
+        {"name":"Fish on Rye","price":"$17","description":"Panko-breaded haddock, lettuce, tomato, pickle, tartar sauce, marble rye. Served with fries.","tags":["seafood","fried"],"upsell":"Prosecco or Sauvignon Blanc."},
+        {"name":"Prime Rib Pretzel","price":"$18.5","description":"Green peppers, onions, mozzarella, provolone, au jus. Served with fries.","tags":["steak","rich","cheese"],"upsell":"Cabernet or Malbec."},
+        {"name":"Grilled Salmon Sandwich","price":"$17.5","description":"Basil mayo, lettuce, tomato, pickle, brioche. Served with fries.","tags":["seafood","herby"],"upsell":"Sauvignon Blanc or Pinot Noir."},
+        {"name":"Turkey-Bacon Club","price":"$16.5","description":"Cheddar, lettuce, tomato, basil mayo, focaccia. Served with fries.","tags":["rich"],"upsell":"Chardonnay or Pinot Noir."},
+        {"name":"Nashville Hot Chicken","price":"$16.5","description":"Fried chicken breast, pepper jack, coleslaw, pickles, ciabatta. Served with fries.","tags":["fried","spicy"],"upsell":"Riesling or Moscato; Prosecco also works."},
+        {"name":"The Classic","price":"$16.5","description":"Grilled chicken breast, housemade dry rub, provolone, chipotle aioli, lettuce, tomato, pickle, ciabatta. Served with fries.","tags":["rich","spicy"],"upsell":"Rosé or Sauvignon Blanc."}
+      ]
+    },
+
+    {
+      "section": "Burgers",
+      "items": [
+        {"name":"Meatloaf Down South","price":"$17","description":"House-made meatloaf, Coca-Cola BBQ, pimento cheese, pickles, brioche, sweet potato fries.","tags":["bbq","rich","cheese"],"upsell":"Zinfandel or Red Blend."},
+        {"name":"deSha’s Specialty Burger","price":"$17.5","description":"Grilled onions, mushrooms, bordelaise, swiss cheese, brioche, french fries.","tags":["rich","cheese"],"upsell":"Cabernet or Pinot Noir."},
+        {"name":"The All-American Burger","price":"$16","description":"Lettuce, tomato, pickle, brioche, french fries.","tags":["classic"],"upsell":"Cabernet or Pinot Noir."}
+      ]
+    },
+
+    {
+      "section": "Sides",
+      "items": [
+        {"name":"French Fries","price":"","description":"","tags":["side"]},
+        {"name":"Sweet Potato Fries","price":"","description":"","tags":["side"]},
+        {"name":"Saratoga Chips","price":"","description":"","tags":["side"]},
+        {"name":"Roasted Garlic Potatoes","price":"","description":"","tags":["side"]},
+        {"name":"Mashed Red Potatoes","price":"","description":"","tags":["side"]},
+        {"name":"Gouda Mac & Cheese","price":"","description":"","tags":["side","cheese","rich"]},
+        {"name":"Broccoli","price":"","description":"","tags":["side"]},
+        {"name":"Asparagus","price":"","description":"","tags":["side"]},
+        {"name":"Coleslaw","price":"","description":"","tags":["side"]},
+        {"name":"Herbed Rice","price":"","description":"","tags":["side"]},
+        {"name":"Cornbread","price":"","description":"","tags":["side"]}
+      ]
+    },
+
+    {
+      "section": "Brunch",
+      "items": [
+        {"name":"Traditional Breakfast","price":"$14","description":"Scrambled eggs, bourbon-glazed apples, bacon or sausage, breakfast potatoes, biscuit.","tags":["brunch","classic"],"upsell":"Prosecco (easy brunch win) or Pinot Grigio."},
+        {"name":"Vegetable Quiche","price":"$14","description":"Served with spinach & goat cheese salad, berries, candied pecans, orange cranberry splash dressing.","tags":["brunch","salad","cheese"],"upsell":"Sauvignon Blanc or Rosé."},
+        {"name":"Belgian Waffles","price":"$14","description":"Bourbon apples, strawberries, blueberries, maple syrup, whipped cream, sausage patties.","tags":["brunch","sweet"],"upsell":"Moscato or Prosecco."},
+        {"name":"Chicken & Waffles","price":"$16","description":"Honey butter & maple syrup. Ask for Nashville Hot Chicken if spicy.","tags":["brunch","sweet","fried","spicy"],"upsell":"Prosecco or Riesling."},
+        {"name":"Skillets","price":"$16","description":"Served over breakfast potatoes, topped with 2 fried eggs and a biscuit. Options: Fried Chicken Cheddar (cheese & sausage gravy), Goetta Pepperjack (pico, country gravy), Ham Swiss (cheese, mushrooms, sautéed onions, country gravy).","tags":["brunch","rich"],"upsell":"Chardonnay if they like rich; Sauvignon Blanc if they want crisp."},
+        {"name":"Bourbon Raisin Bread Pudding","price":"$15","description":"Maple syrup, fresh fruit, sausage patties.","tags":["brunch","sweet"],"upsell":"Moscato or Riesling."},
+        {"name":"Breakfast Quesadilla","price":"$14","description":"Ham, potato, mushroom, pepperjack, cheddar, feta, pico, sour cream, guacamole.","tags":["brunch","cheese","rich"],"upsell":"Rosé or Riesling."},
+        {"name":"Goetta Quesadilla","price":"$14","description":"Cheddar, scrambled egg, jalapeño sour cream, green onion.","tags":["brunch","cheese","rich","spicy"],"upsell":"Prosecco or Riesling."},
+        {"name":"Cincinnati Breakfast Sandwich","price":"$15","description":"Goetta, ham, fried egg, cheddar, tomato, toasted sourdough with breakfast potatoes.","tags":["brunch","rich"],"upsell":"Prosecco or Pinot Grigio."},
+        {"name":"Blackened Shrimp Grits","price":"$18","description":"Cheese grits, bacon, sautéed tomatoes, over-easy egg, biscuit.","tags":["brunch","seafood","spicy","rich"],"upsell":"Rosé or Sauvignon Blanc."},
+        {"name":"Biscuit & Three","price":"$14","description":"Choose a trio of sides with a biscuit (cheddar grits, bourbon apples, fresh fruit, biscuits, wheat toast, eggs, sausage gravy, sausage patties, applewood smoked bacon, goetta, grilled ham, breakfast potatoes).","tags":["brunch","build"],"upsell":"Prosecco is the safe default for brunch."},
+        {"name":"Kids Belgian Waffle","price":"$8","description":"With maple syrup and honey butter, choice of bacon or sausage.","tags":["kids","brunch"]},
+        {"name":"Kids Breakfast","price":"$8","description":"Scrambled eggs, fresh fruit, choice of bacon or sausage.","tags":["kids","brunch"]}
+      ]
+    },
+
+    {
+      "section": "Brunch Cocktails",
+      "items": [
+        {"name":"Bubbles & Berries","price":"$12","description":"Prosecco, Chambord, orange juice, berries.","tags":["cocktail","brunch"]},
+        {"name":"Kentucky Peach","price":"$12","description":"Woodford Reserve Bourbon, peach purée, lemon, mint, soda.","tags":["cocktail","brunch"]},
+        {"name":"Espresso Martini (Brunch)","price":"$12","description":"Bacardi Silver Rum, Kahlúa, Frangelico, espresso blend.","tags":["cocktail","brunch"]},
+        {"name":"Mimosas","price":"$10","description":"Traditional, Mango, Peach, or Passionfruit.","tags":["cocktail","brunch"]},
+        {"name":"Loaded Bloody Mary","price":"$12","description":"House-infused pickle vodka, skewer, bacon-salt rim.","tags":["cocktail","brunch"]},
+        {"name":"Nick’s Bloody Mary","price":"$12","description":"Wheatley Vodka, Guinness Stout & 5oz Stella Artois beer back.","tags":["cocktail","brunch"]},
+        {"name":"Bourbon & Bacon","price":"$12","description":"Woodford Reserve Bourbon & bacon strip.","tags":["cocktail","brunch"]}
+      ]
+    },
+
+    {
+      "section": "Happy Hour",
+      "items": [
+        {"name":"Happy Hour","price":"Mon–Fri 3–6PM","description":"$1.50 off Draft Beers, Wines By The Glass, & Signature Cocktails • $7.50 Well Mixed Drinks • $3 add a shot of any of ‘the olds’ to a draft beer","tags":["happyhour"]}
+      ]
+    },
+
+    {
+      "section": "Happy Hour Snacks",
+      "items": [
+        {"name":"BBQ Tavern Crisps","price":"$7.50","description":"Cheddar, red onion, bacon.","tags":["happyhour","cheese","bbq"],"upsell":"Zinfandel or Red Blend."},
+        {"name":"Blue Lightning","price":"$7.50","description":"Blue cheese and bacon dip, served with pretzel crostinis.","tags":["happyhour","cheese","rich"],"upsell":"Chardonnay or Pinot Noir."},
+        {"name":"Buffalo Chicken","price":"$7.50","description":"Boneless chicken tenders tossed in buffalo sauce, blue cheese crumbles, diced celery, ranch.","tags":["happyhour","spicy","fried"],"upsell":"Riesling or Prosecco."},
+        {"name":"Tavern Beer Cheese","price":"$7.50","description":"Served with soft pretzels.","tags":["happyhour","cheese","rich"],"upsell":"Prosecco or Chardonnay."},
+        {"name":"Meatloaf Sliders","price":"$7.50","description":"Two sliders, BBQ ketchup, cheddar, caramelized onions, pickles.","tags":["happyhour","bbq","cheese"],"upsell":"Zinfandel or Red Blend."},
+        {"name":"Pulled Pork Flatbread","price":"$7.50","description":"Maker’s Mark BBQ, onion, provolone & mozzarella, naan bread.","tags":["happyhour","bbq","cheese"],"upsell":"Zinfandel or Red Blend."}
+      ]
+    },
+
+    {
+      "section": "Dessert",
+      "items": [
+        {"name":"Brûléed Cheesecake","price":"","description":"With caramel sauce.","tags":["dessert","sweet"],"upsell":"Moscato."},
+        {"name":"Tavern Hot Apple Pie","price":"","description":"With vanilla bean ice cream, caramel sauce, sugar dust.","tags":["dessert","sweet"],"upsell":"Riesling or Moscato."},
+        {"name":"deSha’s Bread Pudding","price":"","description":"Custard-based bread pudding, whiskey sauce, raisins, vanilla bean ice cream.","tags":["dessert","sweet"],"upsell":"Moscato or Riesling."},
+        {"name":"Deep-Dish Chocolate Chip Cookie","price":"","description":"Warm chocolate chunk cookie, vanilla bean ice cream, caramel, hot fudge.","tags":["dessert","sweet"],"upsell":"Moscato."},
+        {"name":"Crème Brûlée","price":"","description":"Rich vanilla custard with fresh strawberries.","tags":["dessert","sweet"],"upsell":"Prosecco or Moscato."},
+        {"name":"Blackberry Cobbler","price":"","description":"With vanilla bean ice cream, pomegranate sauce.","tags":["dessert","sweet"],"upsell":"Moscato."},
+        {"name":"Brownie Fix","price":"","description":"Hot fudge, vanilla bean ice cream, whipped cream, pecans.","tags":["dessert","sweet"],"upsell":"Moscato."}
+      ]
+    }
+  ],
+
+  "misc": [
+    {
+      "section": "Draft Beer List",
+      "items": [
+        "Belhaven Scottish Ale (Scottish Ale)",
+        "Blue Moon (Witbier)",
+        "Bud Light (Light Lager)",
+        "Guinness Stout (Irish Dry Stout)",
+        "Kentucky Bourbon Barrel Ale (Strong Ale)",
+        "Michelob Ultra (Light Lager)",
+        "Rhinegeist Cincy Light (Light Lager)",
+        "Rhinegeist Truth (India Pale Ale)",
+        "Sam Adams Cold Snap (Witbier)",
+        "Stella Artois (Pale Lager)",
+        "Ask about rotating & seasonal drafts"
+      ]
     },
     {
-      "group": "House Wines",
-      "name": "Trinity Oaks Pinot Noir",
-      "type": "House Pinot Noir",
-      "region": "House",
-      "grape": "Pinot Noir",
-      "body": "Light-Medium",
-      "acidity": "Medium",
-      "sweetness": "Dry",
-      "tannin": "Low",
-      "flavor": "Light red fruit, smooth finish.",
-      "bestFor": "Guests who want a lighter house red.",
-      "pitch": "Smooth, lighter house red — easy to drink.",
-      "pairWith": ["Salmon", "Flatbread", "Turkey items"],
-      "avoidIf": "They want bold reds."
+      "section": "Signature Cocktails & Mules",
+      "items": [
+        "deSha’s Manhattan — Woodford Reserve Bourbon, Carpano Antica Sweet Vermouth, bitters, flamed orange & cherry",
+        "Rye Old Fashioned — Bulleit Rye Whiskey, simple syrup, orange bitters",
+        "Grapefruit & Basil — Ketel One Vodka, grapefruit juice, simple syrup, basil",
+        "Raspberry Mule — house-infused raspberry vodka, lime juice, Crabbie’s Original Alcoholic Ginger Beer",
+        "The Grand Spritz — Aperol, strawberry simple, lemon juice, Grand Marnier, Zardetto Prosecco",
+        "Espresso Martini — Bacardi Silver Rum, espresso blend, Kahlúa, Frangelico",
+        "Rose Lemon Drop — Tanqueray Gin, rose syrup, lemon juice",
+        "Patrón Margarita — Patrón Silver Tequila, agave, lime juice, salt rim (+ mango/peach/strawberry/passionfruit options)",
+        "Custom G&T — choose gin + tonic",
+        "Seasonal Sangria — ask about current selection"
+      ]
     },
     {
-      "group": "House Wines",
-      "name": "Trinity Oaks Merlot",
-      "type": "House Merlot",
-      "region": "House",
-      "grape": "Merlot",
-      "body": "Medium",
-      "acidity": "Medium",
-      "sweetness": "Dry",
-      "tannin": "Medium",
-      "flavor": "Plum and soft dark fruit, easy finish.",
-      "bestFor": "Guests who want soft red without tannin bite.",
-      "pitch": "Soft, smooth house red — easy pick if they don’t want a big cab.",
-      "pairWith": ["Meatloaf", "Pot Roast", "Burgers"],
-      "avoidIf": "They want very bold reds."
+      "section": "Bourbon List",
+      "items": [
+        "Angel’s Envy","Basil Hayden","Buffalo Trace","Bulleit","Elijah Craig","Four Roses Single Barrel","Four Roses Small Batch",
+        "George Remus Small Batch","Jefferson’s Reserve","Knob Creek Small Batch","Maker’s Mark","Maker’s Mark 46",
+        "New Riff Single Barrel","Old Crow","Old Forester","Old Grand Dad","Rabbit Hole Cavehill","Ridgemont Reserve 1792",
+        "Robert James","Russell’s Reserve 10yr","Sycamore Bourbon","Wild Turkey 101","Wild Turkey Rare Breed","Woodford Reserve","Woodford Reserve Double Oaked"
+      ]
     },
     {
-      "group": "House Wines",
-      "name": "Trinity Oaks Cabernet Sauvignon",
-      "type": "House Cabernet Sauvignon",
-      "region": "House",
-      "grape": "Cabernet Sauvignon",
-      "body": "Full",
-      "acidity": "Medium",
-      "sweetness": "Dry",
-      "tannin": "Medium",
-      "flavor": "Dark fruit, simple cab profile.",
-      "bestFor": "Guests who want house cab with steak/meat.",
-      "pitch": "Classic house cab — straightforward and food-friendly.",
-      "pairWith": ["Prime Rib", "Filet", "Burgers"],
-      "avoidIf": "They want light reds."
+      "section": "Whisk(e)y List",
+      "items": [
+        "Rye: Basil Hayden Dark, Bulleit, Knob Creek, Michter’s Single Barrel, Robert James, Woodford Reserve",
+        "North American: American Honey, Gentleman Jack, Jack Daniel’s",
+        "Canadian: Crown Royal, Crown Royal Apple, Seagram’s 7 Crown, Seagram’s VO",
+        "Irish: Bushmills, Jameson, Redbreast 12yr, Tullamore D.E.W.",
+        "Blended Scotch: Chivas 12yr, Dewar’s White Label, Johnnie Walker Black Label",
+        "Single Malt Highland: Dalwhinnie 15yr, Glenmorangie 12yr Quinta Ruban, Glenmorangie 12yr Lasanta, Oban 14yr",
+        "Single Malt Islay: Ardbeg 10yr, Lagavulin 16yr, Laphroaig 10yr",
+        "Single Malt Speyside: Balvenie 12yr DoubleWood, Glenfiddich 12yr, Glenfiddich 15yr, Glenlivet 12yr, Glenlivet 21yr Archive, Macallan 12yr"
+      ]
+    },
+    {
+      "section": "Spirits",
+      "items": [
+        "Tequila: 1800 Silver, Don Julio Añejo, Don Julio Reposado, Don Julio Silver, Patrón Añejo, Patrón Reposado, Patrón Silver, Sauza Silver",
+        "Vodka: Absolut, Absolut Citron, Belvedere, Grey Goose, Ketel One, Tito’s Handmade, Wheatley",
+        "Gin: Beefeater, Bombay, Bombay Sapphire, Hendrick’s, Tanqueray",
+        "Rum: Bacardi Silver, Bacardi Limón, Captain Morgan, Cruzan Light, Malibu, Myers’s Dark",
+        "Cognac: Courvoisier VSOP, Hennessy VS, Paul Masson VS, Rémy Martin VSOP"
+      ]
+    },
+    {
+      "section": "Spirit-Free Mocktails",
+      "items": [
+        "Strawberry Dreams — strawberry simple, cranberry juice, pear nectar, edible glitter",
+        "Mango Tango Fizz — Mango Reàl, honey simple syrup, lime juice, ginger ale, red pepper flakes",
+        "Fallen Nectar — pear nectar, honey simple syrup, lemon juice, muddled orange",
+        "Berrylicious Delight — blueberries, strawberry simple syrup, lime juice, coconut water, soda, mint garnish",
+        "Perrier Mojito — lime juice, lemon juice, simple syrup, mint leaves, Perrier sparkling water"
+      ]
+    },
+    {
+      "section": "Soft Drinks & Bottled",
+      "items": [
+        "Coffee/Tea/Juice: regular & decaf coffee, iced & hot tea, apple, cranberry, grapefruit, orange & pineapple juice",
+        "Soda: Coke, Coke Zero, Diet Coke, Sprite, Fanta Orange, Canada Dry Ginger Ale, Minute Maid Lemonade",
+        "Bottled: IBC Root Beer, Perrier Sparkling Water"
+      ]
     }
   ]
 }
