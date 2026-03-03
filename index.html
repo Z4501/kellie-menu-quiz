@@ -3,1045 +3,645 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Carrabba’s Menu Quiz</title>
+  <title>Desha’s American Tavern — Menu & Wine Trainer</title>
   <style>
     :root{
       --bg:#0b0f0e;
-      --panel:#101816;
+      --panel:#121918;
       --panel2:#0f1413;
-      --text:#e7f0ed;
-      --muted:#97a6a1;
-      --accent:#20c997;
-      --bad:#ff6b6b;
-      --good:#51cf66;
-      --warn:#ffd43b;
-      --line:#1f2b28;
-      --btn:#15211e;
+      --text:#eaf2ef;
+      --muted:#a8b6b0;
+      --accent:#caa34a;
+      --accent2:#7bd7b5;
+      --danger:#ff6b6b;
+      --ok:#7CFF6B;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 18px 40px rgba(0,0,0,.38);
+      --radius:18px;
+      --radius2:12px;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: radial-gradient(1200px 800px at 50% 0%, #0f1b17 0%, var(--bg) 55%, #070a09 100%);
+      background:
+        radial-gradient(1200px 700px at 10% 0%, rgba(202,163,74,.10), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(123,215,181,.10), transparent 60%),
+        var(--bg);
       color:var(--text);
-      padding:14px;
     }
-    .wrap{max-width:980px;margin:0 auto}
-    .top{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-      padding:10px 12px;margin-bottom:12px;border:1px solid var(--line);
-      background: linear-gradient(180deg, #0f1715, #0b1110);
-      border-radius:14px;
+    .wrap{max-width:1100px;margin:0 auto;padding:20px}
+    header{
+      display:flex; gap:14px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;
+      margin-bottom:14px;
     }
-    .brand{display:flex;flex-direction:column;gap:2px;line-height:1.1;}
-    .brand b{font-size:15px}
-    .brand span{font-size:12px;color:var(--muted)}
-    .status{
-      font-size:12px;color:var(--muted);
-      display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end;
-    }
+    .title{display:flex; flex-direction:column; gap:6px}
+    h1{margin:0;font-size:22px; letter-spacing:.2px}
+    .sub{color:var(--muted); font-size:13px; line-height:1.35; max-width:820px}
+    .pillbar{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
     .pill{
-      padding:4px 8px;border:1px solid var(--line);border-radius:999px;
-      background: rgba(255,255,255,0.03);
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      padding:9px 12px; border-radius:999px;
+      font-size:13px; color:var(--muted);
+      box-shadow: 0 8px 18px rgba(0,0,0,.25);
+      user-select:none;
     }
-    .grid{display:grid;grid-template-columns: 1fr;gap:12px;}
-    @media (min-width: 860px){ .grid{grid-template-columns: 380px 1fr;} }
-    .card{
-      border:1px solid var(--line);
-      border-radius:16px;
-      background: linear-gradient(180deg, var(--panel), var(--panel2));
+    .pill strong{color:var(--text)}
+    .grid{display:grid; grid-template-columns: 1.25fr .75fr; gap:14px}
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
+
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panelHead{
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
       padding:14px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      border-bottom:1px solid var(--border);
+      background: rgba(0,0,0,.22);
     }
-    h2{margin:0 0 8px 0;font-size:16px}
-    .muted{color:var(--muted);font-size:12px}
-    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    button{
-      border:1px solid var(--line);
-      background: var(--btn);
-      color: var(--text);
+    .panelHead h2{margin:0;font-size:16px; letter-spacing:.2px}
+    .panelBody{padding:14px}
+    .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    button, select, input{
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.25);
+      color:var(--text);
       padding:10px 12px;
-      border-radius:12px;
-      font-weight:600;
-      cursor:pointer;
+      border-radius: 12px;
+      font-size:14px;
+      outline:none;
+    }
+    button{cursor:pointer}
+    button:hover{border-color: rgba(202,163,74,.45)}
+    .btnAccent{
+      background: linear-gradient(180deg, rgba(202,163,74,.25), rgba(202,163,74,.12));
+      border-color: rgba(202,163,74,.45);
+    }
+    .btnGhost{
+      background: rgba(255,255,255,.03);
+    }
+    .btnDanger{
+      background: linear-gradient(180deg, rgba(255,107,107,.20), rgba(255,107,107,.10));
+      border-color: rgba(255,107,107,.40);
+    }
+    .muted{color:var(--muted)}
+    .divider{height:1px;background:var(--border);margin:12px 0}
+    .card{
+      background: rgba(0,0,0,.24);
+      border:1px solid var(--border);
+      border-radius: var(--radius2);
+      padding:12px;
+    }
+    .big{
+      font-size:20px; margin:0 0 6px 0; letter-spacing:.2px
+    }
+    .desc{margin:0; color:var(--muted); line-height:1.45}
+    .tagRow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .tag{
+      font-size:12px;
+      padding:6px 9px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+    }
+    .tag.good{border-color: rgba(123,215,181,.35); color: rgba(185,255,232,.9)}
+    .tag.warn{border-color: rgba(202,163,74,.4); color: rgba(255,228,170,.92)}
+    .tag.bad{border-color: rgba(255,107,107,.35); color: rgba(255,180,180,.95)}
+    .twoCol{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    @media (max-width: 600px){ .twoCol{grid-template-columns:1fr} }
+    details{border:1px solid var(--border); border-radius: 14px; background: rgba(0,0,0,.20); padding:10px}
+    summary{cursor:pointer; color:var(--text); font-weight:650}
+    .k{color:var(--accent); font-weight:700}
+    .small{font-size:12px}
+    .list{margin:8px 0 0 18px; color:var(--muted); line-height:1.45}
+    .note{
+      border-left:3px solid rgba(202,163,74,.55);
+      padding:8px 10px;
+      background: rgba(202,163,74,.06);
+      border-radius: 10px;
+      color: var(--muted);
       font-size:13px;
     }
-    button.primary{border-color:#1d3f36;background:#0f2a24}
-    button.danger{border-color:#4b1f24;background:#261014}
-    button:disabled{opacity:.5;cursor:not-allowed}
-
-    .qhead{
-      display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
-      margin-bottom:10px;
+    .qPrompt{
+      font-size:13px; color:var(--muted); margin:0 0 8px 0
     }
-    .qtype{font-size:12px;color:var(--muted)}
-    .prompt{
-      border:1px solid var(--line);
-      background: rgba(0,0,0,0.22);
-      border-radius:14px;
-      padding:12px;
-      margin-bottom:12px;
-      white-space:pre-wrap;
-    }
-    .opts{display:grid;gap:10px}
-    .opt{
-      text-align:left;
-      width:100%;
-      padding:12px;
-      border-radius:14px;
-      background: rgba(255,255,255,0.03);
-      border:1px solid var(--line);
-      color: var(--text);
-      font-weight:600;
-      line-height:1.25;
-    }
-    .opt.correct{border-color: rgba(81,207,102,.55); box-shadow: 0 0 0 2px rgba(81,207,102,.15) inset;}
-    .opt.wrong{border-color: rgba(255,107,107,.55); box-shadow: 0 0 0 2px rgba(255,107,107,.12) inset;}
-
-    .footerline{
-      margin-top:12px;
-      padding-top:10px;
-      border-top:1px solid var(--line);
-      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
-      color:var(--muted);font-size:12px;
-    }
-    .review{margin-top:10px;display:grid;gap:10px;}
-    .row{
-      border:1px solid var(--line);
-      background: rgba(0,0,0,0.18);
-      border-radius:14px;
-      padding:10px 12px;
-    }
-    .row b{display:block;margin-bottom:4px}
-
-    /* Mode UI */
-    .modewrap{margin-top:12px}
-    .modes{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
-    .modebtn{
-      padding:8px 10px;border-radius:999px;border:1px solid var(--line);
-      background: rgba(255,255,255,0.03); color: var(--muted);
-      font-weight:700;font-size:12px;cursor:pointer;user-select:none;
-    }
-    .modebtn.active{
-      border-color: rgba(32,201,151,.45);
-      background: rgba(32,201,151,.12);
+    .answerBox{
+      display:none;
+      margin-top:10px;
+      padding:10px;
+      border-radius: 12px;
+      border:1px solid rgba(123,215,181,.35);
+      background: rgba(123,215,181,.06);
       color: var(--text);
     }
-    .tinyrow{
-      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
-      margin-top:10px;color:var(--muted);font-size:12px;
-    }
-
-    /* Timer bar (Timed mode) */
-    .tbar{
-      margin:8px 0 12px 0;height:8px;border-radius:999px;border:1px solid var(--line);
-      background: rgba(255,255,255,0.05);overflow:hidden;display:none;
-    }
-    .tbar.show{display:block;}
-    .tfill{
-      height:100%;width:100%;transform-origin:left center;transform:scaleX(1);
-      background: rgba(255,212,59,.8);
+    .answerBox.show{display:block}
+    .footer{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+      opacity:.9;
     }
   </style>
 </head>
-
 <body>
   <div class="wrap">
-    <div class="top">
-      <div class="brand">
-        <b>Carrabba’s Menu Quiz</b>
-        <span>mobile • randomized • graded</span>
+    <header>
+      <div class="title">
+        <h1>Desha’s American Tavern — Menu & Wine Trainer</h1>
+        <div class="sub">
+          TARS Mode: efficient, calm, and table-proof. Train <strong>menu mastery</strong>, <strong>wine intelligence</strong>, and <strong>pairings</strong> without sounding rehearsed.
+        </div>
       </div>
-      <div class="status">
-        <span class="pill" id="loadedPill">Loading…</span>
-        <span class="pill" id="seenPill">Seen: 0</span>
-        <span class="pill" id="modePill">Mode: Ready</span>
+      <div class="pillbar">
+        <div class="pill"><strong>Modes:</strong> Menu • Wine • Pairing • Safe</div>
+        <div class="pill"><strong>Goal:</strong> confident selling + don’t look dumb</div>
       </div>
-    </div>
+    </header>
 
     <div class="grid">
-      <div class="card">
-        <h2>Controls</h2>
-        <div class="muted">
-          Retention + real-world pressure tests. Pick a mode, then run 10 or 20.
-        </div>
+      <!-- LEFT: TRAINING -->
+      <div class="panel">
+        <div class="panelHead">
+          <h2>Training Console</h2>
+          <div class="row">
+            <select id="mode">
+              <option value="menu">Menu Quiz</option>
+              <option value="wine">Wine Learning</option>
+              <option value="pair">Meal Pairing Trainer</option>
+              <option value="safe">Safe Mode</option>
+            </select>
 
-        <div class="modewrap">
-          <div class="muted">Modes</div>
-          <div class="modes" id="modes"></div>
+            <select id="sectionSelect"></select>
 
-          <div class="tinyrow">
-            <span id="poolInfo">Pool: …</span>
-            <span id="modeHelp">—</span>
+            <button class="btnAccent" id="nextBtn">Next</button>
+            <button class="btnGhost" id="revealBtn">Reveal</button>
+            <button class="btnDanger" id="resetBtn">Reset</button>
           </div>
         </div>
 
-        <div class="btnrow">
-          <button class="primary" id="start20">Start 20-Question Quiz</button>
-          <button class="primary" id="start10">Practice Mode (10)</button>
-          <button class="danger" id="reset">Reset History</button>
-        </div>
-
-        <div class="footerline">
-          <span id="timerInfo">Timed: 15s/question (Timed mode only)</span>
-          <span class="muted">No prices. Just performance.</span>
+        <div class="panelBody">
+          <div id="stage"></div>
         </div>
       </div>
 
-      <div class="card" id="stageCard">
-        <div id="stage">
-          <h2>Ready</h2>
-          <div class="muted">Pick a mode, then tap a button on the left.</div>
+      <!-- RIGHT: QUICK REFERENCE -->
+      <div class="panel">
+        <div class="panelHead">
+          <h2>Quick Reference</h2>
+          <div class="row">
+            <input id="search" placeholder="Search menu / wines (type & hit enter)" style="min-width:260px" />
+            <button id="searchBtn" class="btnGhost">Search</button>
+          </div>
         </div>
+        <div class="panelBody" id="ref"></div>
       </div>
     </div>
+
+    <div class="footer">Built for fast reps. If she can explain it simply, she owns it.</div>
   </div>
 
 <script>
-(() => {
-  const LS_SEEN = "kmq_seen_ids_v1";
-  const LS_MODE = "kmq_mode_v2";
-
-  const $ = (id) => document.getElementById(id);
-
-  const loadedPill = $("loadedPill");
-  const seenPill = $("seenPill");
-  const modePill = $("modePill");
-  const poolInfo = $("poolInfo");
-  const modeHelp = $("modeHelp");
-
-  const start20 = $("start20");
-  const start10 = $("start10");
-  const resetBtn = $("reset");
-  const stage = $("stage");
-  const modesEl = $("modes");
-
-  // Modes (now includes Wine Learn + Wine Pairing)
-  const MODES = [
-    { id:"mixed",     label:"Mixed",       help:"Random: description↔name. Original behavior." },
-    { id:"classic",   label:"Classic",     help:"Description → pick the dish name." },
-    { id:"reverse",   label:"Reverse",     help:"Dish name → pick the description." },
-    { id:"timed",     label:"Timed",       help:"Mixed, but 15s/question. Timeout = wrong." },
-    { id:"allergy",   label:"Allergy",     help:"Pick safest item for restriction. Uses heuristics." },
-
-    // Wine training
-    { id:"winelearn", label:"Wine Learn",  help:"Learn each wine: profile + how to describe it (pulls from WINE - TRAINING)." },
-    { id:"winepair",  label:"Wine Pairing",help:"Guest order/scenario → pick best wine from OUR list. Explains why + gives a server line." },
-
-    // Existing upsell/sim (kept)
-    { id:"upsell",    label:"Upsell",      help:"Dish → pick best wine. Prefers training data if present." },
-    { id:"sim",       label:"Sim",         help:"Table constraint scenario → best recommendation." }
-  ];
-
-  let mode = loadMode();
-  let pool = [];
-  let foodPool = [];
-  let winePool = [];
-  let wineTraining = []; // WINE - TRAINING entries (same schema: name/description)
-  let seen = new Set();
-  let quiz = null;
-
-  // timed mode state
-  const TIMED_MS = 15000;
-  let timerHandle = null;
-  let timerStart = 0;
-
-  function idFor(item){
-    return (item.section + "|" + item.name).toLowerCase().replace(/\s+/g," ").trim();
-  }
-
-  function loadSeen(){
-    try{
-      const raw = localStorage.getItem(LS_SEEN);
-      if(!raw) return new Set();
-      const arr = JSON.parse(raw);
-      return new Set(Array.isArray(arr) ? arr : []);
-    }catch{
-      return new Set();
-    }
-  }
-
-  function saveSeen(){
-    localStorage.setItem(LS_SEEN, JSON.stringify([...seen]));
-    updateSeenUI();
-  }
-
-  function updateSeenUI(){
-    seenPill.textContent = `Seen: ${seen.size}`;
-  }
-
-  function loadMode(){
-    const raw = localStorage.getItem(LS_MODE);
-    const valid = MODES.some(m => m.id === raw);
-    return valid ? raw : "mixed";
-  }
-
-  function saveMode(){
-    localStorage.setItem(LS_MODE, mode);
-  }
-
-  function setMode(newMode){
-    mode = newMode;
-    saveMode();
-    renderModes();
-    modePill.textContent = quiz ? `Mode: ${MODES.find(m=>m.id===mode)?.label || mode}` : "Mode: Ready";
-  }
-
-  function renderModes(){
-    modesEl.innerHTML = MODES.map(m => {
-      const active = m.id === mode ? "active" : "";
-      return `<span class="modebtn ${active}" data-mode="${m.id}">${m.label}</span>`;
-    }).join("");
-
-    const m = MODES.find(x => x.id === mode);
-    modeHelp.textContent = m ? m.help : "—";
-
-    modesEl.querySelectorAll(".modebtn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const m = btn.getAttribute("data-mode");
-        setMode(m);
-        renderReady();
-      });
-    });
-  }
-
-  function shuffle(a){
-    for(let i=a.length-1;i>0;i--){
-      const j = Math.floor(Math.random()*(i+1));
-      [a[i],a[j]]=[a[j],a[i]];
-    }
-    return a;
-  }
-
-  function sample(arr, n){
-    const copy = arr.slice();
-    shuffle(copy);
-    return copy.slice(0,n);
-  }
-
-  function pickNextItems(basePool, count){
-    const unseen = basePool.filter(x => !seen.has(x.id));
-    let chosen = [];
-    if(unseen.length >= count){
-      chosen = sample(unseen, count);
-    } else {
-      const needed = count - unseen.length;
-      const rest = basePool.filter(x => !unseen.includes(x));
-      chosen = unseen.concat(sample(rest, needed));
-    }
-    return chosen;
-  }
-
-  function renderReady(){
-    stopTimer();
-    modePill.textContent = "Mode: Ready";
-    stage.innerHTML = `
-      <h2>Ready</h2>
-      <div class="muted">Pick a mode, then tap a button on the left.</div>
-    `;
-  }
-
-  function startQuiz(count){
-    stopTimer();
-
-    let basePool = pool;
-
-    // Wine Learn uses the training pool (not the wine list itself)
-    if (mode === "winelearn") basePool = wineTraining.length ? wineTraining : winePool;
-
-    // Wine Pairing uses food items (questions are dishes/scenarios, answers are wines)
-    if (mode === "winepair") basePool = foodPool;
-
-    // Upsell / Allergy / Sim behavior
-    if (mode === "upsell" || mode === "allergy" || mode === "sim") basePool = foodPool;
-
-    const items = pickNextItems(basePool, count);
-
-    quiz = {
-      total: count,
-      index: 0,
-      correct: 0,
-      items,
-      results: []
-    };
-
-    modePill.textContent = `Mode: ${MODES.find(m=>m.id===mode)?.label || mode} • ${count}Q`;
-    showQuestion();
-  }
-
-  // ---------- Helpers ----------
-  function norm(s){ return String(s||"").toLowerCase(); }
-
-  function parseTagged(desc){
-    // Expected tags inside training descriptions:
-    // PROFILE: ... | PAIRS: ... | WHY: ... | LINE: ...
-    const raw = String(desc||"");
-    const grab = (tag) => {
-      const re = new RegExp(tag + "\\s*:\\s*([\\s\\S]*?)(?=\\n[A-Z]+\\s*:|\\|\\s*[A-Z]+\\s*:|$)", "i");
-      const m = raw.match(re);
-      return m ? m[1].trim() : "";
-    };
-
-    // Also support " | " delims
-    const parts = { PROFILE:"", PAIRS:"", WHY:"", LINE:"" };
-    const pipeSplit = raw.split("|").map(x=>x.trim());
-    for (const p of pipeSplit){
-      const up = p.toUpperCase();
-      if (up.startsWith("PROFILE:")) parts.PROFILE = p.slice(8).trim();
-      if (up.startsWith("PAIRS:"))   parts.PAIRS   = p.slice(6).trim();
-      if (up.startsWith("WHY:"))     parts.WHY     = p.slice(4).trim();
-      if (up.startsWith("LINE:"))    parts.LINE    = p.slice(5).trim();
-    }
-
-    // If not pipe-tagged, try newline-tagged
-    if (!parts.PROFILE) parts.PROFILE = grab("PROFILE");
-    if (!parts.PAIRS)   parts.PAIRS   = grab("PAIRS");
-    if (!parts.WHY)     parts.WHY     = grab("WHY");
-    if (!parts.LINE)    parts.LINE    = grab("LINE");
-
-    return parts;
-  }
-
-  function wineStyleFromName(wineName){
-    const t = norm(wineName);
-    if (t.includes("cabernet") || t.includes("chianti") || t.includes("merlot") || t.includes("malbec") || t.includes("red blend") || t.includes("pinot noir") || t.includes("super tuscan")) return "red";
-    if (t.includes("chardonnay") || t.includes("sauvignon") || t.includes("pinot grigio") || t.includes("riesling") || t.includes("moscato") || t.includes("rosé") || t.includes("rose") || t.includes("bianco")) return "white";
-    if (t.includes("prosecco") || t.includes("champagne") || t.includes("brut") || t.includes("bubbly")) return "bubbly";
-    return "unknown";
-  }
-
-  function inferTags(it){
-    const t = norm(it.name + " " + it.description + " " + it.section);
-    const tags = new Set();
-    if (t.includes("shrimp") || t.includes("scallop") || t.includes("crab") || t.includes("lobster") || t.includes("salmon") || t.includes("trout")) tags.add("seafood");
-    if (t.includes("sirloin") || t.includes("ribeye") || t.includes("filet") || t.includes("steak")) tags.add("beef");
-    if (t.includes("pork")) tags.add("pork");
-    if (t.includes("chicken")) tags.add("chicken");
-    if (t.includes("alfredo") || t.includes("cream") || t.includes("butter") || t.includes("ricotta") || t.includes("mozzarella") || t.includes("parmesan")) tags.add("creamy");
-    if (t.includes("spicy") || t.includes("ardente") || t.includes("pepper")) tags.add("spicy");
-    if (t.includes("tomato") || t.includes("pomodoro") || t.includes("marinara")) tags.add("tomato");
-    if (t.includes("grilled") || t.includes("wood-grilled")) tags.add("grilled");
-    return [...tags];
-  }
-
-  function inferAllergens(it){
-    const t = norm(it.name + " " + it.description);
-    const out = new Set();
-    const dairy = ["cheese","mozzarella","parmesan","romano","ricotta","cream","alfredo","butter","burrata","aioli","mascarpone","goat cheese","fontina"];
-    const gluten = ["bread","breadcrumbs","crouton","pasta","fettuccine","lasagne","spaghetti","linguine","rigatoni","ravioli","flour","cake","lady fingers"];
-    const shellfish = ["shrimp","crab","lobster","scallop","shellfish"];
-    const nuts = ["pistachio","pecan","walnut","almond","nut"];
-
-    if (dairy.some(w=>t.includes(w))) out.add("dairy");
-    if (gluten.some(w=>t.includes(w))) out.add("gluten");
-    if (shellfish.some(w=>t.includes(w))) out.add("shellfish");
-    if (nuts.some(w=>t.includes(w))) out.add("nuts");
-    return [...out];
-  }
-
-  // ---------- Question Builders ----------
-  function makeBaseMC(options, correctId){
-    const opts = shuffle(options).map(x => ({
-      label: x.label,
-      isCorrect: x.id === correctId
-    }));
-    return opts;
-  }
-
-  function makeMixedQuestion(item){
-    const dir = Math.random() < 0.5 ? "DESC_TO_NAME" : "NAME_TO_DESC";
-    return (dir === "DESC_TO_NAME") ? makeClassicQuestion(item) : makeReverseQuestion(item);
-  }
-
-  function makeClassicQuestion(item){
-    const distractors = foodPool.length ? foodPool : pool;
-    const wrongs = sample(distractors.filter(x => x.id !== item.id), 3);
-
-    const options = makeBaseMC(
-      [ {id:item.id, label:item.name},
-        ...wrongs.map(x => ({id:x.id, label:x.name})) ],
-      item.id
-    );
-
-    return {
-      type: "Classic: What dish is this?",
-      prompt: item.description,
-      section: item.section,
-      options,
-      correctLabel: item.name,
-      explain: `Menu match: the correct dish name is the one that matches this exact description.`
-    };
-  }
-
-  function makeReverseQuestion(item){
-    const distractors = foodPool.length ? foodPool : pool;
-    const wrongs = sample(distractors.filter(x => x.id !== item.id), 3);
-
-    const options = makeBaseMC(
-      [ {id:item.id, label:item.description},
-        ...wrongs.map(x => ({id:x.id, label:x.description})) ],
-      item.id
-    );
-
-    return {
-      type: "Reverse: What is it?",
-      prompt: item.name,
-      section: item.section,
-      options,
-      correctLabel: item.description,
-      explain: `Menu match: the correct description is the one tied to "${item.name}".`
-    };
-  }
-
-  function makeAllergyQuestion(){
-    const allergyTypes = ["dairy","gluten","shellfish","nuts"];
-    const allergy = allergyTypes[Math.floor(Math.random()*allergyTypes.length)];
-    const candidates = sample(foodPool, Math.min(18, foodPool.length));
-    if (!candidates.length) return makeClassicQuestion(foodPool[0]);
-
-    const safe = candidates.filter(x => !inferAllergens(x).includes(allergy));
-    const risky = candidates.filter(x => inferAllergens(x).includes(allergy));
-
-    const correct = safe.length ? safe[Math.floor(Math.random()*safe.length)] : candidates[0];
-    const wrongs = sample((risky.length ? risky : candidates).filter(x => x.id !== correct.id), 3);
-
-    const options = makeBaseMC(
-      [ {id:correct.id, label:correct.name},
-        ...wrongs.map(x => ({id:x.id, label:x.name})) ],
-      correct.id
-    );
-
-    return {
-      type: `Allergy: Guest cannot have ${allergy}. Safest choice?`,
-      prompt: "Pick the item most likely to avoid the restriction (heuristics based on description).",
-      section: "ALLERGY MODE",
-      options,
-      correctLabel: correct.name,
-      explain: `Heuristic allergens for correct choice: [${inferAllergens(correct).join(", ") || "none"}].`
-    };
-  }
-
-  function pickWineByTraining(dish){
-    // Use wineTraining "PAIRS:" text if we can.
-    // If a training entry explicitly mentions the dish name, that's the winner.
-    const dn = norm(dish.name);
-    const hits = wineTraining.map(w => {
-      const t = parseTagged(w.description || "");
-      const pairs = norm(t.PAIRS);
-      let score = 0;
-      if (pairs.includes(dn)) score += 10; // direct mention
-      // category matching
-      const tags = inferTags(dish);
-      if (tags.includes("seafood") && pairs.includes("seafood")) score += 4;
-      if (tags.includes("beef") && (pairs.includes("steak") || pairs.includes("beef"))) score += 4;
-      if (tags.includes("pork") && pairs.includes("pork")) score += 3;
-      if (tags.includes("chicken") && pairs.includes("chicken")) score += 3;
-      if (tags.includes("creamy") && (pairs.includes("cream") || pairs.includes("alfredo") || pairs.includes("rich"))) score += 3;
-      if (tags.includes("tomato") && pairs.includes("tomato")) score += 2;
-      if (tags.includes("spicy") && pairs.includes("spicy")) score += 2;
-      return { w, score, t };
-    }).sort((a,b)=>b.score-a.score);
-
-    if (hits.length && hits[0].score > 0) return hits[0];
-    return null;
-  }
-
-  function chooseWineHeuristic(dish){
-    if (!winePool.length) return null;
-    const tags = inferTags(dish);
-
-    let desired = "red";
-    if (tags.includes("seafood")) desired = "white";
-    if (tags.includes("creamy")) desired = "white";
-    if (tags.includes("spicy")) desired = "white";
-    if (tags.includes("beef") || tags.includes("pork")) desired = "red";
-
-    const matches = winePool.filter(w => wineStyleFromName(w.name) === desired);
-    const pickFrom = matches.length ? matches : winePool;
-    return pickFrom[Math.floor(Math.random()*pickFrom.length)];
-  }
-
-  function makeUpsellQuestion(item){
-    const dish = item;
-
-    // Prefer training mapping if present
-    const trained = wineTraining.length ? pickWineByTraining(dish) : null;
-    const correctWine = trained ? trained.w : chooseWineHeuristic(dish);
-
-    if (!correctWine){
-      return {
-        type: "Upsell: Wine Pairing",
-        prompt: `No wine list found.`,
-        section: "UPSELL MODE",
-        options: makeBaseMC(
-          [ {id:dish.id,label:dish.name},
-            ...sample(foodPool.filter(x=>x.id!==dish.id),3).map(x=>({id:x.id,label:x.name})) ],
-          dish.id
-        ),
-        correctLabel: dish.name,
-        explain: "Add WINE sections to menu.json."
-      };
-    }
-
-    const wrongs = sample(winePool.filter(w => w.id !== correctWine.id), 3);
-    const options = makeBaseMC(
-      [ {id:correctWine.id, label:correctWine.name},
-        ...wrongs.map(w => ({id:w.id, label:w.name})) ],
-      correctWine.id
-    );
-
-    const t = trained ? parseTagged(trained.w.description || "") : null;
-    const why = trained ? (t.WHY || "Chosen using restaurant-style pairing logic.") : "Chosen using pairing heuristics (protein/sauce/weight).";
-    const line = trained ? (t.LINE || "") : "";
-
-    return {
-      type: `Upsell: Best wine with "${dish.name}"?`,
-      prompt: "Pick the best wine suggestion for this order.",
-      section: dish.section,
-      options,
-      correctLabel: correctWine.name,
-      explain: `${why}${line ? " — " + line : ""}`
-    };
-  }
-
-  function makeWineLearnQuestion(item){
-    // item is a wineTraining entry (or winePool fallback)
-    // We’ll quiz both directions: profile->wine or wine->profile
-    const isTraining = !!(item.section && norm(item.section).includes("wine - training"));
-    const desc = item.description || "";
-    const tags = parseTagged(desc);
-
-    const profileText = (isTraining && (tags.PROFILE || tags.PAIRS || tags.WHY || tags.LINE))
-      ? [
-          tags.PROFILE ? ("PROFILE: " + tags.PROFILE) : "",
-          tags.PAIRS ? ("PAIRS: " + tags.PAIRS) : "",
-          tags.WHY ? ("WHY: " + tags.WHY) : "",
-          tags.LINE ? ("LINE: " + tags.LINE) : ""
-        ].filter(Boolean).join("\n")
-      : desc;
-
-    const dir = Math.random() < 0.5 ? "PROFILE_TO_WINE" : "WINE_TO_PROFILE";
-    const distractors = wineTraining.length ? wineTraining : winePool;
-    const wrongs = sample(distractors.filter(x => x.id !== item.id), 3);
-
-    if (dir === "PROFILE_TO_WINE"){
-      const options = makeBaseMC(
-        [ {id:item.id, label:item.name},
-          ...wrongs.map(w => ({id:w.id, label:w.name})) ],
-        item.id
-      );
-
-      return {
-        type: "Wine Learn: Which wine is this?",
-        prompt: profileText,
-        section: item.section || "WINE",
-        options,
-        correctLabel: item.name,
-        explain: tags.LINE ? `Use this at the table: "${tags.LINE}"` : "Match profile + pairing to the correct wine name."
-      };
-    } else {
-      const options = makeBaseMC(
-        [ {id:item.id, label:profileText},
-          ...wrongs.map(w => {
-            const t = parseTagged(w.description||"");
-            const pt = [
-              t.PROFILE ? ("PROFILE: " + t.PROFILE) : (w.description||""),
-              t.PAIRS ? ("PAIRS: " + t.PAIRS) : "",
-              t.LINE ? ("LINE: " + t.LINE) : ""
-            ].filter(Boolean).join("\n");
-            return {id:w.id, label:pt};
-          }) ],
-        item.id
-      );
-
-      return {
-        type: "Wine Learn: Describe it",
-        prompt: item.name,
-        section: item.section || "WINE",
-        options,
-        correctLabel: profileText,
-        explain: tags.WHY ? tags.WHY : "This builds confident table talk: profile + pairing + a clean one-liner."
-      };
-    }
-  }
-
-  function makeWinePairQuestion(dish){
-    // Scenario-based: prompt is dish + guest preference, answers are wine names.
-    const scenarios = [
-      { id:"bright", text:"Guest wants something crisp & refreshing.", want:["white","bubbly"] },
-      { id:"bold", text:"Guest wants a bold red that can stand up to the grill.", want:["red"] },
-      { id:"sweet", text:"Guest prefers slightly sweet / easy drinking.", want:["white"] },
-      { id:"celebrate", text:"Celebration table — start with bubbles.", want:["bubbly"] },
-      { id:"rich", text:"Guest wants something smooth for a rich/creamy sauce.", want:["white","red"] }
-    ];
-    const sc = scenarios[Math.floor(Math.random()*scenarios.length)];
-
-    // Prefer training match
-    const trained = wineTraining.length ? pickWineByTraining(dish) : null;
-    let correctWine = trained ? trained.w : null;
-
-    // If no trained match, pick from style + dish tags
-    if (!correctWine){
-      const tags = inferTags(dish);
-      let desired = "red";
-      if (tags.includes("seafood") || tags.includes("creamy") || tags.includes("tomato")) desired = "white";
-      if (tags.includes("beef") || tags.includes("pork")) desired = "red";
-      if (sc.want.includes("bubbly")) desired = "bubbly";
-
-      const matches = winePool.filter(w => wineStyleFromName(w.name) === desired);
-      correctWine = (matches.length ? matches : winePool)[0] || null;
-      if (matches.length) correctWine = matches[Math.floor(Math.random()*matches.length)];
-    }
-
-    if (!correctWine){
-      return makeClassicQuestion(dish);
-    }
-
-    // Options are wines
-    const wrongs = sample(winePool.filter(w => w.id !== correctWine.id), 3);
-    const options = makeBaseMC(
-      [ {id:correctWine.id, label:correctWine.name},
-        ...wrongs.map(w => ({id:w.id, label:w.name})) ],
-      correctWine.id
-    );
-
-    const t = trained ? parseTagged(trained.w.description||"") : {WHY:"",LINE:""};
-    const why = trained ? (t.WHY || "Chosen from training pairings.") : "Chosen using dish weight + sauce + guest preference.";
-    const line = trained ? (t.LINE || "") : "";
-
-    return {
-      type: "Wine Pairing: Pick the best wine",
-      prompt: `Order: ${dish.name}\n${sc.text}`,
-      section: dish.section,
-      options,
-      correctLabel: correctWine.name,
-      explain: `${why}${line ? " — " + line : ""}`
-    };
-  }
-
-  function makeSimQuestion(){
-    const scenarios = [
-      { text:"Table: gluten-free guest", avoid:["gluten"], want:[] },
-      { text:"Table: dairy allergy", avoid:["dairy"], want:[] },
-      { text:"Table: seafood lover (no shellfish)", avoid:["shellfish"], want:["seafood"] },
-      { text:"Table: wants something spicy", avoid:[], want:["spicy"] }
-    ];
-    const sc = scenarios[Math.floor(Math.random()*scenarios.length)];
-
-    const scored = foodPool.map(d => {
-      const alls = inferAllergens(d);
-      const tags = inferTags(d);
-      let score = 0;
-      for (const a of sc.avoid) score += alls.includes(a) ? -4 : +1;
-      for (const w of sc.want) score += tags.includes(w) ? +3 : 0;
-      return { d, score, alls, tags };
-    }).sort((a,b)=>b.score-a.score);
-
-    const best = scored[0]?.d;
-    if (!best) return null;
-
-    const distractors = sample(scored.slice(1, 20).map(x=>x.d).filter(x=>x.id!==best.id), 3);
-
-    const options = makeBaseMC(
-      [ {id:best.id, label:best.name},
-        ...distractors.map(x => ({id:x.id, label:x.name})) ],
-      best.id
-    );
-
-    return {
-      type: `Simulation: ${sc.text}`,
-      prompt: "Pick the best recommendation given the constraint(s).",
-      section: "SIM MODE",
-      options,
-      correctLabel: best.name,
-      explain: `Tags: [${inferTags(best).join(", ")||"none"}] • Allergens: [${inferAllergens(best).join(", ")||"none"}]`
-    };
-  }
-
-  function makeQuestion(item){
-    switch(mode){
-      case "mixed":     return makeMixedQuestion(item);
-      case "classic":   return makeClassicQuestion(item);
-      case "reverse":   return makeReverseQuestion(item);
-      case "timed":     return makeMixedQuestion(item);
-      case "allergy":   return makeAllergyQuestion();
-      case "winelearn": return makeWineLearnQuestion(item);
-      case "winepair":  return makeWinePairQuestion(item);
-      case "upsell":    return makeUpsellQuestion(item);
-      case "sim": {
-        const q = makeSimQuestion();
-        return q || makeClassicQuestion(item);
+  const state = {
+    menu: null,
+    wines: null,
+    flatMenuItems: [],
+    flatWineItems: [],
+    history: new Set(),
+    last: null
+  };
+
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return (s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
+
+  async function loadAll(){
+    const [menuRes, wineRes] = await Promise.all([
+      fetch('./menu.json', {cache:'no-store'}),
+      fetch('./wines.json', {cache:'no-store'})
+    ]);
+    state.menu = await menuRes.json();
+    state.wines = await wineRes.json();
+
+    // Flatten menu items
+    state.flatMenuItems = [];
+    for (const sec of state.menu.sections){
+      for (const item of sec.items){
+        state.flatMenuItems.push({section: sec.section, ...item});
       }
-      default: return makeMixedQuestion(item);
+    }
+    // Flatten wines
+    state.flatWineItems = (state.wines.wines || []).map(w => ({...w}));
+
+    buildSectionDropdown();
+    renderRefHome();
+    next();
+  }
+
+  function buildSectionDropdown(){
+    const mode = $('mode').value;
+    const sel = $('sectionSelect');
+    sel.innerHTML = '';
+
+    const optAll = document.createElement('option');
+    optAll.value = '__ALL__';
+    optAll.textContent = 'All Sections';
+    sel.appendChild(optAll);
+
+    if (mode === 'menu' || mode === 'pair' || mode === 'safe'){
+      const sections = state.menu.sections.map(s => s.section);
+      for (const s of sections){
+        const o = document.createElement('option');
+        o.value = s;
+        o.textContent = s;
+        sel.appendChild(o);
+      }
+    } else if (mode === 'wine'){
+      const groups = state.wines.groups || [];
+      for (const g of groups){
+        const o = document.createElement('option');
+        o.value = g;
+        o.textContent = g;
+        sel.appendChild(o);
+      }
     }
   }
 
-  // ---------- Rendering / Grading ----------
-  function showQuestion(){
-    stopTimer();
-    const item = quiz.items[quiz.index];
-    const q = makeQuestion(item);
+  function pickRandom(arr){
+    if (!arr.length) return null;
+    // try to avoid repeats
+    for (let i=0;i<30;i++){
+      const x = arr[Math.floor(Math.random()*arr.length)];
+      const key = JSON.stringify(x);
+      if (!state.history.has(key)){
+        state.history.add(key);
+        return x;
+      }
+    }
+    // if we're saturated, allow repeats
+    return arr[Math.floor(Math.random()*arr.length)];
+  }
 
-    const timedUi = (mode === "timed");
-    const timerHtml = `
-      <div class="tbar ${timedUi ? "show":""}" id="tbar"><div class="tfill" id="tfill"></div></div>
-    `;
+  function next(){
+    const mode = $('mode').value;
+    const section = $('sectionSelect').value;
 
-    stage.innerHTML = `
-      <div class="qhead">
-        <div>
-          <h2>Question ${quiz.index + 1} / ${quiz.total}</h2>
-          <div class="qtype">${escapeHtml(q.type)}</div>
+    if (mode === 'menu'){
+      let pool = state.flatMenuItems;
+      if (section !== '__ALL__') pool = pool.filter(x => x.section === section);
+      const item = pickRandom(pool);
+      state.last = {mode, item};
+      renderMenuQuiz(item);
+    }
+    else if (mode === 'wine'){
+      let pool = state.flatWineItems;
+      if (section !== '__ALL__') pool = pool.filter(w => w.group === section);
+      const wine = pickRandom(pool);
+      state.last = {mode, wine};
+      renderWineLearning(wine);
+    }
+    else if (mode === 'pair'){
+      // pick a menu item and ask for best wine + reason
+      let pool = state.flatMenuItems;
+      if (section !== '__ALL__') pool = pool.filter(x => x.section === section);
+      const item = pickRandom(pool);
+      state.last = {mode, item};
+      renderPairTrainer(item);
+    }
+    else if (mode === 'safe'){
+      state.last = {mode};
+      renderSafeMode();
+    }
+  }
+
+  function reveal(){
+    const stage = $('stage');
+    const box = stage.querySelector('.answerBox');
+    if (box) box.classList.toggle('show');
+  }
+
+  function resetAll(){
+    state.history = new Set();
+    state.last = null;
+    renderRefHome();
+    next();
+  }
+
+  function renderMenuQuiz(item){
+    if (!item){
+      $('stage').innerHTML = `<div class="note">No items found in that section.</div>`;
+      return;
+    }
+    const prompt = `
+      <div class="card">
+        <div class="qPrompt">Menu Quiz — say this like you’re at a table.</div>
+        <h3 class="big">${esc(item.name)} <span class="muted small">${esc(item.price || "")}</span></h3>
+        <div class="tagRow">
+          <span class="tag warn">Section: ${esc(item.section)}</span>
+          ${item.tags?.map(t=>`<span class="tag">${esc(t)}</span>`).join('') || ''}
         </div>
-        <div class="muted">${escapeHtml(q.section || "")}</div>
-      </div>
 
-      ${timerHtml}
-
-      <div class="prompt">${escapeHtml(q.prompt)}</div>
-
-      <div class="opts">
-        ${q.options.map((o, i) => `
-          <button class="opt" data-idx="${i}">
-            ${escapeHtml(o.label)}
-          </button>
-        `).join("")}
-      </div>
-
-      <div class="footerline">
-        <span>Score: <b>${quiz.correct}</b> / ${quiz.total}</span>
-        <span class="muted">${mode === "timed" ? "Answer fast." : "Tap an answer."}</span>
-      </div>
-    `;
-
-    const buttons = stage.querySelectorAll(".opt");
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const idx = Number(btn.getAttribute("data-idx"));
-        gradeAnswer(item, q, idx, buttons, false);
-      }, { once:true });
-    });
-
-    if (mode === "timed") startTimer(() => {
-      gradeAnswer(item, q, -1, buttons, true);
-    });
-  }
-
-  function gradeAnswer(item, q, chosenIdx, buttons, timedOut){
-    stopTimer();
-    buttons.forEach(b => b.disabled = true);
-
-    const chosen = (chosenIdx >= 0) ? q.options[chosenIdx] : null;
-    const wasCorrect = chosen ? !!chosen.isCorrect : false;
-    if (wasCorrect) quiz.correct++;
-
-    q.options.forEach((o, i) => { if(o.isCorrect) buttons[i].classList.add("correct"); });
-    if(!wasCorrect && chosenIdx >= 0) buttons[chosenIdx].classList.add("wrong");
-
-    // persist seen for the item used to generate question
-    if (item && item.id) { seen.add(item.id); saveSeen(); }
-
-    const correctOpt = q.options.find(o => o.isCorrect);
-
-    quiz.results.push({
-      mode,
-      qtype: q.type,
-      section: q.section || (item ? item.section : ""),
-      prompt: q.prompt,
-      chosen: chosen ? chosen.label : "(no answer)",
-      correctAnswer: correctOpt ? correctOpt.label : "(unknown)",
-      correct: wasCorrect,
-      explain: q.explain || "Correct answer is the option matched by the quiz engine."
-    });
-
-    const timedLine = timedOut ? `<div class="muted" style="margin-top:10px;color:var(--warn)">Timed out.</div>` : "";
-
-    setTimeout(() => {
-      quiz.index++;
-      if(quiz.index >= quiz.total){
-        showResults();
-      } else {
-        stage.insertAdjacentHTML("beforeend", `${timedLine}`);
-        setTimeout(showQuestion, 350);
-      }
-    }, 350);
-  }
-
-  function showResults(){
-    stopTimer();
-    modePill.textContent = "Mode: Results";
-    const pct = Math.round((quiz.correct / quiz.total) * 100);
-
-    stage.innerHTML = `
-      <h2>Done</h2>
-      <div class="muted">Score: <b>${quiz.correct}</b> / <b>${quiz.total}</b> (${pct}%)</div>
-
-      <div class="btnrow" style="margin-top:12px">
-        <button class="primary" id="againSame">Run Another ${quiz.total}</button>
-        <button id="backReady">Back to Ready</button>
-      </div>
-
-      <div class="review">
-        ${quiz.results.map((r, i) => `
-          <div class="row">
-            <b>${r.correct ? "✅ Correct" : "❌ Incorrect"} — Question ${i+1}</b>
-            <div class="muted">${escapeHtml(r.section)} • ${escapeHtml(r.qtype)}</div>
-
-            <div style="margin-top:8px">
-              <div class="muted">Prompt</div>
-              <div>${escapeHtml(r.prompt)}</div>
-            </div>
-
-            <div style="margin-top:8px">
-              <div class="muted">Your Answer</div>
-              <div style="${r.correct ? "color:var(--good)" : "color:var(--bad)"}">
-                ${escapeHtml(r.chosen)}
-              </div>
-            </div>
-
-            <div style="margin-top:8px">
-              <div class="muted">Correct Answer</div>
-              <div style="color:var(--good); font-weight:600;">
-                ${escapeHtml(r.correctAnswer)}
-              </div>
-            </div>
-
-            <div style="margin-top:8px">
-              <div class="muted">Why / Coaching</div>
-              <div>${escapeHtml(r.explain)}</div>
-            </div>
+        <div class="divider"></div>
+        <div class="twoCol">
+          <div class="card">
+            <div class="muted small"><span class="k">Task</span>: Describe it in one clean sentence.</div>
+            <ul class="list">
+              <li>What is it?</li>
+              <li>What are the key components?</li>
+              <li>What sauce / special element sells it?</li>
+            </ul>
           </div>
-        `).join("")}
+          <div class="card">
+            <div class="muted small"><span class="k">Upsell</span>: suggest a pairing or add-on.</div>
+            <ul class="list">
+              <li>Wine / cocktail that fits</li>
+              <li>Side swap if relevant</li>
+              <li>Spice warning if needed</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="answerBox">
+          <div><span class="k">What it is:</span> ${esc(item.description || "")}</div>
+          ${item.upsell ? `<div style="margin-top:6px"><span class="k">Easy upsell line:</span> ${esc(item.upsell)}</div>` : ''}
+        </div>
       </div>
     `;
-
-    $("againSame").addEventListener("click", () => startQuiz(quiz.total));
-    $("backReady").addEventListener("click", () => { quiz = null; renderReady(); });
+    $('stage').innerHTML = prompt;
   }
 
-  // ---------- Timer ----------
-  function startTimer(onTimeout){
-    stopTimer();
-    const tbar = $("tbar");
-    const tfill = $("tfill");
-    if (!tbar || !tfill) return;
-
-    timerStart = performance.now();
-    tbar.classList.add("show");
-    tfill.style.transform = "scaleX(1)";
-
-    timerHandle = setInterval(() => {
-      const elapsed = performance.now() - timerStart;
-      const r = Math.max(0, 1 - elapsed / TIMED_MS);
-      tfill.style.transform = `scaleX(${r})`;
-      if (elapsed >= TIMED_MS){
-        stopTimer();
-        onTimeout();
-      }
-    }, 40);
-  }
-
-  function stopTimer(){
-    if (timerHandle){
-      clearInterval(timerHandle);
-      timerHandle = null;
+  function renderWineLearning(w){
+    if (!w){
+      $('stage').innerHTML = `<div class="note">No wines found in that group.</div>`;
+      return;
     }
-  }
-
-  function escapeHtml(str){
-    return String(str ?? "")
-      .replaceAll("&","&amp;")
-      .replaceAll("<","&lt;")
-      .replaceAll(">","&gt;")
-      .replaceAll('"',"&quot;")
-      .replaceAll("'","&#039;");
-  }
-
-  // ---------- Data Load ----------
-  function isWineSection(section){
-    const s = norm(section);
-    return s.includes("wine");
-  }
-  function isTrainingSection(section){
-    const s = norm(section);
-    return s.includes("wine - training");
-  }
-  function isFoodSection(section){
-    const s = norm(section);
-    if (s.includes("wine")) return false;
-    if (s.includes("beer")) return false;
-    if (s.includes("beverages")) return false;
-    return true;
-  }
-
-  async function boot(){
-    try{
-      const res = await fetch("./menu.json", { cache: "no-store" });
-      if(!res.ok) throw new Error("menu.json not found");
-      const data = await res.json();
-
-      const flat = [];
-      for(const sec of data){
-        const section = sec.section || "UNKNOWN";
-        const items = Array.isArray(sec.items) ? sec.items : [];
-        for(const it of items){
-          if(!it || !it.name || !it.description) continue;
-          flat.push({
-            id: idFor({ section, name: it.name }),
-            section,
-            name: String(it.name).trim(),
-            description: String(it.description).trim()
-          });
-        }
-      }
-
-      pool = flat;
-      foodPool = flat.filter(x => isFoodSection(x.section));
-      winePool = flat.filter(x => isWineSection(x.section) && !isTrainingSection(x.section));
-      wineTraining = flat.filter(x => isTrainingSection(x.section));
-
-      seen = loadSeen();
-
-      loadedPill.textContent = `Loaded ${pool.length} items`;
-      poolInfo.textContent = `Pool: ${pool.length} • Food: ${foodPool.length} • Wine: ${winePool.length} • Training: ${wineTraining.length}`;
-      updateSeenUI();
-
-      renderModes();
-
-      start20.disabled = false;
-      start10.disabled = false;
-
-      renderReady();
-    }catch(err){
-      loadedPill.textContent = "Load failed";
-      modePill.textContent = "Mode: Error";
-      stage.innerHTML = `
-        <h2>Missing menu.json</h2>
-        <div class="muted">
-          Put <b>menu.json</b> in the same folder as <b>index.html</b>, commit, and reload.
+    $('stage').innerHTML = `
+      <div class="card">
+        <div class="qPrompt">Wine Learning — understanding > memorizing.</div>
+        <h3 class="big">${esc(w.name)} <span class="muted small">(${esc(w.type)} • ${esc(w.region)})</span></h3>
+        <div class="tagRow">
+          <span class="tag warn">Group: ${esc(w.group)}</span>
+          <span class="tag">${esc(w.grape)}</span>
+          <span class="tag good">${esc(w.body)} body</span>
+          <span class="tag">${esc(w.acidity)} acidity</span>
+          <span class="tag">${esc(w.sweetness)} sweet</span>
+          ${w.tannin ? `<span class="tag">${esc(w.tannin)} tannin</span>` : ''}
         </div>
-      `;
-      start20.disabled = true;
-      start10.disabled = true;
-    }
+
+        <div class="divider"></div>
+
+        <div class="twoCol">
+          <div class="card">
+            <div class="muted small"><span class="k">Task</span>: explain this wine to a guest in 10 seconds.</div>
+            <ul class="list">
+              <li>What does it taste like?</li>
+              <li>Who is it perfect for?</li>
+              <li>What is the “safe pairing”?</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="muted small"><span class="k">Avoid</span>: what guest type will hate it?</div>
+            <ul class="list">
+              <li>Too sweet / too dry?</li>
+              <li>Too oaky?</li>
+              <li>Too tannic?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="answerBox">
+          <div><span class="k">Flavor:</span> ${esc(w.flavor)}</div>
+          <div style="margin-top:6px"><span class="k">Best for:</span> ${esc(w.bestFor)}</div>
+          <div style="margin-top:6px"><span class="k">Table pitch:</span> ${esc(w.pitch)}</div>
+          <div style="margin-top:6px"><span class="k">Top pairings:</span> ${esc((w.pairWith || []).join(", "))}</div>
+          <div style="margin-top:6px"><span class="k">If they say “I don’t like…”:</span> ${esc(w.avoidIf)}</div>
+        </div>
+      </div>
+    `;
   }
 
-  start20.addEventListener("click", () => startQuiz(20));
-  start10.addEventListener("click", () => startQuiz(10));
-  resetBtn.addEventListener("click", () => {
-    localStorage.removeItem(LS_SEEN);
-    seen = new Set();
-    updateSeenUI();
-    quiz = null;
-    renderReady();
+  function renderPairTrainer(item){
+    if (!item){
+      $('stage').innerHTML = `<div class="note">No items found in that section.</div>`;
+      return;
+    }
+    // Suggest a few wines that match by tags (very simple heuristic)
+    const tags = new Set((item.tags||[]).map(t=>t.toLowerCase()));
+    const wines = state.flatWineItems;
+
+    function scoreWine(w){
+      let s = 0;
+      const type = (w.type||"").toLowerCase();
+      const flavor = (w.flavor||"").toLowerCase();
+
+      if (tags.has('seafood') && (type.includes('white') || type.includes('prosecco') || type.includes('rosé'))) s += 3;
+      if (tags.has('spicy') && (type.includes('riesling') || type.includes('moscato') || type.includes('rosé'))) s += 3;
+      if (tags.has('bbq') && (type.includes('zinfandel') || type.includes('red blend') || type.includes('cabernet'))) s += 2;
+      if (tags.has('steak') && (type.includes('cabernet') || type.includes('malbec') || type.includes('zinfandel'))) s += 3;
+      if (tags.has('cheese') && (type.includes('chardonnay') || type.includes('pinot noir') || type.includes('prosecco'))) s += 2;
+      if (tags.has('fried') && (type.includes('prosecco') || type.includes('sauvignon') || type.includes('rosé'))) s += 2;
+
+      // fallback: acidity helps food
+      if ((w.acidity||"").toLowerCase().includes('high')) s += 1;
+
+      // small bonus if menu keywords appear in wine pairing list
+      const pair = (w.pairWith||[]).join(' ').toLowerCase();
+      const name = (item.name||"").toLowerCase();
+      if (pair.includes('fish') && name.includes('fish')) s += 2;
+      if (pair.includes('salmon') && name.includes('salmon')) s += 2;
+      if (pair.includes('prime rib') && name.includes('prime rib')) s += 2;
+
+      return s;
+    }
+
+    const top = [...wines]
+      .map(w => ({w, s: scoreWine(w)}))
+      .sort((a,b)=>b.s-a.s)
+      .slice(0,3)
+      .map(x => x.w);
+
+    $('stage').innerHTML = `
+      <div class="card">
+        <div class="qPrompt">Pairing Trainer — pick a wine and explain why in one sentence.</div>
+        <h3 class="big">${esc(item.name)} <span class="muted small">${esc(item.price || "")}</span></h3>
+        <p class="desc">${esc(item.description || "")}</p>
+
+        <div class="tagRow">
+          <span class="tag warn">Section: ${esc(item.section)}</span>
+          ${(item.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="twoCol">
+          <div class="card">
+            <div class="muted small"><span class="k">Task</span></div>
+            <ul class="list">
+              <li>Suggest 1 wine and give 1 reason.</li>
+              <li>Offer a second option if they say “I want something lighter.”</li>
+              <li>Offer a third if they say “I want red.”</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="muted small"><span class="k">Hints</span> (optional)</div>
+            <div class="muted small">You can use “acid cuts richness” and “bubbles clean fried food” safely.</div>
+          </div>
+        </div>
+
+        <div class="answerBox">
+          <div><span class="k">Strong suggestions from the list:</span></div>
+          <ul class="list">
+            ${top.map(w=>`<li><strong>${esc(w.name)}</strong> — ${esc(w.pitch)}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderSafeMode(){
+    $('stage').innerHTML = `
+      <div class="card">
+        <div class="qPrompt">Safe Mode — when a guest asks and your brain goes blank.</div>
+
+        <details open>
+          <summary>3 safe wines that won’t embarrass you</summary>
+          <ul class="list">
+            <li><span class="k">Dashwood Sauvignon Blanc</span> — crisp, clean, works with fish/salads, “not sweet.”</li>
+            <li><span class="k">Josh Cabernet Sauvignon</span> — classic red, steak/prime rib, “smooth and familiar.”</li>
+            <li><span class="k">Zardetto Prosecco</span> — bubbly, refreshes, great with apps/fried/celebrations.</li>
+          </ul>
+        </details>
+
+        <div class="divider"></div>
+
+        <details>
+          <summary>Universal pairing lines</summary>
+          <ul class="list">
+            <li>“If you want something refreshing that goes with almost anything, I’d do the Sauvignon Blanc.”</li>
+            <li>“For steak or prime rib, Cabernet is the safest win — bold but smooth.”</li>
+            <li>“If you’re doing fried or spicy, bubbles or a touch of fruitiness plays really well.”</li>
+          </ul>
+        </details>
+
+        <div class="divider"></div>
+
+        <details>
+          <summary>When they say…</summary>
+          <ul class="list">
+            <li><span class="k">“I don’t like sweet wine.”</span> → Sauvignon Blanc, Pinot Grigio, Cabernet, Pinot Noir.</li>
+            <li><span class="k">“I want something light.”</span> → Pinot Grigio, Rosé, Prosecco.</li>
+            <li><span class="k">“I want red but not heavy.”</span> → Pinot Noir, Red Blend.</li>
+            <li><span class="k">“Spicy food.”</span> → Riesling or Moscato (light sweetness), or Rosé.</li>
+          </ul>
+        </details>
+      </div>
+    `;
+  }
+
+  function renderRefHome(){
+    $('ref').innerHTML = `
+      <div class="note">
+        <strong>Quick Reference</strong><br/>
+        Search any menu item, wine, cocktail, bourbon, or beer. This panel will show matches instantly.
+      </div>
+      <div class="divider"></div>
+      <div class="card">
+        <div class="muted small"><span class="k">Tip</span>: In training mode, hit <strong>Reveal</strong> only after she answers out loud.</div>
+      </div>
+    `;
+  }
+
+  function searchAll(q){
+    q = (q||"").trim().toLowerCase();
+    if (!q){
+      renderRefHome();
+      return;
+    }
+
+    const menuHits = state.flatMenuItems.filter(x =>
+      (x.name||"").toLowerCase().includes(q) ||
+      (x.description||"").toLowerCase().includes(q) ||
+      (x.section||"").toLowerCase().includes(q)
+    ).slice(0, 12);
+
+    const wineHits = state.flatWineItems.filter(w =>
+      (w.name||"").toLowerCase().includes(q) ||
+      (w.grape||"").toLowerCase().includes(q) ||
+      (w.type||"").toLowerCase().includes(q) ||
+      (w.region||"").toLowerCase().includes(q) ||
+      (w.flavor||"").toLowerCase().includes(q)
+    ).slice(0, 12);
+
+    const miscHits = (state.menu.misc || []).filter(m =>
+      (m.section||"").toLowerCase().includes(q) ||
+      (m.items||[]).some(it => (it||"").toLowerCase().includes(q))
+    );
+
+    $('ref').innerHTML = `
+      <div class="card">
+        <div class="muted small"><span class="k">Search</span>: "${esc(q)}"</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="card">
+        <div><span class="k">Menu matches</span> <span class="muted small">(${menuHits.length})</span></div>
+        ${menuHits.length ? `
+          <ul class="list">
+            ${menuHits.map(m=>`<li><strong>${esc(m.name)}</strong> <span class="muted small">(${esc(m.section)})</span><br/><span class="muted small">${esc(m.description||"")}</span></li>`).join('')}
+          </ul>
+        ` : `<div class="muted small">None.</div>`}
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="card">
+        <div><span class="k">Wine matches</span> <span class="muted small">(${wineHits.length})</span></div>
+        ${wineHits.length ? `
+          <ul class="list">
+            ${wineHits.map(w=>`<li><strong>${esc(w.name)}</strong> <span class="muted small">(${esc(w.type)} • ${esc(w.region)})</span><br/><span class="muted small">${esc(w.pitch)}</span></li>`).join('')}
+          </ul>
+        ` : `<div class="muted small">None.</div>`}
+      </div>
+
+      ${miscHits.length ? `
+        <div class="divider"></div>
+        <div class="card">
+          <div><span class="k">Other lists</span></div>
+          ${miscHits.map(m=>`
+            <div style="margin-top:10px">
+              <div><strong>${esc(m.section)}</strong></div>
+              <div class="muted small">${(m.items||[]).map(x=>esc(x)).join(" • ")}</div>
+            </div>
+          `).join('')}
+        </div>
+      ` : ``}
+    `;
+  }
+
+  // UI events
+  $('mode').addEventListener('change', () => { buildSectionDropdown(); next(); });
+  $('sectionSelect').addEventListener('change', () => next());
+  $('nextBtn').addEventListener('click', () => next());
+  $('revealBtn').addEventListener('click', () => reveal());
+  $('resetBtn').addEventListener('click', () => resetAll());
+
+  $('searchBtn').addEventListener('click', () => searchAll($('search').value));
+  $('search').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') searchAll($('search').value);
   });
 
-  start20.disabled = true;
-  start10.disabled = true;
-
-  setMode(mode);
-  boot();
-})();
+  loadAll().catch(err=>{
+    $('stage').innerHTML = `<div class="note"><strong>Error loading JSON.</strong><br/>Make sure <code>menu.json</code> and <code>wines.json</code> are in the same folder as <code>index.html</code>.</div>
+    <div class="divider"></div>
+    <div class="card"><pre class="muted small" style="white-space:pre-wrap">${esc(String(err))}</pre></div>`;
+  });
 </script>
 </body>
 </html>
