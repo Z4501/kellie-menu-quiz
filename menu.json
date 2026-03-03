@@ -1,343 +1,327 @@
-[
-  {
-    "section": "APPETIZERS",
-    "items": [
-      { "name": "Calamari", "description": "Hand-breaded to order and served with our marinara and Ricardo sauces." },
-      { "name": "Tuscan Breadstick Tower", "description": "A towering stack of focaccia bread brushed in garlic butter and our signature herb mix, served with marinara sauce for dipping." },
-      { "name": "Four-Cheese & Sausage Stuffed Mushrooms", "description": "Stuffed with sausage, spinach, ricotta, parmesan, romano, mozzarella cheese and Italian breadcrumbs, served over our tomato cream sauce." },
-      { "name": "Meatballs & Ricotta", "description": "Two meatballs simmered in our pomodoro sauce with ricotta, parmesan and romano cheese." },
-      { "name": "Mozzarella Marinara", "description": "Hand-cut and breaded, served with our marinara sauce." },
-      { "name": "Zucchini Fritte", "description": "Hand-breaded, lightly fried and served with roasted garlic aioli." },
-      { "name": "Shrimp Scampi", "description": "Garlic, white wine and our lemon butter sauce served with toasted garlic and herb bread." },
-      { "name": "Jumbo Lump Crab Cakes", "description": "Two jumbo lump crab cakes seared, baked and served with roasted red pepper sauce." },
-      { "name": "Classics Combination", "description": "Calamari, Mozzarella Marinara and Bruschette Caprese, served with marinara sauce." },
-      { "name": "Tomato Caprese with Fresh Burrata", "description": "Creamy burrata mozzarella, tomatoes, fresh basil, red onions, balsamic glaze and extra-virgin olive oil." }
-    ]
-  },
-  {
-    "section": "SALADS",
-    "items": [
-      { "name": "Johnny Rocco Salad", "description": "Wood-grilled chicken, prosciutto, fontina, tomatoes, hard-boiled egg and green onions over mixed greens with our herb vinaigrette." },
-      { "name": "Caesar Salad", "description": "Wood-grilled chicken or shrimp served over romaine, croutons, parmesan and romano cheese with Caesar dressing." },
-      { "name": "Italian Salad", "description": "Wood-grilled chicken or shrimp served over romaine, garden vegetables, kalamata olives and Italian vinaigrette." },
-      { "name": "Signature Salads", "description": "House Creamy Parmesan, Italian, or Caesar." }
-    ]
-  },
-  {
-    "section": "SOUPS",
-    "items": [
-      { "name": "Mama Mandola’s Sicilian Chicken Soup", "description": "Our traditional chicken soup." },
-      { "name": "Soup of the Day", "description": "Ask your server for today’s made-from-scratch selection." }
-    ]
-  },
-  {
-    "section": "PASTA",
-    "items": [
-      { "name": "Fettuccine Weesie", "description": "Fettuccine Alfredo with sautéed shrimp and mushrooms in our spicy lemon butter sauce." },
-      { "name": "Lobster Ravioli", "description": "Ravioli stuffed with lobster and romano in our white wine cream sauce, topped with diced tomatoes." },
-      { "name": "Lasagne", "description": "Pasta layered with meat sauce, ricotta, mozzarella and romano cheese, baked in marinara." },
-      { "name": "Linguine Positano", "description": "Crushed tomatoes, garlic, olive oil and basil tossed with linguine." },
-      { "name": "Spaghetti", "description": "Spaghetti with pomodoro sauce." },
-      { "name": "Fettuccine Alfredo", "description": "Classic parmesan cream sauce." },
-      { "name": "Filet & Shrimp Pasta Toscana", "description": "Fettuccine with spinach and mushrooms tossed in a roasted garlic cream sauce, topped with wood-grilled shrimp and wood-grilled filet." },
-      { "name": "Rigatoni Martino", "description": "Sautéed mushrooms, sun-dried tomatoes, parmesan and romano tossed with rigatoni in our tomato cream sauce, topped with scallions and ricotta salata." },
-      { "name": "Fettuccine Carrabba", "description": "Fettuccine Alfredo with wood-grilled chicken, sautéed mushrooms and peas." },
-      { "name": "Mezzaluna", "description": "Half-moon ravioli with chicken, ricotta, parmesan, romano cheese and spinach in our tomato cream sauce." },
-      { "name": "Shrimp & Scallop Linguine Alla Vodka", "description": "Sautéed shrimp and scallops tossed with linguine pasta in our tomato vodka sauce." }
-    ]
-  },
-  {
-    "section": "TRIOS",
-    "items": [
-      { "name": "Chicken Trio", "description": "Chicken Bryan, Pollo Rosa Maria and Chicken Marsala, served with your choice of a side." },
-      { "name": "The Johnny Trio", "description": "Tuscan-grilled sirloin Marsala, Chicken Bryan and Mezzaluna." },
-      { "name": "Carrabba’s Italian Classics Trio", "description": "Chicken Parmesan, Lasagne and Fettuccine Alfredo." }
-    ]
-  },
-  {
-    "section": "SPECIALTIES",
-    "items": [
-      { "name": "Chicken Parmesan", "description": "Coated with Mama Mandola’s breadcrumbs, sautéed and topped with pomodoro sauce, parmesan, romano and mozzarella cheese." },
-      { "name": "Chicken Piccata", "description": "Thin, tender cutlets lightly dusted with flour, sautéed and topped with lemon butter sauce, parsley and capers." },
-      { "name": "Tuscan-Grilled Chicken", "description": "Wood-grilled and seasoned with Mr. C’s Grill Baste, olive oil and herbs." },
-      { "name": "Chicken Marsala", "description": "Wood-grilled and topped with mushrooms and our Lombardo Marsala wine sauce." },
-      { "name": "Pollo Rosa Maria", "description": "Wood-grilled chicken stuffed with fontina cheese and prosciutto, topped with mushrooms and basil lemon butter sauce." },
-      { "name": "Chicken Bryan", "description": "Wood-grilled and topped with goat cheese, sun-dried tomatoes, basil and lemon butter sauce." },
-      { "name": "Eggplant Parmesan", "description": "Layers of sliced eggplant coated with seasoned breadcrumbs and topped with pomodoro sauce, parmesan, romano and mozzarella cheese." }
-    ]
-  },
-  {
-    "section": "TOPPINGS",
-    "items": [
-      { "name": "Spicy Sicilian Butter", "description": "A spicy butter topping." },
-      { "name": "Marsala Sauce", "description": "Mushrooms and our Lombardo Marsala wine sauce." },
-      { "name": "Ardente Topping", "description": "Tomatoes, garlic, basil and melted gorgonzola cheese." },
-      { "name": "Bryan Topping", "description": "Goat cheese, sun-dried tomatoes, basil and lemon butter sauce." }
-    ]
-  },
-  {
-    "section": "STEAKS & CHOPS",
-    "items": [
-      { "name": "Tuscan-Grilled Sirloin", "description": "Tuscan-grilled sirloin steak." },
-      { "name": "Tuscan-Grilled Filet", "description": "Tuscan-grilled filet (barrel cut)." },
-      { "name": "Tuscan-Grilled Ribeye", "description": "Tuscan-grilled ribeye." },
-      { "name": "Tuscan-Grilled Pork Chop", "description": "Tuscan-grilled pork chop (one or two chops)." }
-    ]
-  },
-  {
-    "section": "SEAFOOD",
-    "items": [
-      { "name": "Spiedino di Mare", "description": "Shrimp, sea scallops or a combination coated with Italian breadcrumbs, wood-grilled and topped with our lemon butter sauce." },
-      { "name": "Pistachio Crusted Trout", "description": "Wood-grilled trout coated with Italian breadcrumbs and pistachios, topped with lemon butter sauce, diced tomatoes and basil." },
-      { "name": "Simply Grilled Trout", "description": "Wood-grilled trout seasoned with Mr. C’s Grill Baste, olive oil and herbs." },
-      { "name": "Salmon Capperi", "description": "Wood-grilled salmon topped with roasted grape tomatoes, fresh basil, capers and lemon butter sauce." },
-      { "name": "Simply Grilled Salmon", "description": "Wood-grilled salmon seasoned with Mr. C’s Grill Baste, olive oil and herbs." }
-    ]
-  },
-  {
-    "section": "SIDES",
-    "items": [
-      { "name": "Sautéed Broccoli", "description": "Side." },
-      { "name": "Garlic Mashed Potatoes", "description": "Side." },
-      { "name": "Penne Pomodoro", "description": "Side." }
-    ]
-  },
-  {
-    "section": "PREMIUM SIDES",
-    "items": [
-      { "name": "Rosemary Parmesan Fries", "description": "Premium side." },
-      { "name": "Sautéed Spinach", "description": "Premium side." },
-      { "name": "Grilled Asparagus", "description": "Premium side." },
-      { "name": "Fettuccine Alfredo", "description": "Premium side." }
-    ]
-  },
-  {
-    "section": "BEERS",
-    "items": [
-      { "name": "Bud Light", "description": "Beer." },
-      { "name": "Blue Moon", "description": "Beer." },
-      { "name": "Peroni", "description": "Beer." },
-      { "name": "Samuel Adams", "description": "Beer." }
-    ]
-  },
-  {
-    "section": "BEVERAGES",
-    "items": [
-      { "name": "Premium Flavored Lemonades", "description": "Strawberry or Raspberry." },
-      { "name": "Flavored Iced Tea of the Day", "description": "Gold Peak iced tea flavored with one of our favorites (ask server for today’s options)." },
-      { "name": "Soft Drinks", "description": "Coke, Diet Coke, Sprite, Hi-C, Dr Pepper, Minute Maid Lemonade." },
-      { "name": "Freshly Brewed Iced Tea", "description": "Gold Peak Tea (fresh brewed) and Iced Tea." },
-      { "name": "Italian Bottled Water", "description": "Acqua Panna Still or San Pellegrino Sparkling." },
-      { "name": "Coffees", "description": "Coffee, Cappuccino, Espresso, Caffè Latte." }
-    ]
-  },
-  {
-    "section": "DESSERTS",
-    "items": [
-      { "name": "Sogno Di Cioccolata (Chocolate Dream)", "description": "A rich fudge brownie with chocolate mousse, fresh whipped cream and chocolate sauce." },
-      { "name": "Strawberry Cheesecake", "description": "Creamy New York-style cheesecake topped with strawberry purée." },
-      { "name": "Tiramisù", "description": "Lady fingers dipped in liqueur-laced espresso, layered with sweetened mascarpone, Myers’s Rum and chocolate shavings." },
-      { "name": "John Cole", "description": "Vanilla ice cream with caramel sauce and roasted cinnamon rum pecans." },
-      { "name": "Cannoli Cake for Two", "description": "Vanilla cake with layers of cannoli filling, topped with a mini cannoli, pistachios and chocolate sauce, with a chocolate chip crust." }
-    ]
-  },
+{
+  "groups": ["White", "Red", "House Wines"],
+  "wines": [
+    {
+      "group": "White",
+      "name": "Seven Daughters Moscato",
+      "type": "Moscato",
+      "region": "Italy",
+      "grape": "Moscato",
+      "body": "Light",
+      "acidity": "Medium",
+      "sweetness": "Sweet",
+      "tannin": "",
+      "flavor": "Peach, orange blossom, honey, light citrus. Soft and fruity.",
+      "bestFor": "Guests who want sweet, easy, and not harsh.",
+      "pitch": "Sweet, fruity, and super easy to drink — great with anything spicy or dessert.",
+      "pairWith": ["Nashville Hot Chicken", "Wings (Buffalo)", "Cranberry Pecan Salad", "Desserts"],
+      "avoidIf": "They say: “I hate sweet wine.”"
+    },
+    {
+      "group": "White",
+      "name": "Chateau Ste. Michelle Riesling",
+      "type": "Riesling",
+      "region": "Columbia Valley, WA",
+      "grape": "Riesling",
+      "body": "Light",
+      "acidity": "High",
+      "sweetness": "Off-dry",
+      "tannin": "",
+      "flavor": "Crisp apple, peach, citrus, bright finish; slight sweetness.",
+      "bestFor": "Spicy food people or anyone who wants light but flavorful.",
+      "pitch": "Crisp and refreshing with a touch of fruit — perfect with spicy dishes.",
+      "pairWith": ["Wings (Buffalo)", "Nashville Hot Chicken", "Jambalaya", "Chicken & Andouille Spring Rolls"],
+      "avoidIf": "They want bone-dry white."
+    },
+    {
+      "group": "White",
+      "name": "Ruffino Pinot Grigio",
+      "type": "Pinot Grigio",
+      "region": "Italy",
+      "grape": "Pinot Grigio",
+      "body": "Light",
+      "acidity": "Medium-High",
+      "sweetness": "Dry",
+      "tannin": "",
+      "flavor": "Crisp, clean citrus, pear, light mineral.",
+      "bestFor": "Guests who say “I want something light and not sweet.”",
+      "pitch": "Light, clean, and dry — an easy pick if you don’t want anything sweet.",
+      "pairWith": ["House Salad", "Caesar", "Traditional Breakfast", "Seafood starters"],
+      "avoidIf": "They want a rich/oaky Chardonnay."
+    },
+    {
+      "group": "White",
+      "name": "Dashwood Sauvignon Blanc",
+      "type": "Sauvignon Blanc",
+      "region": "New Zealand",
+      "grape": "Sauvignon Blanc",
+      "body": "Light",
+      "acidity": "High",
+      "sweetness": "Dry",
+      "tannin": "",
+      "flavor": "Citrus, lime, grapefruit, fresh herbs; very crisp.",
+      "bestFor": "Guests who want crisp, dry, refreshing.",
+      "pitch": "Crisp and super refreshing — the safest dry white with food.",
+      "pairWith": ["Fish & Chips", "Crab Cake", "Salmon", "Salads"],
+      "avoidIf": "They want buttery/oaky."
+    },
+    {
+      "group": "White",
+      "name": "Mariana Rosé",
+      "type": "Rosé",
+      "region": "Portugal",
+      "grape": "Rosé blend",
+      "body": "Light",
+      "acidity": "Medium-High",
+      "sweetness": "Dry to off-dry",
+      "tannin": "Low",
+      "flavor": "Strawberry, citrus, refreshing finish.",
+      "bestFor": "Guests who want something light but not boring.",
+      "pitch": "Light, refreshing, and food-friendly — great if they can’t decide between red and white.",
+      "pairWith": ["Blackened Grouper", "Jambalaya", "Chicken Quesadilla", "BBQ Shrimp Cornbread"],
+      "avoidIf": "They want a big bold red."
+    },
+    {
+      "group": "White",
+      "name": "Kendall-Jackson Vintner’s Reserve Chardonnay",
+      "type": "Chardonnay",
+      "region": "Sonoma County, CA",
+      "grape": "Chardonnay",
+      "body": "Medium-Full",
+      "acidity": "Medium",
+      "sweetness": "Dry",
+      "tannin": "",
+      "flavor": "Apple, pear, vanilla, buttery/oaky notes.",
+      "bestFor": "Guests who like rich, smooth whites.",
+      "pitch": "Classic rich Chardonnay — smooth, slightly buttery, and great with creamy dishes.",
+      "pairWith": ["Smoked Gouda & Chicken Pasta", "Spinach & Artichoke Bake", "Pimento Cheese", "Hot Brown"],
+      "avoidIf": "They say: “No oak/butter.”"
+    },
+    {
+      "group": "White",
+      "name": "Stoller Chardonnay",
+      "type": "Chardonnay",
+      "region": "Willamette Valley, OR",
+      "grape": "Chardonnay",
+      "body": "Medium",
+      "acidity": "Medium-High",
+      "sweetness": "Dry",
+      "tannin": "",
+      "flavor": "Brighter, cleaner chardonnay style; citrus/apple; less heavy.",
+      "bestFor": "Chardonnay drinkers who don’t want super buttery.",
+      "pitch": "A cleaner, brighter Chardonnay — smooth but not heavy.",
+      "pairWith": ["Crab Stuffed Mushrooms", "Salmon", "Quiche", "Cheese apps"],
+      "avoidIf": "They want very buttery/oaky."
+    },
+    {
+      "group": "White",
+      "name": "Zardetto Prosecco",
+      "type": "Prosecco",
+      "region": "Italy",
+      "grape": "Glera",
+      "body": "Light",
+      "acidity": "High",
+      "sweetness": "Dry to off-dry",
+      "tannin": "",
+      "flavor": "Green apple, pear, citrus; crisp bubbles.",
+      "bestFor": "Celebrations, brunch, fried food, ‘just want something fun.’",
+      "pitch": "Crisp bubbles — perfect with apps, brunch, and anything fried.",
+      "pairWith": ["Fish & Chips", "Wings", "Goetta Fries", "Brunch items"],
+      "avoidIf": "They want a still wine only."
+    },
 
-  {
-    "section": "WINE - WINES WE LOVE",
-    "items": [
-      { "name": "Caymus Cabernet Sauvignon", "description": "Cabernet Sauvignon — Napa Valley (1 Liter)." },
-      { "name": "Il Borro “Pian Di Nova” Super Tuscan", "description": "Super Tuscan red blend — Tuscany." },
-      { "name": "Quilt “Threadcount” Sauvignon Blanc", "description": "Sauvignon Blanc — California." }
-    ]
-  },
-  {
-    "section": "WINE - BUBBLY",
-    "items": [
-      { "name": "Riondo Prosecco", "description": "Prosecco — Italy." },
-      { "name": "La Marca Prosecco Rosé", "description": "Prosecco Rosé — Italy." },
-      { "name": "Veuve Clicquot Yellow Label Brut", "description": "Champagne Brut — France." }
-    ]
-  },
-  {
-    "section": "WINE - CRISP & ZESTY",
-    "items": [
-      { "name": "Seven Daughters Moscato", "description": "Moscato — Italy." },
-      { "name": "Copper Ridge White Zinfandel", "description": "White Zinfandel — California." },
-      { "name": "Chateau Ste. Michelle Riesling", "description": "Riesling — Washington." },
-      { "name": "Fleurs de Prairie Rosé", "description": "Rosé — France." },
-      { "name": "Ecco Domani Pinot Grigio", "description": "Pinot Grigio — Italy." },
-      { "name": "Bonizio Bianco by Cecchi", "description": "Italian white — Tuscany." },
-      { "name": "Santa Margherita Pinot Grigio", "description": "Pinot Grigio — Italy." },
-      { "name": "Imagery Sauvignon Blanc", "description": "Sauvignon Blanc — Sonoma." },
-      { "name": "Kim Crawford Sauvignon Blanc", "description": "Sauvignon Blanc — New Zealand." }
-    ]
-  },
-  {
-    "section": "WINE - CHARDONNAY",
-    "items": [
-      { "name": "Antinori “Tormaresca” Chardonnay", "description": "Chardonnay — Italy." },
-      { "name": "William Hill Chardonnay", "description": "Chardonnay — California." },
-      { "name": "Kendall-Jackson Chardonnay", "description": "Chardonnay — California." },
-      { "name": "Rombauer Chardonnay", "description": "Chardonnay — California." }
-    ]
-  },
-  {
-    "section": "WINE - PINOT NOIR",
-    "items": [
-      { "name": "Mark West Pinot Noir", "description": "Pinot Noir — Sonoma." },
-      { "name": "Meiomi Pinot Noir", "description": "Pinot Noir — California." },
-      { "name": "Belle Glos “Balade” Pinot Noir", "description": "Pinot Noir — California." },
-      { "name": "Goldeneye Pinot Noir", "description": "Pinot Noir — California." }
-    ]
-  },
-  {
-    "section": "WINE - RED BLENDS & MERLOT",
-    "items": [
-      { "name": "Apothic Red", "description": "Red blend — California." },
-      { "name": "Alamos Malbec", "description": "Malbec — Argentina." },
-      { "name": "DAOU “Pessimist” Red Blend", "description": "Red blend — California." },
-      { "name": "Orin Swift “Abstract” Red Blend", "description": "Red blend — California." },
-      { "name": "The Prisoner Red Blend", "description": "Red blend — California." },
-      { "name": "Duckhorn “Decoy” Merlot", "description": "Merlot — California." }
-    ]
-  },
-  {
-    "section": "WINE - ITALIAN REDS",
-    "items": [
-      { "name": "Cecchi Chianti", "description": "Chianti — Tuscany." },
-      { "name": "Cecchi Chianti Classico", "description": "Chianti Classico — Tuscany." },
-      { "name": "Banfi Chianti Classico Riserva", "description": "Chianti Classico Riserva — Tuscany." },
-      { "name": "Il Borro “Pian Di Nova” Super Tuscan", "description": "Super Tuscan red blend — Tuscany." }
-    ]
-  },
-  {
-    "section": "WINE - CABERNET SAUVIGNON",
-    "items": [
-      { "name": "Beringer Founders’ Estate Cabernet Sauvignon", "description": "Cabernet Sauvignon — California." },
-      { "name": "Josh Cellars Cabernet Sauvignon", "description": "Cabernet Sauvignon — California." },
-      { "name": "Coppola “Diamond Collection” Cabernet Sauvignon", "description": "Cabernet Sauvignon — California." },
-      { "name": "J. Lohr “Seven Oaks” Cabernet Sauvignon", "description": "Cabernet Sauvignon — Paso Robles." },
-      { "name": "Stag’s Leap Wine Cellars “Artemis” Cabernet Sauvignon", "description": "Cabernet Sauvignon — Napa Valley." },
-      { "name": "DAOU Cabernet Sauvignon", "description": "Cabernet Sauvignon — Paso Robles." },
-      { "name": "Caymus Cabernet Sauvignon", "description": "Cabernet Sauvignon — Napa Valley (1 Liter)." }
-    ]
-  },
+    {
+      "group": "Red",
+      "name": "La Crema Pinot Noir",
+      "type": "Pinot Noir",
+      "region": "Sonoma County, CA",
+      "grape": "Pinot Noir",
+      "body": "Light-Medium",
+      "acidity": "Medium-High",
+      "sweetness": "Dry",
+      "tannin": "Low-Medium",
+      "flavor": "Cherry, raspberry, light spice; smooth finish.",
+      "bestFor": "Red drinkers who want smooth and not heavy.",
+      "pitch": "Smooth, lighter red — great if they want red but not too bold.",
+      "pairWith": ["Salmon", "Pimento Cheese", "Turkey-Bacon Club", "Flatbreads"],
+      "avoidIf": "They want big/bold/tannic."
+    },
+    {
+      "group": "Red",
+      "name": "Uno Malbec",
+      "type": "Malbec",
+      "region": "Argentina",
+      "grape": "Malbec",
+      "body": "Medium-Full",
+      "acidity": "Medium",
+      "sweetness": "Dry",
+      "tannin": "Medium",
+      "flavor": "Dark fruit, plum, cocoa, smooth spice.",
+      "bestFor": "Steak/prime rib guests who want bold but smooth.",
+      "pitch": "Bold dark-fruit red that’s smooth — killer with steak.",
+      "pairWith": ["Filet Mignon", "Prime Rib", "Pot Roast Melt", "Meatloaf"],
+      "avoidIf": "They want light reds only."
+    },
+    {
+      "group": "Red",
+      "name": "Optima Zinfandel",
+      "type": "Zinfandel",
+      "region": "Sonoma County, CA",
+      "grape": "Zinfandel",
+      "body": "Full",
+      "acidity": "Medium",
+      "sweetness": "Dry",
+      "tannin": "Medium",
+      "flavor": "Jammy berry, pepper, smoky spice.",
+      "bestFor": "BBQ lovers and richer foods.",
+      "pitch": "Bold, spicy red — awesome with BBQ and anything smoky.",
+      "pairWith": ["Pulled Pork", "Maker’s Mac & Cheese", "Meatloaf Sliders", "BBQ Tavern Crisps"],
+      "avoidIf": "They want delicate wines."
+    },
+    {
+      "group": "Red",
+      "name": "Silk & Spice Red Blend",
+      "type": "Red Blend",
+      "region": "Portugal",
+      "grape": "Red blend",
+      "body": "Medium",
+      "acidity": "Medium",
+      "sweetness": "Dry",
+      "tannin": "Medium",
+      "flavor": "Dark fruit, spice, smooth finish.",
+      "bestFor": "Guests who want a smooth ‘easy red’ without overthinking.",
+      "pitch": "Smooth, crowd-pleasing red with a little spice — easy pick for almost anyone.",
+      "pairWith": ["Meatloaf", "Pot Roast", "Burgers", "BBQ items"],
+      "avoidIf": "They want a very light red."
+    },
+    {
+      "group": "Red",
+      "name": "Josh Cabernet Sauvignon",
+      "type": "Cabernet Sauvignon",
+      "region": "Central Coast, CA",
+      "grape": "Cabernet Sauvignon",
+      "body": "Full",
+      "acidity": "Medium",
+      "sweetness": "Dry",
+      "tannin": "Medium-High",
+      "flavor": "Black cherry, plum, light oak, smooth tannins.",
+      "bestFor": "Classic red drinkers and steak/prime rib.",
+      "pitch": "Classic cab — bold, smooth, and made for steak.",
+      "pairWith": ["Prime Rib", "Filet Mignon", "Pot Roast", "Burgers"],
+      "avoidIf": "They want light reds only."
+    },
+    {
+      "group": "Red",
+      "name": "Dough Cabernet Sauvignon",
+      "type": "Cabernet Sauvignon",
+      "region": "Mendocino, CA",
+      "grape": "Cabernet Sauvignon",
+      "body": "Full",
+      "acidity": "Medium",
+      "sweetness": "Dry",
+      "tannin": "Medium-High",
+      "flavor": "Dark fruit, oak, structured finish.",
+      "bestFor": "Cab lovers wanting something a bit more serious.",
+      "pitch": "A richer cab with more structure — excellent with prime rib.",
+      "pairWith": ["Prime Rib", "Filet Mignon", "Burgers"],
+      "avoidIf": "They want something soft/light."
+    },
+    {
+      "group": "Red",
+      "name": "Justin Cabernet Sauvignon",
+      "type": "Cabernet Sauvignon",
+      "region": "Paso Robles, CA",
+      "grape": "Cabernet Sauvignon",
+      "body": "Full",
+      "acidity": "Medium",
+      "sweetness": "Dry",
+      "tannin": "High",
+      "flavor": "Dark berries, oak, spice; fuller tannin grip.",
+      "bestFor": "Guests who like bold, steakhouse-style reds.",
+      "pitch": "Big, bold cab — the steakhouse pick.",
+      "pairWith": ["Filet Mignon", "Prime Rib"],
+      "avoidIf": "They dislike tannins / want soft reds."
+    },
+    {
+      "group": "Red",
+      "name": "La Crema Cabernet Sauvignon",
+      "type": "Cabernet Sauvignon",
+      "region": "Alexander Valley, CA",
+      "grape": "Cabernet Sauvignon",
+      "body": "Full",
+      "acidity": "Medium",
+      "sweetness": "Dry",
+      "tannin": "Medium-High",
+      "flavor": "Dark fruit, oak spice, polished finish.",
+      "bestFor": "Cab drinkers who want a nicer upgrade option.",
+      "pitch": "A more polished cab — great upgrade for prime rib.",
+      "pairWith": ["Prime Rib", "Filet Mignon", "Pot Roast"],
+      "avoidIf": "They want light reds."
+    },
 
-  {
-    "section": "WINE - TRAINING",
-    "items": [
-      {
-        "name": "Kim Crawford Sauvignon Blanc",
-        "description": "PROFILE: Dry white • Light body • High acidity • Citrus, lime, green apple.\nPAIRS: Seafood, lemon-butter sauces, light pastas, Caprese.\nDish examples: Shrimp Scampi, Salmon Capperi, Linguine Positano, Tomato Caprese with Fresh Burrata.\nWHY: High acidity cuts through butter/oil and makes seafood taste brighter.\nLINE: If you like crisp and refreshing, this is perfect with our seafood and lemon-butter dishes."
-      },
-      {
-        "name": "Imagery Sauvignon Blanc",
-        "description": "PROFILE: Dry white • Light-medium body • Bright acidity • Citrus + herb notes.\nPAIRS: Seafood, salads, lighter pastas.\nDish examples: Shrimp Scampi, Caesar Salad, Italian Salad, Linguine Positano.\nWHY: Crisp whites match fresh herbs and keep rich sauces from feeling heavy.\nLINE: This is a clean, zesty white that stays refreshing with salads and seafood."
-      },
-      {
-        "name": "Quilt “Threadcount” Sauvignon Blanc",
-        "description": "PROFILE: Dry white • Medium body • Vibrant fruit • Smooth finish.\nPAIRS: Seafood, creamy-but-not-heavy pastas, chicken.\nDish examples: Shrimp Scampi, Chicken Piccata, Linguine Positano.\nWHY: Medium-bodied Sauvignon Blanc can handle more richness without losing freshness.\nLINE: If you want crisp but with a little more weight, this is a great step up."
-      },
-      {
-        "name": "Santa Margherita Pinot Grigio",
-        "description": "PROFILE: Dry white • Light body • High acidity • Clean, crisp, easy.\nPAIRS: Appetizers, salads, seafood.\nDish examples: Calamari, Caprese with Burrata, Caesar Salad, Simply Grilled Salmon.\nWHY: High-acid light whites are a safe, classy match for lighter foods.\nLINE: This is the classic crisp Pinot Grigio — clean, refreshing, and super food-friendly."
-      },
-      {
-        "name": "Ecco Domani Pinot Grigio",
-        "description": "PROFILE: Dry white • Light body • Crisp + simple.\nPAIRS: Appetizers, salads, seafood.\nDish examples: Calamari, Zucchini Fritte, Italian Salad, Simply Grilled Trout.\nWHY: Light whites don’t fight delicate flavors.\nLINE: Easy-drinking and crisp — great if they want something light."
-      },
-      {
-        "name": "Chateau Ste. Michelle Riesling",
-        "description": "PROFILE: Off-dry white • Light body • Bright acidity • Peach/citrus.\nPAIRS: Spicy dishes, salty appetizers, seafood.\nDish examples: Fettuccine Weesie (spicy), Calamari, Shrimp Scampi.\nWHY: A touch of sweetness calms spice and balances salty foods.\nLINE: If they like a little sweetness, this pairs beautifully with spicy or salty dishes."
-      },
-      {
-        "name": "Seven Daughters Moscato",
-        "description": "PROFILE: Sweet white • Light body • Floral/peach.\nPAIRS: Dessert, spicy dishes (if they want sweet), easy sipping.\nDish examples: Tiramisù, Strawberry Cheesecake, Fettuccine Weesie (if guest prefers sweet).\nWHY: Sweetness pairs with dessert and softens heat.\nLINE: This is the go-to when they want sweet — great with dessert or spicy food."
-      },
-      {
-        "name": "Fleurs de Prairie Rosé",
-        "description": "PROFILE: Dry rosé • Light-medium body • Crisp berries.\nPAIRS: Salads, seafood, chicken.\nDish examples: Johnny Rocco Salad, Simply Grilled Salmon, Chicken Piccata.\nWHY: Rosé sits between white and red — flexible with lots of foods.\nLINE: Rosé is a great middle ground — crisp like white, but with a little red-fruit depth."
-      },
-      {
-        "name": "Copper Ridge White Zinfandel",
-        "description": "PROFILE: Off-dry rosé • Light body • Sweet red fruit.\nPAIRS: Guests who want sweet, easy, low-tannin.\nDish examples: Calamari, Caprese, salads.\nWHY: Light sweetness makes it very approachable for non-wine people.\nLINE: If they usually don’t love wine, White Zin is sweet, easy, and super approachable."
-      },
-      {
-        "name": "Riondo Prosecco",
-        "description": "PROFILE: Sparkling • Dry to off-dry • Light body • Crisp bubbles.\nPAIRS: Appetizers, celebrations, light seafood.\nDish examples: Calamari, Caprese with Burrata, Shrimp Scampi.\nWHY: Bubbles reset the palate and feel celebratory.\nLINE: If you want something festive and refreshing, Prosecco is always a win."
-      },
-      {
-        "name": "La Marca Prosecco Rosé",
-        "description": "PROFILE: Sparkling rosé • Crisp berries • Light body.\nPAIRS: Appetizers, salads, seafood.\nDish examples: Caprese with Burrata, Calamari, Simply Grilled Salmon.\nWHY: Sparkling rosé is food-friendly and feels upscale.\nLINE: This is a fun, classy sparkling rosé — light, crisp, and perfect to start the meal."
-      },
-      {
-        "name": "Veuve Clicquot Yellow Label Brut",
-        "description": "PROFILE: Champagne Brut • Dry • Fine bubbles • Toasty citrus.\nPAIRS: Any celebration, appetizers, seafood.\nDish examples: Crab Cakes, Calamari, Caprese.\nWHY: Brut Champagne is versatile and elevates the whole experience.\nLINE: If they’re celebrating, Veuve is the upgrade — crisp, elegant, and extremely food-friendly."
-      },
-      {
-        "name": "Mark West Pinot Noir",
-        "description": "PROFILE: Dry red • Light body • Low tannin • Cherry/berry.\nPAIRS: Salmon, chicken, lighter pastas.\nDish examples: Salmon Capperi, Tuscan-Grilled Chicken, Mezzaluna.\nWHY: Pinot Noir is the red that won’t bully lighter dishes.\nLINE: Pinot Noir is a softer red — great if they want red wine without heaviness."
-      },
-      {
-        "name": "Meiomi Pinot Noir",
-        "description": "PROFILE: Dry red • Medium body • Smooth • Dark fruit.\nPAIRS: Salmon, chicken, rich pastas.\nDish examples: Salmon Capperi, Chicken Bryan, Rigatoni Martino.\nWHY: A richer Pinot can handle more sauce while staying smooth.\nLINE: If they like Pinot but want it fuller and smooth, Meiomi is a strong pick."
-      },
-      {
-        "name": "Cecchi Chianti",
-        "description": "PROFILE: Dry red • Medium body • Bright acidity • Cherry + herbs.\nPAIRS: Tomato sauces, Italian classics.\nDish examples: Lasagne, Spaghetti, Chicken Parmesan.\nWHY: Italian reds love tomato — acidity matches acidity.\nLINE: Chianti is made for Italian food — it’s perfect with tomato-based dishes."
-      },
-      {
-        "name": "Banfi Chianti Classico Riserva",
-        "description": "PROFILE: Dry red • Medium-full body • Structured • Cherry/leather.\nPAIRS: Tomato sauces + grilled meats.\nDish examples: Lasagne, Spaghetti, Tuscan-Grilled Sirloin.\nWHY: More structure = better with richer foods.\nLINE: This is the more serious Chianti — richer, deeper, and amazing with Italian classics."
-      },
-      {
-        "name": "Duckhorn “Decoy” Merlot",
-        "description": "PROFILE: Dry red • Medium body • Smooth • Plum/cherry.\nPAIRS: Chicken, pork, steaks (softer than Cab).\nDish examples: Tuscan-Grilled Pork Chop, Tuscan-Grilled Chicken, Sirloin.\nWHY: Merlot is plush and easy — great for guests who fear tannin.\nLINE: Merlot is smooth and crowd-pleasing — great if they want red without sharp tannins."
-      },
-      {
-        "name": "Alamos Malbec",
-        "description": "PROFILE: Dry red • Full body • Dark fruit • Smooth tannins.\nPAIRS: Steaks, grilled meats.\nDish examples: Tuscan-Grilled Ribeye, Sirloin, Pork Chop.\nWHY: Malbec loves char and protein.\nLINE: If they’re ordering steak, Malbec is bold, smooth, and built for grilled meats."
-      },
-      {
-        "name": "Apothic Red",
-        "description": "PROFILE: Red blend • Medium-full body • Smooth • Dark fruit.\nPAIRS: Crowd-pleaser red for steaks/pasta.\nDish examples: Sirloin, Lasagne, Rigatoni Martino.\nWHY: Blends are easy and approachable.\nLINE: This is a smooth, easy red blend — a safe pick if they want something bold but not harsh."
-      },
-      {
-        "name": "DAOU “Pessimist” Red Blend",
-        "description": "PROFILE: Red blend • Full body • Dark fruit, cocoa • Big feel.\nPAIRS: Steaks, richer dishes.\nDish examples: Ribeye, Sirloin, Filet & Shrimp Pasta Toscana.\nWHY: Full-bodied reds match fat, char, and rich sauces.\nLINE: If they like bold reds, this one is rich, smooth, and made for hearty entrees."
-      },
-      {
-        "name": "The Prisoner Red Blend",
-        "description": "PROFILE: Red blend • Full body • Dark fruit + spice • Powerful.\nPAIRS: Big meats, rich pastas.\nDish examples: Ribeye, Sirloin, Lasagne.\nWHY: Intensity stands up to strong flavors.\nLINE: This is the statement red — bold, layered, and perfect for someone who wants a premium red."
-      },
-      {
-        "name": "Orin Swift “Abstract” Red Blend",
-        "description": "PROFILE: Red blend • Full body • Dark fruit • Lux feel.\nPAIRS: Steaks and rich dishes.\nDish examples: Ribeye, Sirloin, Pork Chop.\nWHY: Full-bodied blends pair with protein and char.\nLINE: Abstract is a great upgrade — bold, smooth, and really impressive with grilled meats."
-      },
-      {
-        "name": "Josh Cellars Cabernet Sauvignon",
-        "description": "PROFILE: Cabernet • Full body • Firm tannin • Dark fruit.\nPAIRS: Steaks, grilled meats.\nDish examples: Ribeye, Sirloin, Filet.\nWHY: Tannin + protein = perfect match.\nLINE: Cabernet is the classic steak wine — bold enough to stand up to the grill."
-      },
-      {
-        "name": "J. Lohr “Seven Oaks” Cabernet Sauvignon",
-        "description": "PROFILE: Cabernet • Full body • Structured • Dark fruit.\nPAIRS: Steaks and rich entrees.\nDish examples: Ribeye, Sirloin, Filet & Shrimp Toscana.\nWHY: Full body holds up to fat and char.\nLINE: If they want a serious Cabernet with steak, this is a great choice."
-      },
-      {
-        "name": "Stag’s Leap Wine Cellars “Artemis” Cabernet Sauvignon",
-        "description": "PROFILE: Cabernet • Full body • Premium Napa style • Deep, smooth.\nPAIRS: Steaks, upscale dinners.\nDish examples: Ribeye, Filet, Sirloin.\nWHY: Premium Cab elevates the entrée experience.\nLINE: If they want to upgrade, Artemis is a beautiful Napa Cabernet — smooth, powerful, and perfect with steak."
-      },
-      {
-        "name": "Caymus Cabernet Sauvignon",
-        "description": "PROFILE: Cabernet • Full body • Iconic Napa • Rich, plush.\nPAIRS: Steaks, celebratory dinners.\nDish examples: Ribeye, Filet, Sirloin.\nWHY: Big, plush Cabernet matches fat/char and feels like a splurge.\nLINE: Caymus is the big-name Napa Cab — rich, smooth, and fantastic with steak."
-      },
-      {
-        "name": "Rombauer Chardonnay",
-        "description": "PROFILE: Chardonnay • Full-bodied white • Rich, creamy, buttery.\nPAIRS: Cream sauces, rich pasta, chicken.\nDish examples: Fettuccine Alfredo, Mezzaluna, Chicken Bryan.\nWHY: Rich Chardonnay matches rich sauce — like butter meeting butter.\nLINE: If they like a richer white, Rombauer is creamy and amazing with Alfredo-style dishes."
-      },
-      {
-        "name": "Kendall-Jackson Chardonnay",
-        "description": "PROFILE: Chardonnay • Medium-full body • Smooth fruit + soft oak.\nPAIRS: Chicken, creamy pastas, seafood (if they want richer white).\nDish examples: Chicken Piccata, Mezzaluna, Filet & Shrimp Toscana.\nWHY: Medium-bodied Chardonnay bridges seafood and creamy sauces.\nLINE: This is a smooth, classic Chardonnay — great if they want a richer white without going too heavy."
-      }
-    ]
-  }
-]
+    {
+      "group": "House Wines",
+      "name": "Trinity Oaks Chardonnay",
+      "type": "House Chardonnay",
+      "region": "House",
+      "grape": "Chardonnay",
+      "body": "Medium",
+      "acidity": "Medium",
+      "sweetness": "Dry",
+      "tannin": "",
+      "flavor": "Easy, smooth chardonnay style.",
+      "bestFor": "Guests who want house wine and something simple.",
+      "pitch": "Smooth, simple house Chardonnay — easy with food.",
+      "pairWith": ["Cheese apps", "Pasta", "Chicken"],
+      "avoidIf": "They want crisp/dry like Sauvignon Blanc."
+    },
+    {
+      "group": "House Wines",
+      "name": "Trinity Oaks Pinot Noir",
+      "type": "House Pinot Noir",
+      "region": "House",
+      "grape": "Pinot Noir",
+      "body": "Light-Medium",
+      "acidity": "Medium",
+      "sweetness": "Dry",
+      "tannin": "Low",
+      "flavor": "Light red fruit, smooth finish.",
+      "bestFor": "Guests who want a lighter house red.",
+      "pitch": "Smooth, lighter house red — easy to drink.",
+      "pairWith": ["Salmon", "Flatbread", "Turkey items"],
+      "avoidIf": "They want bold reds."
+    },
+    {
+      "group": "House Wines",
+      "name": "Trinity Oaks Merlot",
+      "type": "House Merlot",
+      "region": "House",
+      "grape": "Merlot",
+      "body": "Medium",
+      "acidity": "Medium",
+      "sweetness": "Dry",
+      "tannin": "Medium",
+      "flavor": "Plum and soft dark fruit, easy finish.",
+      "bestFor": "Guests who want soft red without tannin bite.",
+      "pitch": "Soft, smooth house red — easy pick if they don’t want a big cab.",
+      "pairWith": ["Meatloaf", "Pot Roast", "Burgers"],
+      "avoidIf": "They want very bold reds."
+    },
+    {
+      "group": "House Wines",
+      "name": "Trinity Oaks Cabernet Sauvignon",
+      "type": "House Cabernet Sauvignon",
+      "region": "House",
+      "grape": "Cabernet Sauvignon",
+      "body": "Full",
+      "acidity": "Medium",
+      "sweetness": "Dry",
+      "tannin": "Medium",
+      "flavor": "Dark fruit, simple cab profile.",
+      "bestFor": "Guests who want house cab with steak/meat.",
+      "pitch": "Classic house cab — straightforward and food-friendly.",
+      "pairWith": ["Prime Rib", "Filet", "Burgers"],
+      "avoidIf": "They want light reds."
+    }
+  ]
+}
